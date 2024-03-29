@@ -1,15 +1,18 @@
-# Using it
+---
+translated_at: '2024-03-26T11:43:27.711Z'
+---
 
-We need to initialise the logger before we use it.
+# 使用它
 
-```rust,editable,compile_fail
+我们需要在使用它之前初始化日志记录器。
+
+```rust, 编辑, 编译失败
 {{#include ../examples/src/main_logger.rs:main}}
 ```
 
 <details>
 
-- Note that our panic handler can now log details of panics.
-- Run the example in QEMU with `make qemu_logger` under
-  `src/bare-metal/aps/examples`.
+- 注意，我们的 panic 处理程序现在可以记录 panic 的详细信息了。
+- 在 `src/bare-metal/aps/examples` 下，使用 `make qemu_logger` 运行示例。
 
 </details>

@@ -1,8 +1,9 @@
 ---
 minutes: 3
+translated_at: '2024-03-26T11:02:26.863Z'
 ---
 
-# Functions
+# 函数
 
 <!-- mdbook-xgettext: skip -->
 
@@ -22,18 +23,11 @@ fn main() {
 
 <details>
 
-- Declaration parameters are followed by a type (the reverse of some programming
-  languages), then a return type.
-- The last expression in a function body (or any block) becomes the return
-  value. Simply omit the `;` at the end of the expression. The `return` keyword
-  can be used for early return, but the "bare value" form is idiomatic at the
-  end of a function (refactor `gcd` to use a `return`).
-- Some functions have no return value, and return the 'unit type', `()`. The
-  compiler will infer this if the `-> ()` return type is omitted.
-- Overloading is not supported -- each function has a single implementation.
-  - Always takes a fixed number of parameters. Default arguments are not
-    supported. Macros can be used to support variadic functions.
-  - Always takes a single set of parameter types. These types can be generic,
-    which will be covered later.
+- 声明参数后面跟着一个类型（与某些编程语言的顺序相反），然后是返回类型。
+- 函数体（或任何代码块）中的最后一个表达式成为返回值。只需省略表达式末尾的 `;`。可以使用 `return` 关键字进行提前返回，但在函数末尾，"裸值" 形式是习惯用法（重构 `gcd` 以使用 `return`）。
+- 一些函数没有返回值，返回 "单位类型"，`()`。如果省略了 `-> ()` 返回类型，编译器会推断出来。
+- 不支持重载 -- 每个函数有单一实现。
+  - 始终需要固定数量的参数。不支持默认参数。可以使用宏来支持可变参数函数。
+  - 始终需要一组特定的参数类型。这些类型可以是泛型，稍后将介绍。
 
 </details>

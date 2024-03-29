@@ -1,16 +1,19 @@
-# Generated Service API
+---
+translated_at: '2024-03-26T12:08:19.649Z'
+---
 
-Binder generates a trait corresponding to the interface definition. trait to
-talk to the service.
+# 生成的服务 API
 
-_birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl_:
+Binder 生成一个与接口定义相对应的 trait。此 trait 用于与服务进行通信。
+
+_birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl_：
 
 ```java
 {{#include ../birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl:IBirthdayService}}
 }
 ```
 
-_Generated trait_:
+_生成的 trait_：
 
 ```rust,ignore
 trait IBirthdayService {
@@ -18,16 +21,12 @@ trait IBirthdayService {
 }
 ```
 
-Your service will need to implement this trait, and your client will use this
-trait to talk to the service.
+你的服务需要实现这个 trait，而你的客户端将使用这个 trait 与服务进行通信。
 
 <details>
 
-- The generated bindings can be found at
-  `out/soong/.intermediates/<path to module>/`.
-- Point out how the generated function signature, specifically the argument and
-  return types, correspond the interface definition.
-  - `String` for an argument results in a different Rust type than `String` as a
-    return type.
+- 生成的绑定可以在 `out/soong/.intermediates/<模块路径>/` 找到。
+- 指出生成的函数签名，特别是参数和返回类型，如何对应于接口定义。
+  - 作为参数的 `String` 会导致与作为返回类型的 `String` 不同的 Rust 类型。
 
 </details>

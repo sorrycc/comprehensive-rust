@@ -1,32 +1,30 @@
-# Translations
+---
+translated_at: '2024-03-26T10:16:28.877Z'
+---
 
-The course has been translated into other languages by a set of wonderful
-volunteers:
+# 翻译
 
-- [Brazilian Portuguese][pt-BR] by [@rastringer], [@hugojacob],
-  [@joaovicmendes], and [@henrif75].
-- [Chinese (Simplified)][zh-CN] by [@suetfei], [@wnghl], [@anlunx], [@kongy],
-  [@noahdragon], [@superwhd], [@SketchK], and [@nodmp].
-- [Chinese (Traditional)][zh-TW] by [@hueich], [@victorhsieh], [@mingyc],
-  [@kuanhungchen], and [@johnathan79717].
-- [Korean][ko] by [@keispace], [@jiyongp], [@jooyunghan], and [@namhyung].
-- [Spanish][es] by [@deavid].
+课程已由一组出色的志愿者翻译成其他语言：
 
-Use the language picker in the top-right corner to switch between languages.
+- [巴西葡萄牙语][pt-BR] 由 [@rastringer]、[@hugojacob]、[@joaovicmendes] 和 [@henrif75] 翻译。
+- [简体中文][zh-CN] 由 [@suetfei]、[@wnghl]、[@anlunx]、[@kongy]、[@noahdragon]、[@superwhd]、[@SketchK] 和 [@nodmp] 翻译。
+- [繁体中文][zh-TW] 由 [@hueich]、[@victorhsieh]、[@mingyc]、[@kuanhungchen] 和 [@johnathan79717] 翻译。
+- [韩语][ko] 由 [@keispace]、[@jiyongp]、[@jooyunghan] 和 [@namhyung] 翻译。
+- [西班牙语][es] 由 [@deavid] 翻译。
 
-## Incomplete Translations
+使用右上角的语言选择器切换语言。
 
-There is a large number of in-progress translations. We link to the most
-recently updated translations:
+## 未完成的翻译
 
-- [Bengali][bn] by [@raselmandol].
-- [French][fr] by [@KookaS] and [@vcaen].
-- [German][de] by [@Throvn] and [@ronaldfw].
-- [Japanese][ja] by [@CoinEZ-JPN] and [@momotaro1105].
-- [Italian][it] by [@henrythebuilder] and [@detro].
+有大量正在进行的翻译工作。我们链接到最近更新的翻译：
 
-If you want to help with this effort, please see [our instructions] for how to
-get going. Translations are coordinated on the [issue tracker].
+- [孟加拉语][bn] 由 [@raselmandol] 翻译。
+- [法语][fr] 由 [@KookaS] 和 [@vcaen] 翻译。
+- [德语][de] 由 [@Throvn] 和 [@ronaldfw] 翻译。
+- [日语][ja] 由 [@CoinEZ-JPN] 和 [@momotaro1105] 翻译。
+- [意大利语][it] 由 [@henrythebuilder] 和 [@detro] 翻译。
+
+如果你想帮助这项工作，请查看[我们的指南]了解如何开始。翻译工作在[问题跟踪器]上进行协调。
 
 [bn]: https://google.github.io/comprehensive-rust/bn/
 [de]: https://google.github.io/comprehensive-rust/de/
@@ -46,6 +44,7 @@ get going. Translations are coordinated on the [issue tracker].
 [@henrythebuilder]: https://github.com/henrythebuilder
 [@hueich]: https://github.com/hueich
 [@hugojacob]: https://github.com/hugojacob
+
 [@jiyongp]: https://github.com/jiyongp
 [@joaovicmendes]: https://github.com/joaovicmendes
 [@johnathan79717]: https://github.com/johnathan79717
@@ -69,5 +68,5 @@ get going. Translations are coordinated on the [issue tracker].
 [@vcaen]: https://github.com/vcaen
 [@victorhsieh]: https://github.com/victorhsieh
 [@wnghl]: https://github.com/wnghl
-[our instructions]: https://github.com/google/comprehensive-rust/blob/main/TRANSLATIONS.md
-[issue tracker]: https://github.com/google/comprehensive-rust/issues/282
+[我们的指示]: https://github.com/google/comprehensive-rust/blob/main/TRANSLATIONS.md
+[问题追踪器]: https://github.com/google/comprehensive-rust/issues/282

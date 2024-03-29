@@ -1,67 +1,53 @@
-# Course Structure
+---
+translated_at: '2024-03-26T10:17:58.941Z'
+---
 
-> This page is for the course instructor.
+# 课程结构
 
-## Rust Fundamentals
+> 本页面供课程讲师使用。
 
-The first four days make up [Rust Fundamentals](../welcome-day-1.md). The days
-are fast paced and we cover a lot of ground!
+## Rust 基础
 
-{{%course outline Fundamentals}}
+前四天是 [Rust 基础](../welcome-day-1.md)。这几天节奏快，我们将覆盖很多内容！
 
-## Deep Dives
+{{%课程大纲 基础知识%}}
 
-In addition to the 4-day class on Rust Fundamentals, we cover some more
-specialized topics:
+## 深入探讨
 
-### Rust in Android
+除了为期 4 天的 Rust 基础课程，我们还会涉及一些更专业的主题：
 
-The [Rust in Android](../android.md) deep dive is a half-day course on using
-Rust for Android platform development. This includes interoperability with C,
-C++, and Java.
+### Rust 在安卓中的应用
 
-You will need an [AOSP checkout][1]. Make a checkout of the
-[course repository][2] on the same machine and move the `src/android/` directory
-into the root of your AOSP checkout. This will ensure that the Android build
-system sees the `Android.bp` files in `src/android/`.
+[Rust 在安卓中的应用](../android.md) 深入探讨是一个半天的课程，内容涉及 Rust 在安卓平台开发中的使用。这包括与 C、C++ 和 Java 的互操作性。
 
-Ensure that `adb sync` works with your emulator or real device and pre-build all
-Android examples using `src/android/build_all.sh`. Read the script to see the
-commands it runs and make sure they work when you run them by hand.
+你将需要一个 [AOSP 检出][1]。在同一台机器上检出
+[课程仓库][2] 并将 `src/android/` 目录移至您的 AOSP 检出的根目录。这可以确保安卓构建系统能够识别 `src/android/` 中的 `Android.bp` 文件。
+
+确保 `adb sync` 能够与你的模拟器或真实设备正常工作，并使用 `src/android/build_all.sh` 预构建所有安卓示例。阅读脚本以查看它运行的命令，并确保在你手动运行时它们能够正常工作。
 
 [1]: https://source.android.com/docs/setup/download/downloading
 [2]: https://github.com/google/comprehensive-rust
 
-### Rust in Chromium
+### Rust 在 Chromium 中的应用
 
-The [Rust in Chromium](../chromium.md) deep dive is a half-day course on using
-Rust as part of the Chromium browser. It includes using Rust in Chromium's `gn`
-build system, bringing in third-party libraries ("crates") and C++
-interoperability.
+[Rust 在 Chromium 中的应用](../chromium.md) 深入探讨是一个半天的课程，讲述如何在 Chromium 浏览器中使用 Rust。内容包括在 Chromium 的 `gn` 构建系统中使用 Rust、引入第三方库（“crates”）和 C++ 的互操作性。
 
-You will need to be able to build Chromium --- a debug, component build is
-[recommended](../chromium/setup.md) for speed but any build will work. Ensure
-that you can run the Chromium browser that you've built.
+你需要能够构建 Chromium ——出于速度考虑，建议进行[调试，组件构建](../chromium/setup.md)，但任何构建都可以工作。确保你可以运行你构建的 Chromium 浏览器。
 
-### Bare-Metal Rust
+### 裸机 Rust
 
-The [Bare-Metal Rust](../bare-metal.md) deep dive is a full day class on using
-Rust for bare-metal (embedded) development. Both microcontrollers and
-application processors are covered.
+[裸机 Rust](../bare-metal.md) 深入探讨是为期一整天的课程，讲述如何在裸机（嵌入式）开发中使用 Rust。课程内容涵盖了微控制器和应用处理器。
 
-For the microcontroller part, you will need to buy the
-[BBC micro:bit](https://microbit.org/) v2 development board ahead of time.
-Everybody will need to install a number of packages as described on the
-[welcome page](../bare-metal.md).
+对于微控制器部分，你需要提前购买 [BBC micro:bit](https://microbit.org/) v2 开发板。
+每个人都需要安装如下描述的一系列软件包：
 
-### Concurrency in Rust
+[欢迎页面](../bare-metal.md)。
 
-The [Concurrency in Rust](../concurrency.md) deep dive is a full day class on
-classical as well as `async`/`await` concurrency.
+### Rust 中的并发
 
-You will need a fresh crate set up and the dependencies downloaded and ready to
-go. You can then copy/paste the examples into `src/main.rs` to experiment with
-them:
+深入探索 [Rust 中的并发](../concurrency.md) 是一个全天候的课程，内容包括经典并发以及 `async`/`await` 并发。
+
+你需要设置一个新的 crate，下载并准备好依赖。然后，你可以将例子复制/粘贴到 `src/main.rs` 中进行实验：
 
 ```shell
 cargo init concurrency
@@ -70,7 +56,6 @@ cargo add tokio --features full
 cargo run
 ```
 
-## Format
+## 格式
 
-The course is meant to be very interactive and we recommend letting the
-questions drive the exploration of Rust!
+本课程旨在非常互动，我们推荐让问题驱动对 Rust 的探索！

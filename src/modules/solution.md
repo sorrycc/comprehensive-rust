@@ -1,28 +1,16 @@
-# Solution
+---
+translated_at: '2024-03-26T10:26:04.924Z'
+---
 
-<!--
-// Copyright 2023 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
--->
+# 解决方案
 
 ```ignore
 src
 ├── main.rs
 ├── widgets
-│   ├── button.rs
-│   ├── label.rs
-│   └── window.rs
+│   ├── button.rs
+│   ├── label.rs
+│   └── window.rs
 └── widgets.rs
 ```
 
@@ -33,13 +21,13 @@ mod label;
 mod window;
 
 pub trait Widget {
-    /// Natural width of `self`.
+    /// `self` 的自然宽度。
     fn width(&self) -> usize;
 
-    /// Draw the widget into a buffer.
+    /// 将小部件绘制到缓冲区中。
     fn draw_into(&self, buffer: &mut dyn std::fmt::Write);
 
-    /// Draw the widget on standard output.
+    /// 将小部件绘制到标准输出上。
     fn draw(&self) {
         let mut buffer = String::new();
         self.draw_into(&mut buffer);
@@ -97,7 +85,7 @@ impl Button {
 impl Widget for Button {
     fn width(&self) -> usize {
         // ANCHOR_END: Button-width
-        self.label.width() + 8 // add a bit of padding
+        self.label.width() + 8 // 添加一点填充
     }
 
     // ANCHOR: Button-draw_into
@@ -145,7 +133,7 @@ impl Window {
 impl Widget for Window {
     fn width(&self) -> usize {
         // ANCHOR_END: Window-width
-        // Add 4 paddings for borders
+        // 添加 4 个边框内边距
         self.inner_width() + 4
     }
 
@@ -159,9 +147,9 @@ impl Widget for Window {
 
         let inner_width = self.inner_width();
 
-        // TODO: after learning about error handling, you can change
-        // draw_into to return Result<(), std::fmt::Error>. Then use
-        // the ?-operator here instead of .unwrap().
+        // TODO: 在了解错误处理之后，你可以将
+        // draw_into 修改为返回 Result<(), std::fmt::Error>。然后在这里
+        // 使用 ?-运算符，而不是 .unwrap()。
         writeln!(buffer, "+-{:-<inner_width$}-+", "").unwrap();
         writeln!(buffer, "| {:^inner_width$} |", &self.title).unwrap();
         writeln!(buffer, "+={:=<inner_width$}=+", "").unwrap();
@@ -180,10 +168,10 @@ mod widgets;
 use widgets::Widget;
 
 fn main() {
-    let mut window = widgets::Window::new("Rust GUI Demo 1.23");
+    let mut window = widgets::Window::new("Rust GUI 演示 1.23");
     window
-        .add_widget(Box::new(widgets::Label::new("This is a small text GUI demo.")));
-    window.add_widget(Box::new(widgets::Button::new("Click me!")));
+        .add_widget(Box::new(widgets::Label::new("这是一个简易文本 GUI 演示。")));
+    window.add_widget(Box::new(widgets::Button::new("点击我！")));
     window.draw();
 }
 ```

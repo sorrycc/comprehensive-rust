@@ -1,11 +1,11 @@
 ---
 minutes: 8
+translated_at: '2024-03-26T10:29:50.773Z'
 ---
 
-# Methods
+# 方法
 
-Rust allows you to associate functions with your new types. You do this with an
-`impl` block:
+Rust 允许你将函数与你的新类型关联起来。你可以通过一个 `impl` 块来做到这一点：
 
 ```rust,editable
 #[derive(Debug)]
@@ -15,33 +15,33 @@ struct Race {
 }
 
 impl Race {
-    // No receiver, a static method
+    // 没有接收者，一个静态方法
     fn new(name: &str) -> Self {
         Self { name: String::from(name), laps: Vec::new() }
     }
 
-    // Exclusive borrowed read-write access to self
+    // 对 self 的独占借用读写访问
     fn add_lap(&mut self, lap: i32) {
         self.laps.push(lap);
     }
 
-    // Shared and read-only borrowed access to self
+    // 对 self 的共享和只读借用访问
     fn print_laps(&self) {
-        println!("Recorded {} laps for {}:", self.laps.len(), self.name);
+        println!("为 {} 记录了 {} 圈：", self.name, self.laps.len());
         for (idx, lap) in self.laps.iter().enumerate() {
-            println!("Lap {idx}: {lap} sec");
+            println!("第 {idx} 圈：{lap} 秒");
         }
     }
 
-    // Exclusive ownership of self
+    // 对 self 的独占所有权
     fn finish(self) {
         let total: i32 = self.laps.iter().sum();
-        println!("Race {} is finished, total lap time: {}", self.name, total);
+        println!("赛事 {} 结束，总圈数时间：{}", self.name, total);
     }
 }
 
 fn main() {
-    let mut race = Race::new("Monaco Grand Prix");
+    let mut race = Race::new("摩纳哥大奖赛");
     race.add_lap(70);
     race.add_lap(68);
     race.print_laps();
@@ -52,42 +52,27 @@ fn main() {
 }
 ```
 
-The `self` arguments specify the "receiver" - the object the method acts on.
-There are several common receivers for a method:
+`self` 参数指定了方法作用的 “接收者” - 方法作用于的对象。
+对于方法有几种常见的接收者：
 
-- `&self`: borrows the object from the caller using a shared and immutable
-  reference. The object can be used again afterwards.
-- `&mut self`: borrows the object from the caller using a unique and mutable
-  reference. The object can be used again afterwards.
-- `self`: takes ownership of the object and moves it away from the caller. The
-  method becomes the owner of the object. The object will be dropped
-  (deallocated) when the method returns, unless its ownership is explicitly
-  transmitted. Complete ownership does not automatically mean mutability.
-- `mut self`: same as above, but the method can mutate the object.
-- No receiver: this becomes a static method on the struct. Typically used to
-  create constructors which are called `new` by convention.
+- `&self`：使用共享且不可变的引用，从调用者那里借用对象。之后可以再次使用该对象。
+- `&mut self`：使用独特且可变的引用，从调用者那里借用对象。之后可以再次使用该对象。
+- `self`：获取对象的所有权并将其从调用者处移走。方法成为对象的所有者。当方法返回时，除非显式转移了所有权，否则对象将被丢弃（释放）。完全所有权并不自动意味着可变性。
+- `mut self`：与上述相同，但方法可以修改对象。
+- 无接收者：这变成了结构体上的一个静态方法。通常用于创建构造函数，按惯例这些函数被称为 `new`。
 
 <details>
 
-Key Points:
+关键点：
 
-- It can be helpful to introduce methods by comparing them to functions.
-  - Methods are called on an instance of a type (such as a struct or enum), the
-    first parameter represents the instance as `self`.
-  - Developers may choose to use methods to take advantage of method receiver
-    syntax and to help keep them more organized. By using methods we can keep
-    all the implementation code in one predictable place.
-- Point out the use of the keyword `self`, a method receiver.
-  - Show that it is an abbreviated term for `self: Self` and perhaps show how
-    the struct name could also be used.
-  - Explain that `Self` is a type alias for the type the `impl` block is in and
-    can be used elsewhere in the block.
-  - Note how `self` is used like other structs and dot notation can be used to
-    refer to individual fields.
-  - This might be a good time to demonstrate how the `&self` differs from `self`
-    by trying to run `finish` twice.
-  - Beyond variants on `self`, there are also
-    [special wrapper types](https://doc.rust-lang.org/reference/special-types-and-traits.html)
-    allowed to be receiver types, such as `Box<Self>`.
+- 将方法与函数进行比较引入方法的做法有助于理解。
+  - 方法是在类型（如结构或枚举）的实例上调用的，第一个参数表示该实例为 `self`。
+  - 开发者可能会选择使用方法来利用方法接收器语法，并帮助使代码更加有组织。通过使用方法，我们可以将所有的实现代码放在一个可预测的地方。
+- 指出关键字 `self` 的使用，一个方法接收器。
+  - 展示它是 `self: Self` 的简写形式，并且可能展示如何使用结构体名称。
+  - 解释 `Self` 是 `impl` 块中类型的类型别名，并且可以在块的其他地方使用。
+  - 注意如何像其他结构体一样使用 `self`，并且可以使用点符号来引用单个字段。
+  - 这可能是展示 `&self` 与 `self` 不同的好时机，尝试运行 `finish` 两次。
+  - 除了 `self` 的变体，还有允许作为接收器类型的[特殊包装类型](https://doc.rust-lang.org/reference/special-types-and-traits.html)，例如 `Box<Self>`。
 
 </details>

@@ -1,12 +1,15 @@
-# Exercises
+---
+translated_at: '2024-03-26T10:56:22.266Z'
+---
 
-We will read the direction from an I2C compass, and log the readings to a serial
-port.
+# 练习
+
+我们将从 I2C 罗盘读取方向，并将读数记录到串行端口。
 
 <details>
 
-After looking at the exercises, you can look at the [solutions] provided.
+查看练习后，您可以查看提供的[解决方案]。
 
-[solutions]: solutions-morning.md
+[解决方案]: solutions-morning.md
 
 </details>

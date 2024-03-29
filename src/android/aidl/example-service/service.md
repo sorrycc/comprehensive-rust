@@ -1,8 +1,12 @@
-# Service Implementation
+---
+translated_at: '2024-03-26T12:08:00.688Z'
+---
 
-We can now implement the AIDL service:
+# 服务实现
 
-_birthday_service/src/lib.rs_:
+我们现在可以实现 AIDL 服务了：
+
+_birthday_service/src/lib.rs_：
 
 ```rust,ignore
 use com_example_birthdayservice::aidl::com::example::birthdayservice::IBirthdayService::IBirthdayService;
@@ -12,7 +16,7 @@ use com_example_birthdayservice::binder;
 }
 ```
 
-_birthday_service/Android.bp_:
+_birthday_service/Android.bp_：
 
 ```javascript
 {{#include ../birthday_service/Android.bp:libbirthdayservice}}
@@ -20,9 +24,7 @@ _birthday_service/Android.bp_:
 
 <details>
 
-- Point out the path to the generated `IBirthdayService` trait, and explain why
-  each of the segments is necessary.
-- TODO: What does the `binder::Interface` trait do? Are there methods to
-  override? Where source?
+- 指出生成的 `IBirthdayService` 特性的路径，并解释每个段落的必要性。
+- 待办：`binder::Interface` 特性做什么？有方法要重写吗？源代码在哪里？
 
 </details>

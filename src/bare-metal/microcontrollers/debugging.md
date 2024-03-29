@@ -1,6 +1,10 @@
-# Debugging
+---
+translated_at: '2024-03-26T11:38:28.581Z'
+---
 
-_Embed.toml_:
+# 调试
+
+_Embed.toml_：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -12,7 +16,7 @@ chip = "nrf52833_xxAA"
 enabled = true
 ```
 
-In one terminal under `src/bare-metal/microcontrollers/examples/`:
+在 `src/bare-metal/microcontrollers/examples/` 目录下的一个终端中：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -20,9 +24,9 @@ In one terminal under `src/bare-metal/microcontrollers/examples/`:
 cargo embed --bin board_support debug
 ```
 
-In another terminal in the same directory:
+在同一目录下的另一个终端中：
 
-On gLinux or Debian:
+在 gLinux 或 Debian 上：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -30,7 +34,7 @@ On gLinux or Debian:
 gdb-multiarch target/thumbv7em-none-eabihf/debug/board_support --eval-command="target remote :1337"
 ```
 
-On MacOS:
+在 MacOS 上：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -40,7 +44,7 @@ arm-none-eabi-gdb target/thumbv7em-none-eabihf/debug/board_support --eval-comman
 
 <details>
 
-In GDB, try running:
+在 GDB 中，尝试运行：
 
 <!-- mdbook-xgettext: skip -->
 

@@ -1,9 +1,12 @@
-# Working With AIDL Types
+---
+translated_at: '2024-03-26T12:05:36.086Z'
+---
 
-AIDL types translate into the appropriate idiomatic Rust type:
+# 使用 AIDL 类型
 
-- Primitive types map (mostly) to idiomatic Rust types.
-- Collection types like slices, `Vec`s and string types are supported.
-- References to AIDL objects and file handles can be sent between clients and
-  services.
-- File handles and parcelables are fully supported.
+AIDL 类型转换为相应的地道 Rust 类型：
+
+- 基本类型映射（大部分）到地道的 Rust 类型。
+- 支持切片、`Vec` 和字符串类型等集合类型。
+- 可以在客户端和服务之间发送对 AIDL 对象和文件句柄的引用。
+- 完全支持文件句柄和 parcelable。

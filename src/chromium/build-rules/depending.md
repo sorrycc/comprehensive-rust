@@ -1,6 +1,10 @@
-# Depending on Rust Code from Chromium C++
+---
+translated_at: '2024-03-26T11:20:55.609Z'
+---
 
-Simply add the above target to the `deps` of some Chromium C++ target.
+# 依赖 Chromium C++ 的 Rust 代码
+
+只需将上述目标添加到某个 Chromium C++ 目标的 `deps` 中。
 
 ```gn
 import("//build/rust/rust_static_library.gni")
@@ -10,13 +14,12 @@ rust_static_library("my_rust_lib") {
   sources = [ "lib.rs" ]
 }
 
-# or source_set, static_library etc.
+# 或 source_set、static_library 等。
 component("preexisting_cpp") {
   deps = [ ":my_rust_lib" ]
 }
 ```
 
 <details>
-We'll see that this relationship only works if the Rust code exposes plain C APIs
-which can be called from C++, or if we use a C++/Rust interop tool.
+我们将看到，这种关系只有在 Rust 代码暴露纯 C API，这些 API 能够被 C++ 调用，或者我们使用 C++/Rust 互操作工具时才有效。
 </details>

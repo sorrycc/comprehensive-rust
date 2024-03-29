@@ -1,11 +1,10 @@
+---
+translated_at: '2024-03-26T11:34:35.638Z'
+---
+
 # `tinyvec`
 
-Sometimes you want something which can be resized like a `Vec`, but without heap
-allocation. [`tinyvec`][1] provides this: a vector backed by an array or slice,
-which could be statically allocated or on the stack, which keeps track of how
-many elements are used and panics if you try to use more than are allocated.
-
-<!-- mdbook-xgettext: skip -->
+有时你想要一个像 `Vec` 那样可以调整大小的东西，但又不想进行堆分配。[`tinyvec`][1] 提供了这样的功能：一个由数组或切片支撑的向量，它可以是静态分配的或者储存在栈上的，这个向量跟踪使用了多少元素，并且如果你试图使用超过分配数量的元素，它会发生恐慌。
 
 ```rust,editable,compile_fail
 use tinyvec::{array_vec, ArrayVec};
@@ -22,9 +21,8 @@ fn main() {
 
 <details>
 
-- `tinyvec` requires that the element type implement `Default` for
-  initialisation.
-- The Rust Playground includes `tinyvec`, so this example will run fine inline.
+- `tinyvec` 要求元素类型实现 `Default` 以便初始化。
+- Rust Playground 包含了 `tinyvec`，因此这个例子可以直接在线运行。
 
 </details>
 

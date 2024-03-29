@@ -1,8 +1,12 @@
-# Updating Client and Service
+---
+translated_at: '2024-03-26T12:10:59.062Z'
+---
 
-Update the client and server code to account for the new API.
+# 更新客户端和服务
 
-_birthday_service/src/lib.rs_:
+更新客户端和服务器代码以适应新的 API。
+
+_birthday_service/src/lib.rs_：
 
 ```rust,ignore
 impl IBirthdayService for BirthdayService {
@@ -26,7 +30,7 @@ impl IBirthdayService for BirthdayService {
 }
 ```
 
-_birthday_service/src/client.rs_:
+_birthday_service/src/client.rs_：
 
 ```rust,ignore
 let msg = service.wishHappyBirthday(
@@ -41,6 +45,6 @@ let msg = service.wishHappyBirthday(
 
 <details>
 
-- TODO: Move code snippets into project files where they'll actually be built?
+- TODO: 将代码片段移入项目文件中，这样才会真正构建？
 
 </details>

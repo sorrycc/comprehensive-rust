@@ -1,5 +1,7 @@
-# Birthday Service Tutorial
+---
+translated_at: '2024-03-26T12:05:42.816Z'
+---
 
-To illustrate how to use Rust with Binder, we're going to walk through the
-process of creating a Binder interface. We're then going to both implement the
-described service and write client code that talks to that service.
+# 生日服务教程
+
+为了演示如何将 Rust 与 Binder 结合使用，我们将通过创建 Binder 接口的过程。然后，我们将实现所描述的服务，并编写与该服务通信的客户端代码。

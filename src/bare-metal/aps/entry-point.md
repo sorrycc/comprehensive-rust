@@ -1,6 +1,10 @@
-# Getting Ready to Rust
+---
+translated_at: '2024-03-26T11:42:17.406Z'
+---
 
-Before we can start running Rust code, we need to do some initialisation.
+# 开始准备 Rust
+
+在开始运行 Rust 代码之前，我们需要做一些初始化。
 
 ```armasm
 {{#include examples/entry.S:entry}}
@@ -8,36 +12,16 @@ Before we can start running Rust code, we need to do some initialisation.
 
 <details>
 
-- This is the same as it would be for C: initialising the processor state,
-  zeroing the BSS, and setting up the stack pointer.
-  - The BSS (block starting symbol, for historical reasons) is the part of the
-    object file which containing statically allocated variables which are
-    initialised to zero. They are omitted from the image, to avoid wasting space
-    on zeroes. The compiler assumes that the loader will take care of zeroing
-    them.
-- The BSS may already be zeroed, depending on how memory is initialised and the
-  image is loaded, but we zero it to be sure.
-- We need to enable the MMU and cache before reading or writing any memory. If
-  we don't:
-  - Unaligned accesses will fault. We build the Rust code for the
-    `aarch64-unknown-none` target which sets `+strict-align` to prevent the
-    compiler generating unaligned accesses, so it should be fine in this case,
-    but this is not necessarily the case in general.
-  - If it were running in a VM, this can lead to cache coherency issues. The
-    problem is that the VM is accessing memory directly with the cache disabled,
-    while the host has cacheable aliases to the same memory. Even if the host
-    doesn't explicitly access the memory, speculative accesses can lead to cache
-    fills, and then changes from one or the other will get lost when the cache
-    is cleaned or the VM enables the cache. (Cache is keyed by physical address,
-    not VA or IPA.)
-- For simplicity, we just use a hardcoded pagetable (see `idmap.S`) which
-  identity maps the first 1 GiB of address space for devices, the next 1 GiB for
-  DRAM, and another 1 GiB higher up for more devices. This matches the memory
-  layout that QEMU uses.
-- We also set up the exception vector (`vbar_el1`), which we'll see more about
-  later.
-- All examples this afternoon assume we will be running at exception level 1
-  (EL1). If you need to run at a different exception level you'll need to modify
-  `entry.S` accordingly.
+- 这和 C 语言的做法是相同的：初始化处理器状态、清零 BSS 段，并设置栈指针。
+  - BSS（块起始符号，出于历史原因）是对象文件的一部分，包含了初始化为零的静态分配变量。它们从映像中省略掉，以避免浪费空间在零上。编译器假设加载器会负责将它们清零。
+- BSS 可能已经被清零了，这取决于内存是如何初始化的，以及映像是如何加载的，但我们还是要清零以确认无误。
+- 我们需要在读写任何内存之前启用 MMU 和缓存。如果我们不这样做：
+  - 未对齐的访问将导致错误。我们为 `aarch64-unknown-none` 目标构建 Rust 代码，它设置了 `+strict-align` 以防止编译器生成未对齐的访问，所以这种情况下应该是没问题的，但这不一定总是适用。
+  - 如果它在虚拟机中运行，这可能导致缓存一致性问题。问题是虚拟机在缓存禁用的情况下直接访问内存，而宿主机拥有对同一内存的可缓存别名。即使宿主机没有显式访问内存，预测性访问也可能导致缓存填充，然后缓存清理时或者虚拟机启用缓存时，来自它们之一的更改可能会丢失。（缓存是由物理地址索引，而不是虚拟地址或 IPA。）
+- 为了简单起见，我们直接使用一个硬编码的页表（参见 `idmap.S`），它为设备映射地址空间的第一个 1 GiB、接下来的 1 GiB 用于 DRAM，以及更高的另一个 1 GiB 用于更多设备。这匹配了 QEMU 使用的内存布局。
+- 我们还设置了异常向量（`vbar_el1`），稍后我们将详细了解。
+- 今天下午的所有示例都假设我们会在异常级别 1 下运行。
 
-</details>
+```markdown
+  (EL1)。如果你需要在不同的异常级别上运行，你将需要相应地修改 `entry.S`。
+```

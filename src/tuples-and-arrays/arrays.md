@@ -1,8 +1,9 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:00:55.116Z'
 ---
 
-# Arrays
+# 数组
 
 <!-- mdbook-xgettext: skip -->
 
@@ -16,24 +17,14 @@ fn main() {
 
 <details>
 
-- A value of the array type `[T; N]` holds `N` (a compile-time constant)
-  elements of the same type `T`. Note that the length of the array is _part of
-  its type_, which means that `[u8; 3]` and `[u8; 4]` are considered two
-  different types. Slices, which have a size determined at runtime, are covered
-  later.
+- 数组类型 `[T; N]` 的值包含 `N` 个（编译时常量）相同类型 `T` 的元素。注意数组的长度是_其类型的一部分_，这意味着 `[u8; 3]` 和 `[u8; 4]` 被认为是两种不同的类型。稍后将介绍在运行时确定大小的切片。
 
-- Try accessing an out-of-bounds array element. Array accesses are checked at
-  runtime. Rust can usually optimize these checks away, and they can be avoided
-  using unsafe Rust.
+- 尝试访问数组的越界元素。数组访问在运行时会被检查。Rust 通常可以优化这些检查，而且可以通过使用不安全的 Rust 来避免这些检查。
 
-- We can use literals to assign values to arrays.
+- 我们可以使用字面量来为数组分配值。
 
-- The `println!` macro asks for the debug implementation with the `?` format
-  parameter: `{}` gives the default output, `{:?}` gives the debug output. Types
-  such as integers and strings implement the default output, but arrays only
-  implement the debug output. This means that we must use debug output here.
+- `println!` 宏使用 `?` 格式参数请求调试实现：`{}` 会给出默认输出，`{:?}` 会给出调试输出。像整数和字符串这样的类型实现了默认输出，但数组只实现了调试输出。这意味着我们在这里必须使用调试输出。
 
-- Adding `#`, eg `{a:#?}`, invokes a "pretty printing" format, which can be
-  easier to read.
+- 添加 `#`，例如 `{a:#?}`，会调用“美观打印”格式，这可能更易于阅读。
 
 </details>

@@ -1,6 +1,10 @@
-# Async Channels
+---
+translated_at: '2024-03-26T11:47:36.778Z'
+---
 
-Several crates have support for asynchronous channels. For instance `tokio`:
+# 异步通道
+
+若干个 crate 支持异步通道。例如 `tokio`：
 
 ```rust,editable,compile_fail
 use tokio::sync::mpsc::{self, Receiver};
@@ -32,18 +36,14 @@ async fn main() {
 
 <details>
 
-- Change the channel size to `3` and see how it affects the execution.
+- 将通道大小改为 `3`，看看它如何影响执行过程。
 
-- Overall, the interface is similar to the `sync` channels as seen in the
-  [morning class](concurrency/channels.md).
+- 总体而言，接口与 [早课](concurrency/channels.md) 中看到的 `sync` 通道类似。
 
-- Try removing the `std::mem::drop` call. What happens? Why?
+- 尝试移除 `std::mem::drop` 调用。会发生什么？为什么？
 
-- The [Flume](https://docs.rs/flume/latest/flume/) crate has channels that
-  implement both `sync` and `async` `send` and `recv`. This can be convenient
-  for complex applications with both IO and heavy CPU processing tasks.
+- [Flume](https://docs.rs/flume/latest/flume/) crate 有实现了 `sync` 和 `async` 的 `send` 和 `recv` 的通道。这对于同时涉及 IO 和繁重 CPU 处理任务的复杂应用程序来说非常方便。
 
-- What makes working with `async` channels preferable is the ability to combine
-  them with other `future`s to combine them and create complex control flow.
+- 使用 `async` 通道的优势在于能够将它们与其它 `future` 结合起来，创造出复杂的控制流程。
 
 </details>

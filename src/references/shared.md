@@ -1,16 +1,13 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:20:22.511Z'
 ---
 
-# Shared References
+# 共享引用
 
-A reference provides a way to access another value without taking responsibility
-for the value, and is also called "borrowing". Shared references are read-only,
-and the referenced data cannot change.
+引用提供了一种访问其他值的方式，而不用承担该值的责任，这也被称为“借用”。共享引用是只读的，被引用的数据不能改变。
 
-<!-- mdbook-xgettext: skip -->
-
-```rust,editable
+```rust
 fn main() {
     let a = 'A';
     let b = 'B';
@@ -21,15 +18,11 @@ fn main() {
 }
 ```
 
-A shared reference to a type `T` has type `&T`. A reference value is made with
-the `&` operator. The `*` operator "dereferences" a reference, yielding its
-value.
+对类型 `T` 的共享引用具有类型 `&T`。使用 `&` 运算符可以创建一个引用值。`*` 运算符“解引用”一个引用，得到其值。
 
-Rust will statically forbid dangling references:
+Rust 会静态禁止悬空引用：
 
-<!-- mdbook-xgettext: skip -->
-
-```rust,editable,compile_fail
+```rust
 fn x_axis(x: i32) -> &(i32, i32) {
     let point = (x, 0);
     return &point;
@@ -38,34 +31,22 @@ fn x_axis(x: i32) -> &(i32, i32) {
 
 <details>
 
-- A reference is said to "borrow" the value it refers to, and this is a good
-  model for students not familiar with pointers: code can use the reference to
-  access the value, but is still "owned" by the original variable. The course
-  will get into more detail on ownership in day 3.
+- 说一个引用“借用”了它指向的值，对于不熟悉指针的学生来说，这是一个很好的模型：代码可以使用引用来访问值，但值仍然“属于”原始变量。课程将在第三天详细讨论所有权。
 
-- References are implemented as pointers, and a key advantage is that they can
-  be much smaller than the thing they point to. Students familiar with C or C++
-  will recognize references as pointers. Later parts of the course will cover
-  how Rust prevents the memory-safety bugs that come from using raw pointers.
+- 引用是以指针的形式实现的，其关键优点是它们可以比它们指向的东西小得多。熟悉 C 或 C++ 的学生会将引用认作指针。课程的后面部分将讨论 Rust 是如何防止使用原始指针时出现的内存安全错误。
 
-- Rust does not automatically create references for you - the `&` is always
-  required.
+- Rust 不会自动为你创建引用 - 总是需要 `&`。
 
-- Rust will auto-dereference in some cases, in particular when invoking methods
-  (try `r.is_ascii()`). There is no need for an `->` operator like in C++.
+- 在某些情况下 Rust 会自动解引用，特别是在调用方法时（尝试 `r.is_ascii()`）。不需要像 C++ 中那样的 `->` 运算符。
 
-- In this example, `r` is mutable so that it can be reassigned (`r = &b`). Note
-  that this re-binds `r`, so that it refers to something else. This is different
-  from C++, where assignment to a reference changes the referenced value.
+- 在这个例子中，`r` 是可变的，以便可以重新赋值（`r = &b`）。注意这会重新绑定 `r`，使其指向别的东西。这与 C++ 不同，在 C++ 中，赋值给引用会改变被引用的值。
 
-- A shared reference does not allow modifying the value it refers to, even if
-  that value was mutable. Try `*r = 'X'`.
+- 共享引用不允许修改它指向的值，即使该值是可变的。尝试 `*r = 'X'`。
 
-- Rust is tracking the lifetimes of all references to ensure they live long
-  enough. Dangling references cannot occur in safe Rust. `x_axis` would return a
-  reference to `point`, but `point` will be deallocated when the function
-  returns, so this will not compile.
+- Rust 正在跟踪所有引用的生命周期，以确保它们存活时间足够长。
 
-- We will talk more about borrowing when we get to ownership.
+```markdown
+  足够了。悬垂引用在安全 Rust 中不会出现。`x_axis` 将返回一个对 `point` 的引用，但是当函数返回时，`point` 将被释放，所以这将不会编译通过。
 
-</details>
+- 当我们讨论所有权时，会更多地谈到借用。
+```

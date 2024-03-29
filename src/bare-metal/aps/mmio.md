@@ -1,21 +1,18 @@
-# Volatile memory access for MMIO
+---
+translated_at: '2024-03-26T11:39:59.499Z'
+---
 
-- Use `pointer::read_volatile` and `pointer::write_volatile`.
-- Never hold a reference.
-- `addr_of!` lets you get fields of structs without creating an intermediate
-  reference.
+# 针对 MMIO 的易失性内存访问
+
+- 使用 `pointer::read_volatile` 和 `pointer::write_volatile`。
+- 切勿保持引用。
+- `addr_of!` 允许你获取结构体的字段而不创建中间引用。
 
 <details>
 
-- Volatile access: read or write operations may have side-effects, so prevent
-  the compiler or hardware from reordering, duplicating or eliding them.
-  - Usually if you write and then read, e.g. via a mutable reference, the
-    compiler may assume that the value read is the same as the value just
-    written, and not bother actually reading memory.
-- Some existing crates for volatile access to hardware do hold references, but
-  this is unsound. Whenever a reference exist, the compiler may choose to
-  dereference it.
-- Use the `addr_of!` macro to get struct field pointers from a pointer to the
-  struct.
+- 易失性访问：读或写操作可能会产生副作用，因此防止编译器或硬件重新排序、复制或省略它们。
+  - 通常，如果你先写后读，例如，通过一个可变引用，编译器可能会假设读取的值与刚写入的值相同，而不实际读取内存。
+- 一些现有的用于硬件易失性访问的 crates 保持引用，但这是不健全的。只要存在引用，编译器可能选择对它进行解引用。
+- 使用 `addr_of!` 宏从结构体指针获取结构体字段指针。
 
 </details>

@@ -1,16 +1,20 @@
-# Concurrency Morning Exercise
+---
+translated_at: '2024-03-26T10:48:09.426Z'
+---
 
-## Dining Philosophers
+# 并发早晨练习
 
-([back to exercise](dining-philosophers.md))
+## 哲学家就餐问题
+
+（[返回练习](dining-philosophers.md)）
 
 ```rust
 {{#include dining-philosophers.rs:solution}}
 ```
 
-## Link Checker
+## 链接检查器
 
-([back to exercise](link-checker.md))
+（[返回练习](link-checker.md)）
 
 ```rust,compile_fail
 {{#include link-checker.rs:solution}}

@@ -1,9 +1,12 @@
-# With C++
+---
+translated_at: '2024-03-26T11:59:04.135Z'
+---
 
-The [CXX crate][1] makes it possible to do safe interoperability between Rust
-and C++.
+# 使用 C++
 
-The overall approach looks like this:
+[CXX crate][1] 使得 Rust 与 C++ 之间的安全互操作成为可能。
+
+整体方法如下所示：
 
 <img src="cpp/overview.svg">
 

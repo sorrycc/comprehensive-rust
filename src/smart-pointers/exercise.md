@@ -1,23 +1,20 @@
 ---
 minutes: 30
+translated_at: '2024-03-26T10:14:15.781Z'
 ---
 
-# Exercise: Binary Tree
+# 练习：二叉树
 
-A binary tree is a tree-type data structure where every node has two children
-(left and right). We will create a tree where each node stores a value. For a
-given node N, all nodes in a N's left subtree contain smaller values, and all
-nodes in N's right subtree will contain larger values.
+二叉树是一种树型数据结构，其中每个节点都有两个子节点（左和右）。我们将创建一棵树，每个节点存储一个值。对于给定的节点 N，N 的左子树中的所有节点包含较小的值，N 的右子树中的所有节点将包含较大的值。
 
-Implement the following types, so that the given tests pass.
+实现以下类型，以便给定的测试通过。
 
-Extra Credit: implement an iterator over a binary tree that returns the values
-in order.
+加分项：实现一个遍历二叉树的迭代器，按顺序返回值。
 
 ```rust,editable
 {{#include exercise.rs:types}}
 
-// Implement `new`, `insert`, `len`, and `has`.
+// 实现 `new`、`insert`、`len` 以及 `has`。
 
 {{#include exercise.rs:tests}}
 ```

@@ -1,9 +1,10 @@
-# Futures
+---
+translated_at: '2024-03-26T11:46:55.213Z'
+---
 
-[`Future`](https://doc.rust-lang.org/std/future/trait.Future.html) is a trait,
-implemented by objects that represent an operation that may not be complete yet.
-A future can be polled, and `poll` returns a
-[`Poll`](https://doc.rust-lang.org/std/task/enum.Poll.html).
+# 未来
+
+[`Future`](https://doc.rust-lang.org/std/future/trait.Future.html) 是一个特性，由表示尚未完成的操作的对象实现。一个 future 可以被轮询，而 `poll` 返回一个 [`Poll`](https://doc.rust-lang.org/std/task/enum.Poll.html)。
 
 ```rust
 use std::pin::Pin;
@@ -20,26 +21,18 @@ pub enum Poll<T> {
 }
 ```
 
-An async function returns an `impl Future`. It's also possible (but uncommon) to
-implement `Future` for your own types. For example, the `JoinHandle` returned
-from `tokio::spawn` implements `Future` to allow joining to it.
+一个异步函数返回一个 `impl Future`。也可能（但不常见）为你自己的类型实现 `Future`。例如，`tokio::spawn` 返回的 `JoinHandle` 实现了 `Future` 来允许加入它。
 
-The `.await` keyword, applied to a Future, causes the current async function to
-pause until that Future is ready, and then evaluates to its output.
+`.await` 关键字，应用于一个 Future，使得当前异步函数暂停，直到该 Future 准备就绪，然后求值为其输出。
 
 <details>
 
-- The `Future` and `Poll` types are implemented exactly as shown; click the
-  links to show the implementations in the docs.
+- `Future` 和 `Poll` 类型正如所示的那样实现；点击链接在文档中显示实现。
 
-- We will not get to `Pin` and `Context`, as we will focus on writing async
-  code, rather than building new async primitives. Briefly:
+- 我们将不讨论 `Pin` 和 `Context`，因为我们将专注于编写异步代码，而不是构建新的异步原语。简要地说：
 
-  - `Context` allows a Future to schedule itself to be polled again when an
-    event occurs.
+  - `Context` 允许一个 Future 将自己安排在发生某个事件时再次被轮询。
 
-  - `Pin` ensures that the Future isn't moved in memory, so that pointers into
-    that future remain valid. This is required to allow references to remain
-    valid after an `.await`.
+  - `Pin` 确保 Future 不会在内存中移动，以便指向该 future 的指针保持有效。这是必需的，以允许在 `.await` 之后引用保持有效。
 
 </details>

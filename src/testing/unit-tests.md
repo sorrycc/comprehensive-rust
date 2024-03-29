@@ -1,18 +1,17 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:01:18.579Z'
 ---
 
-# Unit Tests
+# 单元测试
 
-Rust and Cargo come with a simple unit test framework:
+Rust 和 Cargo 提供了一个简单的单元测试框架：
 
-- Unit tests are supported throughout your code.
+- 你的代码中支持单元测试。
 
-- Integration tests are supported via the `tests/` directory.
+- 通过 `tests/` 目录支持集成测试。
 
-Tests are marked with `#[test]`. Unit tests are often put in a nested `tests`
-module, using `#[cfg(test)]` to conditionally compile them only when building
-tests.
+测试使用 `#[test]` 标记。单元测试通常放在一个嵌套的 `tests` 模块中，使用 `#[cfg(test)]` 来有条件地编译它们，仅在构建测试时编译。
 
 ```rust,editable,ignore
 fn first_word(text: &str) -> &str {
@@ -43,11 +42,11 @@ mod tests {
 }
 ```
 
-- This lets you unit test private helpers.
-- The `#[cfg(test)]` attribute is only active when you run `cargo test`.
+- 这允许你对私有辅助函数进行单元测试。
+- 当你运行 `cargo test` 时，`#[cfg(test)]` 属性才会激活。
 
 <details>
 
-Run the tests in the playground in order to show their results.
+在 playground 中运行测试，以显示它们的结果。
 
 </details>

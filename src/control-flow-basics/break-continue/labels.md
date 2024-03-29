@@ -1,7 +1,10 @@
-# Labels
+---
+translated_at: '2024-03-26T11:04:08.690Z'
+---
 
-Both `continue` and `break` can optionally take a label argument which is used
-to break out of nested loops:
+# 标签
+
+`continue` 和 `break` 都可以可选地使用一个标签参数，该参数用于跳出嵌套循环：
 
 ```rust,editable
 fn main() {
@@ -22,8 +25,6 @@ fn main() {
 
 <details>
 
-- Note that `loop` is the only looping construct which returns a non-trivial
-  value. This is because it's guaranteed to be entered at least once (unlike
-  `while` and `for` loops).
+- 注意，`loop` 是唯一一个返回非平凡值的循环结构。这是因为它保证至少进入一次（不像 `while` 和 `for` 循环）。
 
 </details>

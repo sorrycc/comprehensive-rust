@@ -1,3 +1,7 @@
-# Borrowing
+---
+translated_at: '2024-03-26T09:41:27.641Z'
+---
 
-{{%segment outline}}
+# 借借读
+
+{{% 细分大纲 %}}

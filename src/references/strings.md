@@ -1,17 +1,18 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:18:48.042Z'
 ---
 
 <!-- NOTES:
-Including `&str` as a way of representing a slice of valid utf-8
+包括 `&str` 作为表示有效 utf-8 切片的一种方式
 -->
 
-# Strings
+# 字符串
 
-We can now understand the two string types in Rust:
+我们现在可以理解 Rust 中的两种字符串类型：
 
-- `&str` is a slice of UTF-8 encoded bytes, similar to `&[u8]`.
-- `String` is an owned, heap-allocated buffer of UTF-8 bytes.
+- `&str` 是 UTF-8 编码字节的切片，类似于 `&[u8]`。
+- `String` 是一个拥有的、堆分配的 UTF-8 字节缓冲区。
 
 ```rust,editable
 fn main() {
@@ -30,31 +31,19 @@ fn main() {
 
 <details>
 
-- `&str` introduces a string slice, which is an immutable reference to UTF-8
-  encoded string data stored in a block of memory. String literals (`"Hello"`),
-  are stored in the program’s binary.
+- `&str` 引入了字符串切片，这是对存储在内存块中的 UTF-8 编码字符串数据的不可变引用。字符串字面量（`"Hello"`）被存储在程序的二进制中。
 
-- Rust's `String` type is a wrapper around a vector of bytes. As with a
-  `Vec<T>`, it is owned.
+- Rust 的 `String` 类型是字节向量的一个包装。与 `Vec<T>` 一样，它是拥有的。
 
-- As with many other types `String::from()` creates a string from a string
-  literal; `String::new()` creates a new empty string, to which string data can
-  be added using the `push()` and `push_str()` methods.
+- 像很多其他类型一样，`String::from()` 从字符串字面量创建字符串；`String::new()` 创建一个新的空字符串，可以使用 `push()` 和 `push_str()` 方法添加字符串数据。
 
-- The `format!()` macro is a convenient way to generate an owned string from
-  dynamic values. It accepts the same format specification as `println!()`.
+- `format!()` 宏是从动态值生成拥有的字符串的一种便捷方式。它接受与 `println!()` 相同的格式规范。
 
-- You can borrow `&str` slices from `String` via `&` and optionally range
-  selection. If you select a byte range that is not aligned to character
-  boundaries, the expression will panic. The `chars` iterator iterates over
-  characters and is preferred over trying to get character boundaries right.
+- 你可以通过 `&` 和可选的范围选择从 `String` 借用 `&str` 切片。如果你选择的字节范围不与字符边界对齐，表达式将会恐慌。`chars` 迭代器迭代字符，并且比尝试获得正确的字符边界更受推荐。
 
-- For C++ programmers: think of `&str` as `std::string_view` from C++, but the
-  one that always points to a valid string in memory. Rust `String` is a rough
-  equivalent of `std::string` from C++ (main difference: it can only contain
-  UTF-8 encoded bytes and will never use a small-string optimization).
+- 对于 C++ 程序员来说：把 `&str` 想象成 C++ 中的 `std::string_view`，但它总是指向内存中的一个有效字符串。Rust `String` 与 C++ 中的 `std::string` 大致相当（主要区别：它只能包含 UTF-8 编码的字节，永远不会使用小字符串优化）。
 
-- Byte strings literals allow you to create a `&[u8]` value directly:
+- 字节字符串字面量允许你直接创建一个 `&[u8]` 值：
 
   <!-- mdbook-xgettext: skip -->
   ```rust,editable
@@ -64,9 +53,7 @@ fn main() {
   }
   ```
 
-- Raw strings allow you to create a `&str` value with escapes disabled:
-  `r"\n" == "\\n"`. You can embed double-quotes by using an equal amount of `#`
-  on either side of the quotes:
+- 原生字符串允许你创建一个禁用转义的 `&str` 值：`r"\n" == "\\n"`。你可以通过在双引号两边使用相同数量的 `#` 来嵌入双引号：
 
   <!-- mdbook-xgettext: skip -->
   ```rust,editable
@@ -75,5 +62,3 @@ fn main() {
       println!("<a href=\"link.html\">link</a>");
   }
   ```
-
-</details>

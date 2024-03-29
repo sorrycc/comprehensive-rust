@@ -1,21 +1,21 @@
 ---
 minutes: 8
+translated_at: '2024-03-26T10:24:34.757Z'
 ---
 
-# Destructuring
+# 解构
 
-Like tuples, structs and enums can also be destructured by matching:
+像元组一样，结构体和枚举也可以通过匹配来进行解构：
 
-## Structs
+## 结构体
 
 ```rust,editable
 {{#include ../../third_party/rust-by-example/destructuring-structs.rs}}
 ```
 
-## Enums
+## 枚举
 
-Patterns can also be used to bind variables to parts of your values. This is how
-you inspect the structure of your types. Let us start with a simple `enum` type:
+模式也可以用来将变量绑定到值的部分。这是检查类型结构的方式。我们从一个简单的 `enum` 类型开始：
 
 ```rust,editable
 enum Result {
@@ -27,52 +27,45 @@ fn divide_in_two(n: i32) -> Result {
     if n % 2 == 0 {
         Result::Ok(n / 2)
     } else {
-        Result::Err(format!("cannot divide {n} into two equal parts"))
+        Result::Err(format!("无法将 {n} 平分为两个相等的部分"))
     }
 }
 
 fn main() {
     let n = 100;
     match divide_in_two(n) {
-        Result::Ok(half) => println!("{n} divided in two is {half}"),
-        Result::Err(msg) => println!("sorry, an error happened: {msg}"),
+        Result::Ok(half) => println!("{n} 平分为两部分是 {half}"),
+        Result::Err(msg) => println!("抱歉，发生了错误：{msg}"),
     }
 }
 ```
 
-Here we have used the arms to _destructure_ the `Result` value. In the first
-arm, `half` is bound to the value inside the `Ok` variant. In the second arm,
-`msg` is bound to the error message.
+在这里，我们使用分支来 _解构_ `Result` 值。在第一个分支中，`half` 绑定到 `Ok` 变体内的值。在第二个分支中，`msg` 绑定到错误消息。
 
 <details>
 
-# Structs
+# 结构体
 
-- Change the literal values in `foo` to match with the other patterns.
-- Add a new field to `Foo` and make changes to the pattern as needed.
-- The distinction between a capture and a constant expression can be hard to
-  spot. Try changing the `2` in the second arm to a variable, and see that it
-  subtly doesn't work. Change it to a `const` and see it working again.
+- 更改 `foo` 中的字面值，使其与其他模式匹配。
+- 向 `Foo` 添加一个新字段，并根据需要对模式进行更改。
+- 捕获与常量表达式之间的区别可能难以辨认。尝试将第二个分支中的 `2` 改为一个变量，并发现它微妙地无法工作。将其更改为 `const` 然后看它再次工作。
 
-# Enums
+# 枚举
 
-Key points:
+关键点：
 
-- The `if`/`else` expression is returning an enum that is later unpacked with a
-  `match`.
-- You can try adding a third variant to the enum definition and displaying the
-  errors when running the code. Point out the places where your code is now
-  inexhaustive and how the compiler tries to give you hints.
-- The values in the enum variants can only be accessed after being pattern
-  matched.
-- Demonstrate what happens when the search is inexhaustive. Note the advantage
-  the Rust compiler provides by confirming when all cases are handled.
-- Save the result of `divide_in_two` in the `result` variable and `match` it in
-  a loop. That won't compile because `msg` is consumed when matched. To fix it,
-  match `&result` instead of `result`. That will make `msg` a reference so it
-  won't be consumed. This
-  ["match ergonomics"](https://rust-lang.github.io/rfcs/2005-match-ergonomics.html)
-  appeared in Rust 2018. If you want to support older Rust, replace `msg` with
-  `ref msg` in the pattern.
+- `if`/`else` 表达式返回一个稍后将使用 `match` 解包的枚举。
+- 可以尝试向枚举定义中添加第三个变体，并显示运行代码时的错误。指出代码现在哪里是不详尽的，以及编译器如何尝试给你提示。
+- 枚举变体中的值只有在模式匹配后才能被访问。
+- 演示当搜索不详尽时会发生什么。注意 Rust 编译器确认所有情况都已处理的优势。
+- 将 `divide_in_two` 的结果保存在 `result` 变量中并在其中 `match`
+
+```markdown
+一个循环。这段代码无法编译，因为在匹配时 `msg` 被消耗了。要解决这个问题，
+应该匹配 `&result` 而不是 `result`。这将会使 `msg` 成为一个引用，因此它不会被消耗。
+这种 ["匹配优雅"](https://rust-lang.github.io/rfcs/2005-match-ergonomics.html)
+在 Rust 2018 中出现。如果你想要支持更旧版本的 Rust，那么在模式中替换 `msg` 为
+`ref msg`。
 
 </details>
+```

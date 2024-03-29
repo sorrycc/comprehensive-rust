@@ -1,15 +1,15 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:25:19.909Z'
 ---
 
-# Visibility
+# 可见性
 
-Modules are a privacy boundary:
+模块是一个隐私边界：
 
-- Module items are private by default (hides implementation details).
-- Parent and sibling items are always visible.
-- In other words, if an item is visible in module `foo`, it's visible in all the
-  descendants of `foo`.
+- 模块项默认是私有的（隐藏实现细节）。
+- 父项和兄弟项总是可见的。
+- 换句话说，如果某个项在模块 `foo` 中可见，那么它在 `foo` 的所有后代中都是可见的。
 
 ```rust,editable
 mod outer {
@@ -40,16 +40,13 @@ fn main() {
 
 <details>
 
-- Use the `pub` keyword to make modules public.
+- 使用 `pub` 关键字使模块公开。
 
-Additionally, there are advanced `pub(...)` specifiers to restrict the scope of
-public visibility.
+另外，有高级的 `pub(...)` 指定符用于限制公开可见性的范围。
 
-- See the
-  [Rust Reference](https://doc.rust-lang.org/reference/visibility-and-privacy.html#pubin-path-pubcrate-pubsuper-and-pubself).
-- Configuring `pub(crate)` visibility is a common pattern.
-- Less commonly, you can give visibility to a specific path.
-- In any case, visibility must be granted to an ancestor module (and all of its
-  descendants).
+- 参见 [Rust 参考](https://doc.rust-lang.org/reference/visibility-and-privacy.html#pubin-path-pubcrate-pubsuper-and-pubself)。
+- 配置 `pub(crate)` 可见性是一个常见模式。
+- 不那么常见的，你可以对特定路径授权可见性。
+- 无论如何，必须授予一个祖先模块（及其所有后代）可见性。
 
 </details>

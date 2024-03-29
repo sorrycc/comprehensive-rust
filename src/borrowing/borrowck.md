@@ -1,14 +1,14 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T11:30:55.026Z'
 ---
 
-# Borrow Checking
+# 借用检查
 
-Rust's _borrow checker_ puts constraints on the ways you can borrow values. For
-a given value, at any time:
+Rust 的 _借用检查器_ 对你可以借用值的方式施加了限制。对于给定的值，在任何时候：
 
-- You can have one or more shared references to the value, _or_
-- You can have exactly one exclusive reference to the value.
+- 你可以有一个或多个对该值的共享引用，_或者_
+- 你可以有一个对该值的独占引用。
 
 <!-- mdbook-xgettext: skip -->
 
@@ -29,22 +29,11 @@ fn main() {
 
 <details>
 
-- Note that the requirement is that conflicting references not _exist_ at the
-  same point. It does not matter where the reference is dereferenced.
-- The above code does not compile because `a` is borrowed as mutable (through
-  `c`) and as immutable (through `b`) at the same time.
-- Move the `println!` statement for `b` before the scope that introduces `c` to
-  make the code compile.
-- After that change, the compiler realizes that `b` is only ever used before the
-  new mutable borrow of `a` through `c`. This is a feature of the borrow checker
-  called "non-lexical lifetimes".
-- The exclusive reference constraint is quite strong. Rust uses it to ensure
-  that data races do not occur. Rust also _relies_ on this constraint to
-  optimize code. For example, a value behind a shared reference can be safely
-  cached in a register for the lifetime of that reference.
-- The borrow checker is designed to accommodate many common patterns, such as
-  taking exclusive references to different fields in a struct at the same time.
-  But, there are some situations where it doesn't quite "get it" and this often
-  results in "fighting with the borrow checker."
+- 需要注意的是，冲突引用并存的要求是在同一个时间点上不得_存在_。引用在哪里被解引用并不重要。
+- 上面的代码不能编译，因为 `a` 同时以可变的形式（通过 `c`）和不可变的形式（通过 `b`）被借用了。
+- 将打印 `b` 的 `println!` 语句移至引入 `c` 的作用域之前可以使代码编译。
+- 在那之后，编译器意识到 `b` 只在通过 `c` 的 `a` 的新的可变借用之前被使用。这是借用检查器一个叫做“非词法生命周期”的特性。
+- 独占引用的限制非常严格。Rust 使用它来确保不发生数据竞争。Rust 也_依赖_此限制来优化代码。例如，在共享引用存在的生命周期内，可以安全地将值缓存在寄存器中。
+- 借用检查器设计用来适应许多常见模式，比如同时对一个结构体中不同字段进行独占引用。但是，有些情况下它不太能“理解”，这通常会导致“与借用检查器作斗争”。
 
 </details>

@@ -1,13 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T11:28:47.192Z'
 ---
 
-# Borrowing a Value
+# 借用一个值
 
-As we saw before, instead of transferring ownership when calling a function, you
-can let a function _borrow_ the value:
-
-<!-- mdbook-xgettext: skip -->
+如我们之前所见，当调用一个函数时，你可以让函数_借用_值，而不是转移所有权：
 
 ```rust,editable
 #[derive(Debug)]
@@ -25,26 +23,19 @@ fn main() {
 }
 ```
 
-- The `add` function _borrows_ two points and returns a new point.
-- The caller retains ownership of the inputs.
+- `add` 函数_借用_了两个点并返回了一个新点。
+- 调用者保持了输入的所有权。
 
 <details>
 
-This slide is a review of the material on references from day 1, expanding
-slightly to include function arguments and return values.
+这个幻灯片回顾了第一天关于引用的材料，并稍微扩展了包括函数参数和返回值。
 
-# More to Explore
+# 更多探索
 
-Notes on stack returns:
+关于堆栈返回的注解：
 
-- Demonstrate that the return from `add` is cheap because the compiler can
-  eliminate the copy operation. Change the above code to print stack addresses
-  and run it on the [Playground] or look at the assembly in
-  [Godbolt](https://rust.godbolt.org/). In the "DEBUG" optimization level, the
-  addresses should change, while they stay the same when changing to the
-  "RELEASE" setting:
+- 示范 `add` 返回是低廉的，因为编译器可以消除复制操作。改变上面的代码以打印堆栈地址，并在 [Playground] 上运行它，或者在 [Godbolt](https://rust.godbolt.org/) 中查看汇编。在 "DEBUG" 优化级别下，地址应该会改变，而当改变到 "RELEASE" 设定时，它们保持不变：
 
-  <!-- mdbook-xgettext: skip -->
   ```rust,editable
   #[derive(Debug)]
   struct Point(i32, i32);
@@ -63,11 +54,8 @@ Notes on stack returns:
       println!("{p1:?} + {p2:?} = {p3:?}");
   }
   ```
-- The Rust compiler can do return value optimization (RVO).
-- In C++, copy elision has to be defined in the language specification because
-  constructors can have side effects. In Rust, this is not an issue at all. If
-  RVO did not happen, Rust will always perform a simple and efficient `memcpy`
-  copy.
+- Rust 编译器可以做返回值优化（RVO）。
+- 在 C++ 中，副本省略必须在语言规范中定义，因为构造函数可以有副作用。在 Rust 中，这根本不是问题。如果没有发生 RVO，Rust 总是会执行一个简单而高效的 `memcpy` 复制。
 
 </details>
 

@@ -1,8 +1,10 @@
+---
+translated_at: '2024-03-26T11:44:50.735Z'
+---
+
 # vmbase
 
-For VMs running under crosvm on aarch64, the [vmbase][1] library provides a
-linker script and useful defaults for the build rules, along with an entry
-point, UART console logging and more.
+对于在 aarch64 上运行 crosvm 的虚拟机，[vmbase][1] 库提供了一个链接脚本和有用的构建规则默认值，以及一个入口点、UART 控制台日志记录等功能。
 
 <!-- mdbook-xgettext: skip -->
 
@@ -21,10 +23,8 @@ pub fn main(arg0: u64, arg1: u64, arg2: u64, arg3: u64) {
 
 <details>
 
-- The `main!` macro marks your main function, to be called from the `vmbase`
-  entry point.
-- The `vmbase` entry point handles console initialisation, and issues a
-  PSCI_SYSTEM_OFF to shutdown the VM if your main function returns.
+- `main!` 宏标记了你的主函数，以便从 `vmbase` 入口点调用。
+- `vmbase` 入口点处理控制台初始化，并在你的主函数返回时发出 PSCI_SYSTEM_OFF 以关闭虚拟机。
 
 </details>
 

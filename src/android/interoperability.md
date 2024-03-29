@@ -1,10 +1,12 @@
-# Interoperability
+---
+translated_at: '2024-03-26T11:55:35.477Z'
+---
 
-Rust has excellent support for interoperability with other languages. This means
-that you can:
+# 互操作性
 
-- Call Rust functions from other languages.
-- Call functions written in other languages from Rust.
+Rust 对与其他语言的互操作性提供了极佳的支持。这意味着你可以：
 
-When you call functions in a foreign language we say that you're using a
-_foreign function interface_, also known as FFI.
+- 从其他语言调用 Rust 函数。
+- 从 Rust 调用其他语言编写的函数。
+
+当你调用外语言的函数时，我们说你正在使用 _外部函数接口_，也被称为 FFI。

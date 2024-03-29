@@ -1,14 +1,11 @@
 ---
 course: Chromium
 session: Chromium
+translated_at: '2024-03-26T09:40:33.554Z'
 ---
 
-# Welcome to Rust in Chromium
+# 欢迎使用 Chromium 中的 Rust
 
-Rust is supported for third-party libraries in Chromium, with first-party glue
-code to connect between Rust and existing Chromium C++ code.
+在 Chromium 中，Rust 被支持用于第三方库，同时有第一方胶水代码来连接 Rust 和现有的 Chromium C++ 代码。
 
-> Today, we'll call into Rust to do something silly with strings. If you've got
-> a corner of the code where you're displaying a UTF8 string to the user, feel
-> free to follow this recipe in your part of the codebase instead of the exact
-> part we talk about.
+> 今天，我们将调用 Rust 来做一些关于字符串的愚蠢事情。如果你在代码的某个角落需要向用户显示一个 UTF8 字符串，请随时根据此食谱操作你代码库中的相应部分，而不必严格遵循我们讨论的具体部分。

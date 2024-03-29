@@ -1,14 +1,14 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:47:12.946Z'
 ---
 
-# Generic Functions
+# 泛型函数
 
-Rust supports generics, which lets you abstract algorithms or data structures
-(such as sorting or a binary tree) over the types used or stored.
+Rust 支持泛型，这让你可以抽象算法或数据结构（如排序或二叉树）以适用于使用或存储的类型。
 
 ```rust,editable
-/// Pick `even` or `odd` depending on the value of `n`.
+/// 根据 `n` 的值选择 `even` 或 `odd`。
 fn pick<T>(n: i32, even: T, odd: T) -> T {
     if n % 2 == 0 {
         even
@@ -18,23 +18,17 @@ fn pick<T>(n: i32, even: T, odd: T) -> T {
 }
 
 fn main() {
-    println!("picked a number: {:?}", pick(97, 222, 333));
-    println!("picked a tuple: {:?}", pick(28, ("dog", 1), ("cat", 2)));
+    println!("选中了一个数字：{:?}", pick(97, 222, 333));
+    println!("选中了一个元组：{:?}", pick(28, ("dog", 1), ("cat", 2)));
 }
 ```
 
 <details>
 
-- Rust infers a type for T based on the types of the arguments and return value.
+- Rust 会根据参数和返回值的类型来推断 T 的类型。
 
-- This is similar to C++ templates, but Rust partially compiles the generic
-  function immediately, so that function must be valid for all types matching
-  the constraints. For example, try modifying `pick` to return `even + odd` if
-  `n == 0`. Even if only the `pick` instantiation with integers is used, Rust
-  still considers it invalid. C++ would let you do this.
+- 这与 C++ 的模板类似，但 Rust 会立即部分编译泛型函数，因此该函数必须对匹配约束的所有类型都有效。例如，尝试修改 `pick` 以在 `n == 0` 时返回 `even + odd`。即使只使用了整数情况下的 `pick` 实例化，Rust 仍会认为它是无效的。C++ 则允许你这么做。
 
-- Generic code is turned into non-generic code based on the call sites. This is
-  a zero-cost abstraction: you get exactly the same result as if you had
-  hand-coded the data structures without the abstraction.
+- 泛型代码会基于调用位置转变为非泛型代码。这是一种零成本抽象：你获得的结果和你手动编码数据结构而不使用抽象完全一样。
 
 </details>

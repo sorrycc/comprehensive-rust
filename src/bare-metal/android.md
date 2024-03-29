@@ -1,11 +1,10 @@
+---
+translated_at: '2024-03-26T11:33:06.204Z'
+---
+
 # Android
 
-To build a bare-metal Rust binary in AOSP, you need to use a `rust_ffi_static`
-Soong rule to build your Rust code, then a `cc_binary` with a linker script to
-produce the binary itself, and then a `raw_binary` to convert the ELF to a raw
-binary ready to be run.
-
-<!-- mdbook-xgettext: skip -->
+要在 AOSP 中构建一个裸机 Rust 二进制文件，你需要使用 `rust_ffi_static` Soong 规则来构建你的 Rust 代码，然后使用 `cc_binary` 和链接脚本来生成二进制文件本身，接着使用 `raw_binary` 将 ELF 转换成准备运行的原始二进制文件。
 
 ```soong
 rust_ffi_static {

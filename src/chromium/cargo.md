@@ -1,101 +1,67 @@
-# Comparing Chromium and Cargo Ecosystems
+---
+translated_at: '2024-03-26T11:14:19.591Z'
+---
 
-The Rust community typically uses `cargo` and libraries from [crates.io][2].
-Chromium is built using `gn` and `ninja` and a curated set of dependencies.
+# 比较 Chromium 和 Cargo 生态系统
 
-When writing code in Rust, your choices are:
+Rust 社区通常使用 `cargo` 和 [crates.io][2] 上的库。
+Chromium 是使用 `gn` 和 `ninja` 以及一套精选的依赖构建的。
 
-- Use `gn` and `ninja` with the help of the templates from `//build/rust/*.gni`
-  (e.g. `rust_static_library` that we'll meet later). This uses Chromium's
-  audited toolchain and crates.
-- Use `cargo`, but
-  [restrict yourself to Chromium's audited toolchain and crates][0]
-- Use `cargo`, trusting a [toolchain][1] and/or
-  [crates downloaded from the internet][2]
+在 Rust 中编写代码时，你的选择有：
 
-From here on we'll be focusing on `gn` and `ninja`, because this is how Rust
-code can be built into the Chromium browser. At the same time, Cargo is an
-important part of the Rust ecosystem and you should keep it in your toolbox.
+- 使用 `gn` 和 `ninja`，借助 `//build/rust/*.gni` 中的模板
+  （例如，稍后我们将遇到的 `rust_static_library`）。这使用了 Chromium 审核过的工具链和 crates。
+- 使用 `cargo`，但
+  [限制自己使用 Chromium 审核过的工具链和 crates][0]
+- 使用 `cargo`，信任[工具链][1]和/或
+  [从互联网下载的 crates][2]
 
-## Mini exercise
+从这里开始，我们将聚焦于 `gn` 和 `ninja`，因为这是将 Rust 代码构建为 Chromium 浏览器的方式。同时，Cargo 是 Rust 生态系统中的重要部分，你应该将其保留在工具箱中。
 
-Split into small groups and:
+## 小练习
 
-- Brainstorm scenarios where `cargo` may offer an advantage and assess the risk
-  profile of these scenarios.
-- Discuss which tools, libraries, and groups of people need to be trusted when
-  using `gn` and `ninja`, offline `cargo`, etc.
+分成小组并：
+
+- 头脑风暴 `cargo` 可能提供优势的场景，并评估这些场景的风险配置文件。
+- 讨论使用 `gn` 和 `ninja`、离线 `cargo` 等时，需要信任哪些工具、库和人群。
 
 <details>
 
-Ask students to avoid peeking at the speaker notes before completing the
-exercise. Assuming folks taking the course are physically together, ask them to
-discuss in small groups of 3-4 people.
+在完成练习之前，要求学生避免偷看演讲者的笔记。假设参加课程的人在一起，要求他们分成 3-4 人的小组进行讨论。
 
-Notes/hints related to the first part of the exercise ("scenarios where Cargo
-may offer an advantage"):
+与练习第一部分相关的笔记/提示（“Cargo 可能提供优势的场景”）：
 
-- It's fantastic that when writing a tool, or prototyping a part of Chromium,
-  one has access to the rich ecosystem of crates.io libraries. There is a crate
-  for almost anything and they are usually quite pleasant to use. (`clap` for
-  command-line parsing, `serde` for serializing/deserializing to/from various
-  formats, `itertools` for working with iterators, etc.).
+- 当编写工具或原型化 Chromium 的一部分时，能够访问 crates.io 库丰富的生态系统是非常棒的。几乎对于任何事情都有一个 crate，并且它们通常都很好用。（`clap` 用于命令行解析，`serde` 用于序列化/反序列化到/从各种格式，`itertools` 用于处理迭代器等）。
 
-  - `cargo` makes it easy to try a library (just add a single line to
-    `Cargo.toml` and start writing code)
-  - It may be worth comparing how CPAN helped make `perl` a popular choice. Or
-    comparing with `python` + `pip`.
+  - `cargo` 使尝试库变得简单（只需在 `Cargo.toml` 中添加一行，然后开始编写代码）
+  - 比较 CPAN 如何帮助使 `perl` 成为一个受欢迎的选择可能是值得的。或者与 `python` + `pip` 进行比较。
 
-- Development experience is made really nice not only by core Rust tools (e.g.
-  using `rustup` to switch to a different `rustc` version when testing a crate
-  that needs to work on nightly, current stable, and older stable) but also by
-  an ecosystem of third-party tools (e.g. Mozilla provides `cargo vet` for
-  streamlining and sharing security audits; `criterion` crate gives a
-  streamlined way to run benchmarks).
+- 开发经验不仅仅通过 Rust 核心工具变得非常友好（例如，使用 `rustup` 在测试需要在夜间版、当前稳定版和旧稳定版上运行的 crate 时切换到不同的 `rustc` 版本），还通过第三方工具生态系统得到提升（例如，Mozilla 提供的 `cargo vet` 用于简化和共享安全审计; `criterion` 箱提供了一种流畅的方式来运行基准测试）。
 
-  - `cargo` makes it easy to add a tool via `cargo install --locked cargo-vet`.
-  - It may be worth comparing with Chrome Extensions or VScode extensions.
+  - `cargo` 通过 `cargo install --locked cargo-vet` 方便地添加工具。
+  - 与 Chrome 扩展或 VScode 扩展比较可能是值得的。
 
-- Broad, generic examples of projects where `cargo` may be the right choice:
+- 在哪些项目中使用 `cargo` 可能是正确选择的广泛、通用示例：
 
-  - Perhaps surprisingly, Rust is becoming increasingly popular in the industry
-    for writing command line tools. The breadth and ergonomics of libraries is
-    comparable to Python, while being more robust (thanks to the rich
-    typesystem) and running faster (as a compiled, rather than interpreted
-    language).
-  - Participating in the Rust ecosystem requires using standard Rust tools like
-    Cargo. Libraries that want to get external contributions, and want to be
-    used outside of Chromium (e.g. in Bazel or Android/Soong build environments)
-    should probably use Cargo.
+  - 或许令人惊讶的是，Rust 在行业中用于编写命令行工具的流行度越来越高。库的广度和人体工程学可与 Python 媲美，同时更加健壮（得益于丰富的类型系统）并且运行速度更快（作为一种编译语言，而非解释型语言）。
+  - 参与 Rust 生态系统需要使用标准 Rust 工具，如 Cargo。想要获得外部贡献，并希望在 Chromium 之外被使用（例如，在 Bazel 或 Android/Soong 构建环境中）的库，应该考虑使用 Cargo。
 
-- Examples of Chromium-related projects that are `cargo`-based:
-  - `serde_json_lenient` (experimented with in other parts of Google which
-    resulted in PRs with performance improvements)
-  - Fontations libraries like `font-types`
-  - `gnrt` tool (we will meet it later in the course) which depends on `clap`
-    for command-line parsing and on `toml` for configuration files.
-    - Disclaimer: a unique reason for using `cargo` was unavailability of `gn`
-      when building and bootstrapping Rust standard library when building Rust
-      toolchain.
-    - `run_gnrt.py` uses Chromium's copy of `cargo` and `rustc`. `gnrt` depends
-      on third-party libraries downloaded from the internet, but `run_gnrt.py`
-      asks `cargo` that only `--locked` content is allowed via `Cargo.lock`.)
+- 与 Chromium 相关的基于 `cargo` 的项目示例：
+  - `serde_json_lenient`（在 Google 的其他部分进行了试验，并导致了性能改进的 PR）
+  - 像 `font-types` 这样的 Fontations 库
+  - `gnrt` 工具（我们将在课程后面遇到它），它依赖于 `clap` 进行命令行解析和 `toml` 进行配置文件。
+    - 免责声明：使用 `cargo` 的独特原因是在构建 Rust 标准库和构建 Rust 工具链时 `gn` 不可用。
+    - `run_gnrt.py` 使用 Chromium 的 `cargo` 和 `rustc` 副本。`gnrt` 依赖于从互联网下载的第三方库，但 `run_gnrt.py` 要求 `cargo` 仅通过 `Cargo.lock` 允许 `--locked` 内容。
 
-Students may identify the following items as being implicitly or explicitly
-trusted:
+学生可能会认识到以下项目被隐式或显式地信任：
 
-- `rustc` (the Rust compiler) which in turn depends on the LLVM libraries, the
-  Clang compiler, the `rustc` sources (fetched from GitHub, reviewed by Rust
-  compiler team), binary Rust compiler downloaded for bootstrapping
-- `rustup` (it may be worth pointing out that `rustup` is developed under the
-  umbrella of the https://github.com/rust-lang/ organization - same as `rustc`)
-- `cargo`, `rustfmt`, etc.
-- Various internal infrastructure (bots that build `rustc`, system for
-  distributing the prebuilt toolchain to Chromium engineers, etc.)
-- Cargo tools like `cargo audit`, `cargo vet`, etc.
-- Rust libraries vendored into `//third_party/rust` (audited by
-  security@chromium.org)
-- Other Rust libraries (some niche, some quite popular and commonly used)
+- `rustc`（Rust 编译器），它依赖于 LLVM 库、Clang 编译器、`rustc` 源代码（从 GitHub 获取，由 Rust 编译器团队审核），用于引导的二进制 Rust 编译器下载
+- `rustup`（值得指出的是，`rustup` 是在 https://github.com/rust-lang/ 组织的支持下开发的 - 与 `rustc` 同属一家）
+- `cargo`、`rustfmt` 等。
+- 各种内部基础设施（构建 `rustc` 的机器人，向 Chromium 工程师分发预构建工具链的系统等）
+- Cargo 工具，如 `cargo audit`、`cargo vet` 等。
+- 被引入 `//third_party/rust` 的 Rust 库（由 security@chromium.org 审核）
+- 其他 Rust 库（一些小众的，一些非常流行且常用的）
 
 </details>
 

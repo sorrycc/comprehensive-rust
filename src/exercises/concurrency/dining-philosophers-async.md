@@ -1,14 +1,14 @@
-# Dining Philosophers --- Async
+---
+translated_at: '2024-03-26T10:50:19.092Z'
+---
 
-See [dining philosophers](dining-philosophers.md) for a description of the
-problem.
+# 哲学家就餐问题 --- 异步
 
-As before, you will need a local
-[Cargo installation](../../cargo/running-locally.md) for this exercise. Copy the
-code below to a file called `src/main.rs`, fill out the blanks, and test that
-`cargo run` does not deadlock:
+请查看[哲学家就餐问题](dining-philosophers.md)获取问题的描述。
 
-<!-- File src/main.rs -->
+像之前一样，你需要本地的 [Cargo 安装](../../cargo/running-locally.md) 来做这个练习。复制下面的代码到一个名为 `src/main.rs` 的文件中，填写空白处，并且测试运行 `cargo run` 时不会发生死锁：
+
+<!-- 文件 src/main.rs -->
 
 ```rust,compile_fail
 {{#include dining-philosophers-async.rs:Philosopher}}
@@ -22,20 +22,19 @@ code below to a file called `src/main.rs`, fill out the blanks, and test that
 {{#include dining-philosophers-async.rs:Philosopher-eat}}
 {{#include dining-philosophers-async.rs:Philosopher-eat-body}}
 {{#include dining-philosophers-async.rs:Philosopher-eat-end}}
-    // Create forks
+    // 创建叉子
 
-    // Create philosophers
+    // 创建哲学家
 
-    // Make them think and eat
+    // 让他们思考和进餐
 
-    // Output their thoughts
+    // 输出他们的想法
 }
 ```
 
-Since this time you are using Async Rust, you'll need a `tokio` dependency. You
-can use the following `Cargo.toml`:
+由于这次你使用的是异步 Rust，你需要一个 `tokio` 依赖。你可以使用下面的 `Cargo.toml`：
 
-<!-- File Cargo.toml -->
+<!-- 文件 Cargo.toml -->
 
 ```toml
 [package]
@@ -47,11 +46,10 @@ edition = "2021"
 tokio = { version = "1.26.0", features = ["sync", "time", "macros", "rt-multi-thread"] }
 ```
 
-Also note that this time you have to use the `Mutex` and the `mpsc` module from
-the `tokio` crate.
+还要注意，这次你必须使用 `tokio` 包中的 `Mutex` 和 `mpsc` 模块。
 
 <details>
 
-- Can you make your implementation single-threaded?
+- 你能让你的实现变为单线程的吗？
 
 </details>

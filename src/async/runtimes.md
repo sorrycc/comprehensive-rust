@@ -1,29 +1,21 @@
-# Runtimes
+---
+translated_at: '2024-03-26T11:46:02.610Z'
+---
 
-A _runtime_ provides support for performing operations asynchronously (a
-_reactor_) and is responsible for executing futures (an _executor_). Rust does
-not have a "built-in" runtime, but several options are available:
+# 运行时
 
-- [Tokio](https://tokio.rs/): performant, with a well-developed ecosystem of
-  functionality like [Hyper](https://hyper.rs/) for HTTP or
-  [Tonic](https://github.com/hyperium/tonic) for gRPC.
-- [async-std](https://async.rs/): aims to be a "std for async", and includes a
-  basic runtime in `async::task`.
-- [smol](https://docs.rs/smol/latest/smol/): simple and lightweight
+_运行时_ 提供了异步执行操作的支持（一个 _反应器_）并负责执行 futures（一个 _执行器_）。Rust 没有 “内置”的运行时，但有几个选项可用：
 
-Several larger applications have their own runtimes. For example,
-[Fuchsia](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/lib/fuchsia-async/src/lib.rs)
-already has one.
+- [Tokio](https://tokio.rs/)：性能强大，拥有发达的功能生态系统，如用于 HTTP 的 [Hyper](https://hyper.rs/) 或用于 gRPC 的 [Tonic](https://github.com/hyperium/tonic)。
+- [async-std](https://async.rs/)：旨在成为 “async 的 std”，并在 `async::task` 中包含了一个基本的运行时。
+- [smol](https://docs.rs/smol/latest/smol/)：简单轻量
+
+几个较大的应用程序有他们自己的运行时。例如，[Fuchsia](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/lib/fuchsia-async/src/lib.rs) 已经有了一个。
 
 <details>
 
-- Note that of the listed runtimes, only Tokio is supported in the Rust
-  playground. The playground also does not permit any I/O, so most interesting
-  async things can't run in the playground.
+- 注意，在列出的运行时中，只有 Tokio 在 Rust playground 中得到支持。Playground 也不允许任何 I/O，所以大多数有趣的异步事物无法在 playground 中运行。
 
-- Futures are "inert" in that they do not do anything (not even start an I/O
-  operation) unless there is an executor polling them. This differs from JS
-  Promises, for example, which will run to completion even if they are never
-  used.
+- Futures 是 “惰性的”，即它们不会做任何事情（甚至不开始 I/O 操作），除非有一个执行器在轮询它们。这与 JS Promises 不同，例如，即使它们永远不被使用，Promises 也会执行完毕。
 
 </details>

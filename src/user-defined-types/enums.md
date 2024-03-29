@@ -1,11 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T09:49:39.822Z'
 ---
 
-# Enums
+# 枚举类型
 
-The `enum` keyword allows the creation of a type which has a few different
-variants:
+`enum` 关键字允许创建一个拥有几种不同变体的类型：
 
 ```rust,editable
 #[derive(Debug)]
@@ -16,9 +16,9 @@ enum Direction {
 
 #[derive(Debug)]
 enum PlayerMove {
-    Pass,                        // Simple variant
-    Run(Direction),              // Tuple variant
-    Teleport { x: u32, y: u32 }, // Struct variant
+    Pass,                        // 简单变体
+    Run(Direction),              // 元组变体
+    Teleport { x: u32, y: u32 }, // 结构体变体
 }
 
 fn main() {
@@ -29,27 +29,18 @@ fn main() {
 
 <details>
 
-Key Points:
+关键点：
 
-- Enumerations allow you to collect a set of values under one type.
-- `Direction` is a type with variants. There are two values of `Direction`:
-  `Direction::Left` and `Direction::Right`.
-- `PlayerMove` is a type with three variants. In addition to the payloads, Rust
-  will store a discriminant so that it knows at runtime which variant is in a
-  `PlayerMove` value.
-- This might be a good time to compare structs and enums:
-  - In both, you can have a simple version without fields (unit struct) or one
-    with different types of fields (variant payloads).
-  - You could even implement the different variants of an enum with separate
-    structs but then they wouldn’t be the same type as they would if they were
-    all defined in an enum.
-- Rust uses minimal space to store the discriminant.
-  - If necessary, it stores an integer of the smallest required size
-  - If the allowed variant values do not cover all bit patterns, it will use
-    invalid bit patterns to encode the discriminant (the "niche optimization").
-    For example, `Option<&u8>` stores either a pointer to an integer or `NULL`
-    for the `None` variant.
-  - You can control the discriminant if needed (e.g., for compatibility with C):
+- 枚举类型允许你将一组值收集在一个类型下。
+- `Direction` 是一个有变体的类型。`Direction` 有两个值：`Direction::Left` 和 `Direction::Right`。
+- `PlayerMove` 是一个有三种变体的类型。除了负载外，Rust 会存储一个区分值，以便在运行时知道 `PlayerMove` 值中是哪个变体。
+- 这可能是比较结构体和枚举的好时机：
+  - 在两者中，你可以有没有字段的简单版本（单元结构体）或者有不同类型字段的版本（变体负载）。
+  - 你甚至可以用不同的结构体实现枚举的不同变体，但那样它们就不会像定义在同一个枚举中那样是相同类型了。
+- Rust 使用最小的空间来存储区分值。
+  - 如果必要，它会存储最小所需大小的整数
+  - 如果允许的变体值没有覆盖所有位模式，则它会使用无效位模式来编码区分值（"利基优化"）。例如，`Option<&u8>` 存储一个指向整数的指针或 `NULL` 以表示 `None` 变体。
+  - 如果需要，你可以控制区分值（例如，为了与 C 兼容）：
 
     <!-- mdbook-xgettext: skip -->
     ```rust,editable
@@ -67,20 +58,16 @@ Key Points:
     }
     ```
 
-    Without `repr`, the discriminant type takes 2 bytes, because 10001 fits 2
-    bytes.
+```markdown
+如果没有 `repr` ，辨别类型占用 2 个字节，因为 10001 适合 2 个字节。
 
-## More to Explore
+## 更多探索
 
-Rust has several optimizations it can employ to make enums take up less space.
+Rust 有几种优化方式，可以让枚举占用更少的空间。
 
-- Null pointer optimization: For
-  [some types](https://doc.rust-lang.org/std/option/#representation), Rust
-  guarantees that `size_of::<T>()` equals `size_of::<Option<T>>()`.
+- 空指针优化：对于[某些类型](https://doc.rust-lang.org/std/option/#representation)，Rust 保证 `size_of::<T>()` 等于 `size_of::<Option<T>>()`。
 
-  Example code if you want to show how the bitwise representation _may_ look
-  like in practice. It's important to note that the compiler provides no
-  guarantees regarding this representation, therefore this is totally unsafe.
+  如果你想展示位表示在实践中_可能_是什么样子的示例代码。需要注意的是，编译器不保证这种表示，因此这完全不安全。
 
   <!-- mdbook-xgettext: skip -->
   ```rust,editable
@@ -117,3 +104,4 @@ Rust has several optimizations it can employ to make enums take up less space.
   ```
 
 </details>
+```

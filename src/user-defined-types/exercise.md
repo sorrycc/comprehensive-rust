@@ -1,20 +1,17 @@
 ---
 minutes: 15
+translated_at: '2024-03-26T09:48:49.014Z'
 ---
 
-# Exercise: Elevator Events
+# 练习：电梯事件
 
-We will create a data structure to represent an event in an elevator control
-system. It is up to you to define the types and functions to construct various
-events. Use `#[derive(Debug)]` to allow the types to be formatted with `{:?}`.
+我们将创建一个数据结构来表示电梯控制系统中的一个事件。由你来定义类型和函数来构建各种事件。使用 `#[derive(Debug)]` 使得类型可以使用 `{:?}` 格式化。
 
-This exercise only requires creating and populating data structures so that
-`main` runs without errors. The next part of the course will cover getting data
-out of these structures.
+这个练习只需要创建并填充数据结构，以便 `main` 运行时没有错误。课程的下一部分将涵盖如何从这些结构中获取数据。
 
 ```rust,editable,should_panic
 {{#include exercise.rs:event}}
-    // TODO: add required variants
+    // 待办：添加所需的变体
 }
 
 {{#include exercise.rs:direction}}

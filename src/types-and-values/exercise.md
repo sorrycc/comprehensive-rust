@@ -1,24 +1,22 @@
 ---
 minutes: 15
+translated_at: '2024-03-26T09:57:49.402Z'
 ---
 
-# Exercise: Fibonacci
+# 练习：斐波那契数
 
-The first and second Fibonacci numbers are both `1`. For n>2, the n'th Fibonacci
-number is calculated recursively as the sum of the n-1'th and n-2'th Fibonacci
-numbers.
+斐波那契数列的第一和第二个数字都是 `1`。对于 n>2，第 n 个斐波那契数是通过递归计算得到的，即第 n-1 个和第 n-2 个斐波那契数之和。
 
-Write a function `fib(n)` that calculates the n'th Fibonacci number. When will
-this function panic?
+编写一个函数 `fib(n)` 来计算第 n 个斐波那契数。这个函数什么时候会 panic ？
 
 ```rust,editable,should_panic
 {{#include exercise.rs:fib}}
     if n <= 2 {
-        // The base case.
-        todo!("Implement this")
+        // 基本情况。
+        todo!("实现这个")
     } else {
-        // The recursive case.
-        todo!("Implement this")
+        // 递归情况。
+        todo!("实现这个")
     }
 }
 

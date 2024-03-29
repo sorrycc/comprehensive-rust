@@ -1,24 +1,21 @@
+---
+translated_at: '2024-03-26T11:08:19.210Z'
+---
+
 # `Sync`
 
-> A type `T` is [`Sync`][1] if it is safe to access a `T` value from multiple
-> threads at the same time.
+> 如果一个类型 `T` 是 [`Sync`][1]，那么意味着从多个线程同时访问 `T` 值是安全的。
 
-More precisely, the definition is:
+更准确地说，定义是：
 
-> `T` is `Sync` if and only if `&T` is `Send`
+> `T` 是 `Sync` 当且仅当 `&T` 是 `Send`
 
 [1]: https://doc.rust-lang.org/std/marker/trait.Sync.html
 
 <details>
 
-This statement is essentially a shorthand way of saying that if a type is
-thread-safe for shared use, it is also thread-safe to pass references of it
-across threads.
+本声明本质上是一种简便方式，意味着如果一个类型对于共享使用是线程安全的，那么将它的引用跨线程传递也是线程安全的。
 
-This is because if a type is Sync it means that it can be shared across multiple
-threads without the risk of data races or other synchronization issues, so it is
-safe to move it to another thread. A reference to the type is also safe to move
-to another thread, because the data it references can be accessed from any
-thread safely.
+这是因为如果一个类型是 Sync，意味着它可以在多个线程之间共享而不会有数据竞争或其他同步问题，所以将它移动到另一个线程是安全的。同样，将该类型的引用移动到其他线程也是安全的，因为它引用的数据可以安全地从任何线程访问。
 
 </details>

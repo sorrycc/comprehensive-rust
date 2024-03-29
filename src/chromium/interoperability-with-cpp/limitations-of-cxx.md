@@ -1,31 +1,28 @@
-## Limitations of CXX
+---
+translated_at: '2024-03-26T11:18:08.272Z'
+---
 
-By far the most useful page when using CXX is the [type reference][1].
+## CXX 的局限性
 
-CXX fundamentally suits cases where:
+到目前为止，使用 CXX 时最有用的页面是[类型参考][1]。
 
-- Your Rust-C++ interface is sufficiently simple that you can declare all of it.
-- You're using only the types natively supported by CXX already, for example
-  `std::unique_ptr`, `std::string`, `&[u8]` etc.
+CXX 本质上适用于以下情况：
 
-It has many limitations --- for example lack of support for Rust's `Option`
-type.
+- 你的 Rust-C++ 接口足够简单，你可以声明所有内容。
+- 你只使用 CXX 已经原生支持的类型，例如 `std::unique_ptr`、`std::string`、`&[u8]` 等。
 
-These limitations constrain us to using Rust in Chromium only for well isolated
-"leaf nodes" rather than for arbitrary Rust-C++ interop. When considering a
-use-case for Rust in Chromium, a good starting point is to draft the CXX
-bindings for the language boundary to see if it appears simple enough.
+它有许多限制 —— 例如缺乏对 Rust 的 `Option` 类型的支持。
+
+这些限制使我们在 Chromium 中使用 Rust 仅限于良好隔离的“叶节点”，而不是用于任意 Rust-C++ 互操作。在考虑在 Chromium 中使用 Rust 的用例时，一个好的起点是草拟 CXX 绑定，以查看它是否看起来足够简单。
 
 [1]: https://cxx.rs/bindings.html
 
 <details>
-In addition, right now, Rust code in one component cannot depend on Rust
-code in another, due to linking details in our component build. That's another
-reason to restrict Rust to use in leaf nodes.
+此外，目前在一个组件中的 Rust 代码不能依赖另一个组件中的 Rust 代码，由于我们组件构建中的链接细节。这是将 Rust 限制用于叶节点的另一个原因。
 
-You should also discuss some of the other sticky points with CXX, for example:
+你还应该讨论 CXX 的一些其他棘手点，例如：
 
-- Its error handling is based around C++ exceptions (given on the next slide)
-- Function pointers are awkward to use.
+- 它的错误处理是基于 C++ 异常的（在下一张幻灯片中给出）
+- 函数指针使用起来很尴尬。
 
 </details>

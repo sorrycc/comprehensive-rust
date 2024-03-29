@@ -1,16 +1,19 @@
-# Exercises
+---
+translated_at: '2024-03-26T10:48:31.785Z'
+---
 
-Let us practice our new concurrency skills with
+# 练习
 
-- Dining philosophers: a classic problem in concurrency.
+让我们通过以下方式来练习我们新学的并发技能：
 
-- Multi-threaded link checker: a larger project where you'll use Cargo to
-  download dependencies and then check links in parallel.
+- 哲学家就餐：一个经典的并发问题。
+
+- 多线程链接检查器：一个更大的项目，你将使用 Cargo 来下载依赖，然后并行检查链接。
 
 <details>
 
-After looking at the exercises, you can look at the [solutions] provided.
+在查看了练习之后，你可以查看提供的[解决方案]。
 
-[solutions]: solutions-morning.md
+[解决方案]: solutions-morning.md
 
 </details>

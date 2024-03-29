@@ -1,53 +1,43 @@
 ---
 minutes: 3
+translated_at: '2024-03-26T10:45:28.065Z'
 ---
 
-# Benefits of Rust
+# Rust 的好处
 
-Some unique selling points of Rust:
+Rust 的一些独特卖点：
 
-- _Compile time memory safety_ - whole classes of memory bugs are prevented at
-  compile time
-  - No uninitialized variables.
-  - No double-frees.
-  - No use-after-free.
-  - No `NULL` pointers.
-  - No forgotten locked mutexes.
-  - No data races between threads.
-  - No iterator invalidation.
+- _编译时内存安全_ —— 在编译时就阻止了整类内存错误
+   - 不存在未初始化变量。
+   - 不存在重复释放。
+   - 不存在使用后释放。
+   - 不存在 `NULL` 指针。
+   - 不存在忘记加锁的互斥锁。
+   - 不存在线程间的数据竞争。
+   - 不存在迭代器失效。
 
-- _No undefined runtime behavior_ - what a Rust statement does is never left
-  unspecified
-  - Array access is bounds checked.
-  - Integer overflow is defined (panic or wrap-around).
+- _无未定义的运行时行为_ —— Rust 语句的行为从未留下未指明的空间
+   - 数组访问会进行边界检查。
+   - 整数溢出行为是已定义的（抛出 panic 或者环绕）。
 
-- _Modern language features_ - as expressive and ergonomic as higher-level
-  languages
-  - Enums and pattern matching.
-  - Generics.
-  - No overhead FFI.
-  - Zero-cost abstractions.
-  - Great compiler errors.
-  - Built-in dependency manager.
-  - Built-in support for testing.
-  - Excellent Language Server Protocol support.
+- _现代语言特性_ —— 表达性与高级语言一样丰富且易用
+   - 枚举和模式匹配。
+   - 泛型。
+   - 无开销的外部函数接口 (FFI)。
+   - 零成本抽象。
+   - 出色的编译器错误提示。
+   - 内置的依赖管理器。
+   - 内置的测试支持。
+   - 出色的语言服务器协议支持。
 
 <details>
 
-Do not spend much time here. All of these points will be covered in more depth
-later.
+不要在这里花费太多时间。所有这些点将在稍后更深入地覆盖。
 
-Make sure to ask the class which languages they have experience with. Depending
-on the answer you can highlight different features of Rust:
+请确保询问班上学员他们有哪些语言经验。依据答案，你可以突出 Rust 的不同特性：
 
-- Experience with C or C++: Rust eliminates a whole class of _runtime errors_
-  via the borrow checker. You get performance like in C and C++, but you don't
-  have the memory unsafety issues. In addition, you get a modern language with
-  constructs like pattern matching and built-in dependency management.
+- 有 C 或 C++ 经验：通过借用检查器，Rust 消除了一整类_运行时错误_。你像在 C 和 C++ 中一样获得性能，但不会有内存安全问题。此外，你还能使用如模式匹配和内建依赖管理等现代语言构建块。
 
-- Experience with Java, Go, Python, JavaScript...: You get the same memory
-  safety as in those languages, plus a similar high-level language feeling. In
-  addition you get fast and predictable performance like C and C++ (no garbage
-  collector) as well as access to low-level hardware (should you need it)
+- 有 Java、Go、Python、JavaScript 等经验：你获得与这些语言相同的内存安全，加上类似高级语言的感觉。此外，你还能获得像 C 和 C++ 那样快速且可预测的性能（无垃圾收集器），以及对低级硬件的访问（如果你需要的话）
 
 </details>

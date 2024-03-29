@@ -1,12 +1,14 @@
-# Testing exercise
+---
+translated_at: '2024-03-26T10:52:04.881Z'
+---
 
-Time for another exercise!
+# 测试练习
 
-In your Chromium build:
+又到了做练习的时间了！
 
-- Add a testable function next to `hello_from_rust`. Some suggestions: adding
-  two integers received as arguments, computing the nth Fibonacci number,
-  summing integers in a slice, etc.
-- Add a separate `..._unittest.rs` file with a test for the new function.
-- Add the new tests to `BUILD.gn`.
-- Build the tests, run them, and verify that the new test works.
+在你的 Chromium 构建中：
+
+- 在 `hello_from_rust` 旁边添加一个可测试的函数。一些建议：添加两个作为参数接收的整数、计算第 n 个斐波那契数、求一个切片中整数的和等。
+- 添加一个单独的 `..._unittest.rs` 文件，用于新函数的测试。
+- 将新的测试添加到 `BUILD.gn` 中。
+- 构建测试，运行它们，并验证新测试的有效性。

@@ -1,10 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:35:00.582Z'
 ---
 
-# Move Semantics
+# 移动语义
 
-An assignment will transfer _ownership_ between variables:
+赋值会在变量间转移 _所有权_：
 
 ```rust,editable
 fn main() {
@@ -15,14 +16,14 @@ fn main() {
 }
 ```
 
-- The assignment of `s1` to `s2` transfers ownership.
-- When `s1` goes out of scope, nothing happens: it does not own anything.
-- When `s2` goes out of scope, the string data is freed.
+- `s1` 赋值给 `s2` 时发生了所有权的转移。
+- 当 `s1` 离开作用域时，没有任何发生：它不拥有任何东西。
+- 当 `s2` 离开作用域时，字符串数据被释放。
 
-Before move to `s2`:
+移动到 `s2` 之前：
 
 ```bob
- Stack                             Heap
+ 栈                                堆
 .- - - - - - - - - - - - - -.     .- - - - - - - - - - - - - - - - - - -.
 :                           :     :                                     :
 :    s1                     :     :                                     :
@@ -36,13 +37,13 @@ Before move to `s2`:
 `- - - - - - - - - - - - - -'
 ```
 
-After move to `s2`:
+移动到 `s2` 之后：
 
 ```bob
- Stack                             Heap
+ 栈                                堆
 .- - - - - - - - - - - - - -.     .- - - - - - - - - - - - - - - - - - -.
 :                           :     :                                     :
-:    s1 "(inaccessible)"    :     :                                     :
+:    s1 "(无法访问)"        :     :                                     :
 :   +-----------+-------+   :     :   +----+----+----+----+----+----+   :
 :   | ptr       |   o---+---+--+--+-->| H  | e  | l  | l  | o  | !  |   :
 :   | len       |     4 |   :  |  :   +----+----+----+----+----+----+   :
@@ -59,8 +60,7 @@ After move to `s2`:
 `- - - - - - - - - - - - - -'
 ```
 
-When you pass a value to a function, the value is assigned to the function
-parameter. This transfers ownership:
+当你将一个值传递给函数时，该值会被赋给函数参数。这就转移了所有权：
 
 ```rust,editable
 fn say_hello(name: String) {
@@ -76,48 +76,40 @@ fn main() {
 
 <details>
 
-- Mention that this is the opposite of the defaults in C++, which copies by
-  value unless you use `std::move` (and the move constructor is defined!).
+- 提到这与 C++ 中的默认行为相反，C++ 默认是按值复制，除非你使用 `std::move`（并且定义了移动构造函数！）。
 
-- It is only the ownership that moves. Whether any machine code is generated to
-  manipulate the data itself is a matter of optimization, and such copies are
-  aggressively optimized away.
+- 只有所有权在移动。是否生成机器码来操作数据本身是优化的问题，这样的复制会被积极优化掉。
 
-- Simple values (such as integers) can be marked `Copy` (see later slides).
+- 简单值（如整数）可以被标记为 `Copy`（见后面的幻灯片）。
 
-- In Rust, clones are explicit (by using `clone`).
+- 在 Rust 中，克隆是显式的（通过使用 `clone`）。
 
-In the `say_hello` example:
+在 `say_hello` 示例中：
 
-- With the first call to `say_hello`, `main` gives up ownership of `name`.
-  Afterwards, `name` cannot be used anymore within `main`.
-- The heap memory allocated for `name` will be freed at the end of the
-  `say_hello` function.
-- `main` can retain ownership if it passes `name` as a reference (`&name`) and
-  if `say_hello` accepts a reference as a parameter.
-- Alternatively, `main` can pass a clone of `name` in the first call
-  (`name.clone()`).
-- Rust makes it harder than C++ to inadvertently create copies by making move
-  semantics the default, and by forcing programmers to make clones explicit.
+- 第一次调用 `say_hello` 时，`main` 放弃了 `name` 的所有权。此后，`name` 在 `main` 内不能再被使用。
+- 为 `name` 分配的堆内存将在 `say_hello` 函数结束时被释放。
+- 如果 `main` 通过引用（`&name`）传递 `name`，并且 `say_hello` 接受引用作为参数，那么 `main` 可以保留所有权。
+- 或者，`main` 可以在第一次调用时传递 `name` 的克隆（`name.clone()`）。
+- Rust 通过将移动语义设为默认行为，以及强迫程序员显式地制作克隆，使得不小心创建副本变得比 C++ 更困难。
 
-# More to Explore
+# 更多探索
 
-## Defensive Copies in Modern C++
+## 现代 C++ 中的防御性复制
 
-Modern C++ solves this differently:
+现代 C++ 有不同的解决方式：
 
 ```c++
 std::string s1 = "Cpp";
-std::string s2 = s1;  // Duplicate the data in s1.
+std::string s2 = s1;  // 复制 s1 中的数据。
 ```
 
-- The heap data from `s1` is duplicated and `s2` gets its own independent copy.
-- When `s1` and `s2` go out of scope, they each free their own memory.
+- `s1` 的堆数据被复制，`s2` 获得它自己独立的副本。
+- 当 `s1` 和 `s2` 离开作用域时，它们各自释放自己的内存。
 
-Before copy-assignment:
+在复制赋值之前：
 
 ```bob
- Stack                             Heap
+ 栈                                 堆
 .- - - - - - - - - - - - - -.     .- - - - - - - - - - - -.
 :                           :     :                       :
 :    s1                     :     :                       :
@@ -130,10 +122,10 @@ Before copy-assignment:
 `- - - - - - - - - - - - - -'
 ```
 
-After copy-assignment:
+复制赋值后：
 
 ```bob
- Stack                             Heap
+ 栈                                 堆
 .- - - - - - - - - - - - - -.     .- - - - - - - - - - - -.
 :                           :     :                       :
 :    s1                     :     :                       :
@@ -153,19 +145,13 @@ After copy-assignment:
 `- - - - - - - - - - - - - -'
 ```
 
-Key points:
+要点：
 
-- C++ has made a slightly different choice than Rust. Because `=` copies data,
-  the string data has to be cloned. Otherwise we would get a double-free when
-  either string goes out of scope.
+- C++ 做出了与 Rust 略有不同的选择。因为 `=` 会复制数据，字符串数据必须被克隆。否则当任一字符串超出作用域时，我们会遇到双重释放的问题。
 
-- C++ also has [`std::move`], which is used to indicate when a value may be
-  moved from. If the example had been `s2 = std::move(s1)`, no heap allocation
-  would take place. After the move, `s1` would be in a valid but unspecified
-  state. Unlike Rust, the programmer is allowed to keep using `s1`.
+- C++ 还有 [`std::move`]，它用来表示一个值可能会被移动。如果示例是 `s2 = std::move(s1)`，那么不会发生堆分配。移动后，`s1` 将处于一个有效但未指定的状态。与 Rust 不同，程序员被允许继续使用 `s1`。
 
-- Unlike Rust, `=` in C++ can run arbitrary code as determined by the type which
-  is being copied or moved.
+- 与 Rust 不同，C++ 中的 `=` 可以运行由被复制或移动的类型所确定的任意代码。
 
 [`std::move`]: https://en.cppreference.com/w/cpp/utility/move
 

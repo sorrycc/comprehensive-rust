@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:07:22.093Z'
 ---
 
-# `Read` and `Write`
+# `Read` 和 `Write`
 
-Using [`Read`][1] and [`BufRead`][2], you can abstract over `u8` sources:
+使用 [`Read`][1] 和 [`BufRead`][2]，你可以对 `u8` 源进行抽象：
 
 ```rust,editable
 use std::io::{BufRead, BufReader, Read, Result};
@@ -16,15 +17,15 @@ fn count_lines<R: Read>(reader: R) -> usize {
 
 fn main() -> Result<()> {
     let slice: &[u8] = b"foo\nbar\nbaz\n";
-    println!("lines in slice: {}", count_lines(slice));
+    println!("slice 中的行数：{}", count_lines(slice));
 
     let file = std::fs::File::open(std::env::current_exe()?)?;
-    println!("lines in file: {}", count_lines(file));
+    println!("文件中的行数：{}", count_lines(file));
     Ok(())
 }
 ```
 
-Similarly, [`Write`][3] lets you abstract over `u8` sinks:
+类似地，[`Write`][3] 允许你对 `u8` 汇进行抽象：
 
 ```rust,editable
 use std::io::{Result, Write};
@@ -38,7 +39,7 @@ fn main() -> Result<()> {
     let mut buffer = Vec::new();
     log(&mut buffer, "Hello")?;
     log(&mut buffer, "World")?;
-    println!("Logged: {:?}", buffer);
+    println!("已记录：{:?}", buffer);
     Ok(())
 }
 ```

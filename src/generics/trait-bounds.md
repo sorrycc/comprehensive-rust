@@ -1,13 +1,13 @@
 ---
 minutes: 8
+translated_at: '2024-03-26T10:45:52.568Z'
 ---
 
-# Trait Bounds
+# 特性约束
 
-When working with generics, you often want to require the types to implement
-some trait, so that you can call this trait's methods.
+在使用泛型时，你常常需要要求类型实现某个特性，这样你就可以调用这个特性的方法。
 
-You can do this with `T: Trait` or `impl Trait`:
+你可以使用 `T: Trait` 或 `impl Trait` 来实现这一点：
 
 ```rust,editable
 fn duplicate<T: Clone>(a: T) -> (T, T) {
@@ -25,11 +25,11 @@ fn main() {
 
 <details>
 
-- Try making a `NonClonable` and passing it to `duplicate`.
+- 尝试创建一个 `NonClonable` 并将其传递给 `duplicate`。
 
-- When multiple traits are necessary, use `+` to join them.
+- 当需要多个特性时，使用 `+` 将它们连接起来。
 
-- Show a `where` clause, students will encounter it when reading code.
+- 展示一个 `where` 子句，学生在阅读代码时会遇到它。
 
   ```rust,ignore
   fn duplicate<T>(a: T) -> (T, T)
@@ -40,12 +40,10 @@ fn main() {
   }
   ```
 
-  - It declutters the function signature if you have many parameters.
-  - It has additional features making it more powerful.
-    - If someone asks, the extra feature is that the type on the left of ":" can
-      be arbitrary, like `Option<T>`.
+  - 如果你有很多参数，它能让函数签名更清晰。
+  - 它具有额外的功能，使其更加强大。
+    - 如果有人问，额外的功能是“:`”左边的类型可以是任意的，比如 `Option<T>`。
 
-- Note that Rust does not (yet) support specialization. For example, given the
-  original `duplicate`, it is invalid to add a specialized `duplicate(a: u32)`.
+- 注意 Rust 尚不支持（至今为止）特化。例如，给定原始的 `duplicate` 函数，添加一个专门处理 `duplicate(a: u32)` 的函数是无效的。
 
 </details>

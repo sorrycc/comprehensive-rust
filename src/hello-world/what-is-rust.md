@@ -1,33 +1,33 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:44:02.445Z'
 ---
 
-# What is Rust?
+# Rust 是什么？
 
-Rust is a new programming language which had its [1.0 release in 2015][1]:
+Rust 是一种新的编程语言，其 [1.0 版本在 2015 年发布][1]：
 
-- Rust is a statically compiled language in a similar role as C++
-  - `rustc` uses LLVM as its backend.
-- Rust supports many
-  [platforms and architectures](https://doc.rust-lang.org/nightly/rustc/platform-support.html):
-  - x86, ARM, WebAssembly, ...
-  - Linux, Mac, Windows, ...
-- Rust is used for a wide range of devices:
-  - firmware and boot loaders,
-  - smart displays,
-  - mobile phones,
-  - desktops,
-  - servers.
+- Rust 是一种静态编译语言，其角色与 C++ 相似
+  - `rustc` 使用 LLVM 作为其后端。
+- Rust 支持许多[平台和架构](https://doc.rust-lang.org/nightly/rustc/platform-support.html)：
+  - x86、ARM、WebAssembly ...
+  - Linux、Mac、Windows ...
+- Rust 被用于广泛的设备中：
+  - 固件和引导加载程序，
+  - 智能显示屏，
+  - 移动电话，
+  - 桌面，
+  - 服务器。
 
 <details>
 
-Rust fits in the same area as C++:
+Rust 适用于与 C++ 相同的领域：
 
-- High flexibility.
-- High level of control.
-- Can be scaled down to very constrained devices such as microcontrollers.
-- Has no runtime or garbage collection.
-- Focuses on reliability and safety without sacrificing performance.
+- 高度灵活性。
+- 高度控制水平。
+- 可以缩减到非常受限的设备，如微控制器。
+- 没有运行时或垃圾收集。
+- 专注于可靠性和安全性，而不牺牲性能。
 
 </details>
 

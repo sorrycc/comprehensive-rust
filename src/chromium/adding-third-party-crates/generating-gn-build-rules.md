@@ -1,28 +1,28 @@
-# Generating `gn` Build Rules
+---
+translated_at: '2024-03-26T11:22:44.044Z'
+---
 
-Once you've downloaded the crate, generate the `BUILD.gn` files like this:
+# 生成 `gn` 构建规则
+
+下载完 crate 之后，像这样生成 `BUILD.gn` 文件：
 
 ```shell
 vpython3 tools/crates/run_gnrt.py -- gen
 ```
 
-Now run `git status`. You should find:
+现在运行 `git status`。你应该会发现：
 
-- At least one new crate source code in
-  `third_party/rust/chromium_crates_io/vendor`
-- At least one new `BUILD.gn` in
-  `third_party/rust/<crate name>/v<major semver version>`
-- An appropriate `README.chromium`
+- 在 `third_party/rust/chromium_crates_io/vendor` 中至少有一个新的 crate 源代码
+- 在 `third_party/rust/<crate name>/v<major semver version>` 中至少有一个新的 `BUILD.gn`
+- 一个合适的 `README.chromium`
 
-The "major semver version" is a [Rust "semver" version number][0].
+“major semver version” 是一个 [Rust “semver” 版本号][0]。
 
-Take a close look, especially at the things generated in `third_party/rust`.
+仔细查看，尤其是在 `third_party/rust` 中生成的东西。
 
 <details>
 
-Talk a little about semver --- and specifically the way that in Chromium it's to
-allow multiple incompatible versions of a crate, which is discouraged but
-sometimes necessary in the Cargo ecosystem.
+简单谈一谈 semver——特别是在 Chromium 中，它是为了允许一个 crate 的多个不兼容版本，这在 Cargo 生态系统中是不鼓励但有时又是必要的。
 
 </detail>
 

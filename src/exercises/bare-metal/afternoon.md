@@ -1,11 +1,15 @@
-# Exercises
+---
+translated_at: '2024-03-26T10:57:02.237Z'
+---
 
-We will write a driver for the PL031 real-time clock device.
+# 练习
+
+我们将为 PL031 实时时钟设备编写一个驱动程序。
 
 <details>
 
-After looking at the exercises, you can look at the [solutions] provided.
+在查看练习之后，你可以查看提供的[解决方案]。
 
-[solutions]: solutions-afternoon.md
+[解决方案]: solutions-afternoon.md
 
 </details>

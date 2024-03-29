@@ -1,20 +1,20 @@
-# Array Types
+---
+translated_at: '2024-03-26T12:07:41.154Z'
+---
 
-The array types (`T[]`, `byte[]`, and `List<T>`) get translated to the
-appropriate Rust array type depending on how they are used in the function
-signature:
+# 数组类型
 
-| Position               | Rust Type     |
-| ---------------------- | ------------- |
-| `in` argument          | `&[T]`        |
-| `out`/`inout` argument | `&mut Vec<T>` |
-| Return                 | `Vec<T>`      |
+数组类型（`T[]`、`byte[]` 和 `List<T>`）根据它们在函数签名中的使用方式，被转换为适当的 Rust 数组类型：
+
+| 位置                  | Rust 类型     |
+| --------------------- | ------------- |
+| `in` 参数             | `&[T]`        |
+| `out`/`inout` 参数    | `&mut Vec<T>` |
+| 返回值                | `Vec<T>`      |
 
 <details>
 
-- In Android 13 or higher, fixed-size arrays are supported, i.e. `T[N]` becomes
-  `[T; N]`. Fixed-size arrays can have multiple dimensions (e.g. int[3][4]). In
-  the Java backend, fixed-size arrays are represented as array types.
-- Arrays in parcelable fields always get translated to `Vec<T>`.
+- 在 Android 13 或更高版本中，支持固定大小的数组，即 `T[N]` 变为 `[T; N]`。固定大小的数组可以有多个维度（例如 int[3][4]）。在 Java 后端，固定大小的数组以数组类型表示。
+- 在 parcelable 字段中的数组总是被转换为 `Vec<T>`。
 
 </details>

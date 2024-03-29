@@ -1,14 +1,18 @@
-# Primitive Types
+---
+translated_at: '2024-03-26T12:05:56.464Z'
+---
 
-Primitive types map (mostly) idiomatically:
+# 基本类型
 
-| AIDL Type | Rust Type | Note                                |
-| --------- | --------- | ----------------------------------- |
-| `boolean` | `bool`    |                                     |
-| `byte`    | `i8`      | Note that bytes are signed.         |
-| `char`    | `u16`     | Note the usage of `u16`, NOT `u32`. |
-| `int`     | `i32`     |                                     |
-| `long`    | `i64`     |                                     |
-| `float`   | `f32`     |                                     |
-| `double`  | `f64`     |                                     |
-| `String`  | `String`  |                                     |
+基本类型在（大部分情况下）能够直观对应：
+
+| AIDL 类型 | Rust 类型 | 备注                                  |
+| --------- | --------- | ------------------------------------- |
+| `boolean` | `bool`    |                                       |
+| `byte`    | `i8`      | 注意字节是有符号的。                   |
+| `char`    | `u16`     | 注意这里使用的是 `u16`，而非 `u32`。   |
+| `int`     | `i32`     |                                       |
+| `long`    | `i64`     |                                       |
+| `float`   | `f32`     |                                       |
+| `double`  | `f64`     |                                       |
+| `String`  | `String`  |                                       |

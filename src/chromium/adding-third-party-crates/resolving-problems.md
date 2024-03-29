@@ -1,21 +1,21 @@
-# Resolving Problems
+---
+translated_at: '2024-03-26T11:21:55.165Z'
+---
 
-If your build fails, it may be because of a `build.rs`: programs which do
-arbitrary things at build time. This is fundamentally at odds with the design of
-`gn` and `ninja` which aim for static, deterministic, build rules to maximize
-parallelism and repeatability of builds.
+# 解决问题
 
-Some `build.rs` actions are automatically supported; others require action:
+如果你的构建失败了，可能是因为 `build.rs`：在构建时执行任意操作的程序。这与 `gn` 和 `ninja` 的设计初衷根本相悖，它们旨在实现静态、确定的构建规则，以最大化并行性和构建的可重复性。
 
-| build script effect                                       | Supported by our gn templates | Work required by you                |
-| --------------------------------------------------------- | ----------------------------- | ----------------------------------- |
-| Checking rustc version to configure features on and off   | Yes                           | None                                |
-| Checking platform or CPU to configure features on and off | Yes                           | None                                |
-| Generating code                                           | Yes                           | Yes - specify in `gnrt_config.toml` |
-| Building C/C++                                            | No                            | Patch around it                     |
-| Arbitrary other actions                                   | No                            | Patch around it                     |
+一些 `build.rs` 的行为会被自动支持；其他的则需要采取行动：
 
-Fortunately, most crates don't contain a build script, and fortunately, most
-build scripts only do the top two actions.
+| 构建脚本影响                                                   | 我们的 gn 模板是否支持 | 你需要做的工作                   |
+| -------------------------------------------------------------- | ---------------------- | ------------------------------- |
+| 检查 rustc 版本以开启或关闭特性配置                               | 是                      | 无需任何操作                     |
+| 检查平台或 CPU 以开启或关闭特性配置                              | 是                      | 无需任何操作                     |
+| 生成代码                                                       | 是                      | 是 - 在 `gnrt_config.toml` 中指定 |
+| 构建 C/C++                                                     | 否                      | 绕开此问题                       |
+| 其他任意行为                                                   | 否                      | 绕开此问题                       |
+
+幸运的是，大多数 crate 不包含构建脚本，而且幸运的是，大多数构建脚本只执行前两个动作。
 
 [0]: https://doc.rust-lang.org/cargo/reference/build-scripts.html

@@ -1,11 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T09:57:33.665Z'
 ---
 
-# Hello, World
+# 你好，世界
 
-Let us jump into the simplest possible Rust program, a classic Hello World
-program:
+让我们来看看最简单的 Rust 程序，一个经典的 Hello World 程序：
 
 ```rust,editable
 fn main() {
@@ -13,36 +13,28 @@ fn main() {
 }
 ```
 
-What you see:
+你所看到的：
 
-- Functions are introduced with `fn`.
-- Blocks are delimited by curly braces like in C and C++.
-- The `main` function is the entry point of the program.
-- Rust has hygienic macros, `println!` is an example of this.
-- Rust strings are UTF-8 encoded and can contain any Unicode character.
+- 函数以 `fn` 开头。
+- 块由花括号分隔，就像在 C 和 C++ 中一样。
+- `main` 函数是程序的入口点。
+- Rust 拥有卫生宏（hygienic macros），`println!` 就是一个例子。
+- Rust 字符串是 UTF-8 编码的，可以包含任何 Unicode 字符。
 
 <details>
 
-This slide tries to make the students comfortable with Rust code. They will see
-a ton of it over the next four days so we start small with something familiar.
+此幻灯片试图让学生们对 Rust 代码感到舒服。接下来的四天里他们会看到大量的它，因此我们从熟悉的东西开始小步走。
 
-Key points:
+关键点：
 
-- Rust is very much like other languages in the C/C++/Java tradition. It is
-  imperative and it doesn't try to reinvent things unless absolutely necessary.
+- Rust 在很大程度上像 C/C++/Java 传统中的其他语言。它是命令式的，并且除非绝对必要，否则不试图重新发明东西。
 
-- Rust is modern with full support for things like Unicode.
+- Rust 是现代的，对诸如 Unicode 之类的事物提供全面支持。
 
-- Rust uses macros for situations where you want to have a variable number of
-  arguments (no function [overloading](../control-flow-basics/functions.md)).
+- Rust 在你想要有可变数量的参数的情况下使用宏（没有函数[重载](../control-flow-basics/functions.md)）。
 
-- Macros being 'hygienic' means they don't accidentally capture identifiers from
-  the scope they are used in. Rust macros are actually only
-  [partially hygienic](https://veykril.github.io/tlborm/decl-macros/minutiae/hygiene.html).
+- 宏是“卫生的”意味着它们不会意外捕获它们所用范围内的标识符。实际上，Rust 宏只是[部分卫生的](https://veykril.github.io/tlborm/decl-macros/minutiae/hygiene.html)。
 
-- Rust is multi-paradigm. For example, it has powerful
-  [object-oriented programming features](https://doc.rust-lang.org/book/ch17-00-oop.html),
-  and, while it is not a functional language, it includes a range of
-  [functional concepts](https://doc.rust-lang.org/book/ch13-00-functional-features.html).
+- Rust 是多范式的。例如，它具有强大的[面向对象编程特性](https://doc.rust-lang.org/book/ch17-00-oop.html)，而且，虽然它不是一种函数式语言，它包括一系列的[函数式概念](https://doc.rust-lang.org/book/ch13-00-functional-features.html)。
 
 </details>

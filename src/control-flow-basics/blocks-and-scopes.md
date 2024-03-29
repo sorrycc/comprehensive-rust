@@ -1,14 +1,14 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T11:03:31.888Z'
 ---
 
-# Blocks and Scopes
+# 块和作用域
 
-## Blocks
+## 块
 
-A block in Rust contains a sequence of expressions, enclosed by braces `{}`.
-Each block has a value and a type, which are those of the last expression of the
-block:
+Rust 中的一个块包含了一系列表达式，由大括号 `{}` 包围。
+每个块都有一个值和一个类型，这些都是块中最后一个表达式的值和类型：
 
 ```rust,editable
 fn main() {
@@ -22,11 +22,10 @@ fn main() {
 }
 ```
 
-If the last expression ends with `;`, then the resulting value and type is `()`.
+如果最后一个表达式以 `;` 结尾，那么结果值和类型就是 `()`。
 
 <details>
 
-- You can show how the value of the block changes by changing the last line in
-  the block. For instance, adding/removing a semicolon or using a `return`.
+- 你可以通过更改块中的最后一行来展示块的值是如何变化的。例如，添加/删除一个分号或使用 `return`。
 
 </details>

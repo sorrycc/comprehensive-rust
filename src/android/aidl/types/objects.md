@@ -1,15 +1,18 @@
-# Sending Objects
+---
+translated_at: '2024-03-26T12:06:51.441Z'
+---
 
-AIDL objects can be sent either as a concrete AIDL type or as the type-erased
-`IBinder` interface:
+# 发送对象
 
-**birthday_service/aidl/com/example/birthdayservice/IBirthdayInfoProvider.aidl**:
+AIDL 对象可以作为具体的 AIDL 类型或者作为类型抹去的 `IBinder` 接口发送：
+
+**birthday_service/aidl/com/example/birthdayservice/IBirthdayInfoProvider.aidl**：
 
 ```java
 {{#include ../birthday_service/aidl/com/example/birthdayservice/IBirthdayInfoProvider.aidl:IBirthdayInfoProvider}}
 ```
 
-**birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl**:
+**birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl**：
 
 ```java
 import com.example.birthdayservice.IBirthdayInfoProvider;
@@ -19,21 +22,20 @@ interface IBirthdayService {
 }
 ```
 
-**birthday_service/src/client.rs**:
+**birthday_service/src/client.rs**：
 
 ```rust,ignore
 {{#include ../birthday_service/src/client.rs:InfoProvider}}
 
 fn main() {
     binder::ProcessState::start_thread_pool();
-    let service = connect().expect("Failed to connect to BirthdayService");
+    let service = connect().expect("无法连接到 BirthdayService");
 {{#include ../birthday_service/src/client.rs:wish_with_provider}}
 }
 ```
 
 <details>
 
-- Note the usage of `BnBirthdayInfoProvider`. This serves the same purpose as
-  `BnBirthdayService` that we saw previously.
+- 注意使用 `BnBirthdayInfoProvider`。它和我们之前看到的 `BnBirthdayService` 有着相同的作用。
 
 </details>

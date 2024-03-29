@@ -1,4 +1,8 @@
-# Implementing Traits
+---
+translated_at: '2024-03-26T10:31:54.497Z'
+---
+
+# 实现 Traits
 
 ```rust,editable
 trait Pet {
@@ -28,15 +32,10 @@ fn main() {
 
 <details>
 
-- To implement `Trait` for `Type`, you use an `impl Trait for Type { .. }`
-  block.
+- 要为 `Type` 实现 `Trait`，你需要使用一个 `impl Trait for Type { .. }` 块。
 
-- Unlike Go interfaces, just having matching methods is not enough: a `Cat` type
-  with a `talk()` method would not automatically satisfy `Pet` unless it is in
-  an `impl Pet` block.
+- 与 Go 接口不同，仅拥有匹配的方法是不够的：一个具有 `talk()` 方法的 `Cat` 类型不会自动满足 `Pet`，除非它在一个 `impl Pet` 块中。
 
-- Traits may provide default implementations of some methods. Default
-  implementations can rely on all the methods of the trait. In this case,
-  `greet` is provided, and relies on `talk`.
+- Traits 可能提供一些方法的默认实现。默认实现可以依赖于 trait 的所有方法。在这个例子中，`greet` 被提供，并依赖于 `talk`。
 
 </details>

@@ -1,13 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:57:52.055Z'
 ---
 
-# Try Operator
+# Try 操作符
 
-Runtime errors like connection-refused or file-not-found are handled with the
-`Result` type, but matching this type on every call can be cumbersome. The
-try-operator `?` is used to return errors to the caller. It lets you turn the
-common
+像连接拒绝或文件未找到这样的运行时错误会使用 `Result` 类型来处理，但对每次调用都匹配这个类型可能会很繁琐。try 操作符 `?` 用于将错误返回给调用者。它让你能将常见的
 
 ```rust,ignore
 match some_expression {
@@ -16,13 +14,13 @@ match some_expression {
 }
 ```
 
-into the much simpler
+转变为更简单的
 
 ```rust,ignore
 some_expression?
 ```
 
-We can use this to simplify our error handling code:
+我们可以用它来简化我们的错误处理代码：
 
 ```rust,editable
 use std::io::Read;
@@ -51,16 +49,12 @@ fn main() {
 
 <details>
 
-Simplify the `read_username` function to use `?`.
+使用 `?` 简化 `read_username` 函数。
 
-Key points:
+关键点：
 
-- The `username` variable can be either `Ok(string)` or `Err(error)`.
-- Use the `fs::write` call to test out the different scenarios: no file, empty
-  file, file with username.
-- Note that `main` can return a `Result<(), E>` as long as it implements
-  `std::process::Termination`. In practice, this means that `E` implements
-  `Debug`. The executable will print the `Err` variant and return a nonzero exit
-  status on error.
+- `username` 变量可以是 `Ok(string)` 或 `Err(error)`。
+- 使用 `fs::write` 调用来测试不同的场景：无文件、空文件、带用户名的文件。
+- 注意 `main` 可以返回 `Result<(), E>` 只要它实现了 `std::process::Termination`。在实践中，这意味着 `E` 实现了 `Debug`。可执行文件会在错误时打印 `Err` 变体并返回非零退出状态。
 
 </details>

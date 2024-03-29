@@ -1,42 +1,36 @@
 ---
 minutes: 20
+translated_at: '2024-03-26T10:06:26.092Z'
 ---
 
-# Exercise: Counter
+# 练习：计数器
 
-In this exercise you will take a very simple data structure and make it generic.
-It uses a
-[`std::collections::HashMap`](https://doc.rust-lang.org/stable/std/collections/struct.HashMap.html)
-to keep track of which values have been seen and how many times each one has
-appeared.
+在这个练习中，你将取一个非常简单的数据结构，并使其泛型化。
+它使用了 [`std::collections::HashMap`](https://doc.rust-lang.org/stable/std/collections/struct.HashMap.html) 来跟踪哪些值被看到以及每一个值出现的次数。
 
-The initial version of `Counter` is hard coded to only work for `u32` values.
-Make the struct and its methods generic over the type of value being tracked,
-that way `Counter` can track any type of value.
+`Counter` 的初始版本被硬编码为只适用于 `u32` 值。
+使结构体及其方法对正在跟踪的值的类型进行泛型化，这样 `Counter` 就可以跟踪任何类型的值了。
 
-If you finish early, try using the
-[`entry`](https://doc.rust-lang.org/stable/std/collections/struct.HashMap.html#method.entry)
-method to halve the number of hash lookups required to implement the `count`
-method.
+如果你提前完成了，尝试使用 [`entry`](https://doc.rust-lang.org/stable/std/collections/struct.HashMap.html#method.entry) 方法将实现 `count` 方法所需的哈希查找次数减半。
 
 ```rust,compile_fail,editable
 use std::collections::HashMap;
 
-/// Counter counts the number of times each value of type T has been seen.
-struct Counter {
-    values: HashMap<u32, u64>,
+/// Counter 统计每种类型 T 的值被看到的次数。
+struct Counter<T> {
+    values: HashMap<T, u64>,
 }
 
-impl Counter {
-    /// Create a new Counter.
+impl<T: Eq + std::hash::Hash> Counter<T> {
+    /// 创建一个新的 Counter。
     fn new() -> Self {
         Counter {
             values: HashMap::new(),
         }
     }
 
-    /// Count an occurrence of the given value.
-    fn count(&mut self, value: u32) {
+    /// 计数给定值的一个出现。
+    fn count(&mut self, value: T) {
         if self.values.contains_key(&value) {
             *self.values.get_mut(&value).unwrap() += 1;
         } else {
@@ -44,8 +38,8 @@ impl Counter {
         }
     }
 
-    /// Return the number of times the given value has been seen.
-    fn times_seen(&self, value: u32) -> u64 {
+    /// 返回给定值被看到的次数。
+    fn times_seen(&self, value: T) -> u64 {
         self.values.get(&value).copied().unwrap_or_default()
     }
 }

@@ -1,11 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:12:17.398Z'
 ---
 
-# Casting
+# 类型转换
 
-Rust has no _implicit_ type conversions, but does support explicit casts with
-`as`. These generally follow C semantics where those are defined.
+Rust 没有 _隐式的_ 类型转换，但支持使用 `as` 进行显式转换。这些转换通常遵循 C 语言的语义（在其定义的范围内）。
 
 ```rust,editable
 fn main() {
@@ -16,28 +16,18 @@ fn main() {
 }
 ```
 
-The results of `as` are _always_ defined in Rust and consistent across
-platforms. This might not match your intuition for changing sign or casting to a
-smaller type -- check the docs, and comment for clarity.
+`as` 的结果在 Rust 中 _总是_ 明确定义的，并且在不同平台上是一致的。这可能与你关于改变符号或者转换到更小类型的直觉不一致——请查阅文档，并添加注释以提高清晰度。
 
-Casting with `as` is a relatively sharp tool that is easy to use incorrectly,
-and can be a source of subtle bugs as future maintenance work changes the types
-that are used or the ranges of values in types. Casts are best used only when
-the intent is to indicate unconditional truncation (e.g. selecting the bottom 32
-bits of a `u64` with `as u32`, regardless of what was in the high bits).
+使用 `as` 进行类型转换是一个相对锋利的工具，很容易使用不当，而且随着未来维护工作中所使用的类型或类型中值的范围的变更，可能会成为微妙错误的来源。类型转换最好只在意图表明无条件截断时使用（例如，使用 `as u32` 选择 `u64` 的底部 32 位，不管高位中有什么）。
 
-For infallible casts (e.g. `u32` to `u64`), prefer using `From` or `Into` over
-`as` to confirm that the cast is in fact infallible. For fallible casts,
-`TryFrom` and `TryInto` are available when you want to handle casts that fit
-differently from those that don't.
+对于无可失败的类型转换（例如 `u32` 转 `u64`），相比 `as`，更推荐使用 `From` 或 `Into` 来确认转换实际上是无可失败的。对于可能失败的类型转换，当你想处理可能适合或可能不适合的类型转换时，`TryFrom` 和 `TryInto` 是可以使用的。
 
 <details>
 
-Consider taking a break after this slide.
+在这张幻灯片后考虑休息一下。
 
-`as` is similar to a C++ static cast. Use of `as` in cases where data might be
-lost is generally discouraged, or at least deserves an explanatory comment.
+`as` 类似于 C++ 的静态类型转换。在可能丢失数据的情形下使用 `as` 通常不被鼓励，或者至少应加上解释性评论。
 
-This is common in casting integers to `usize` for use as an index.
+这在将整数转换为 `usize` 用作索引时很常见。
 
 </details>

@@ -1,7 +1,10 @@
-# Build rules exercise
+---
+translated_at: '2024-03-26T10:53:55.381Z'
+---
 
-In your Chromium build, add a new Rust target to `//ui/base/BUILD.gn`
-containing:
+# 构建规则练习
+
+在你的 Chromium 构建中，向 `//ui/base/BUILD.gn` 添加一个新的 Rust 目标，包含：
 
 ```rust
 #[no_mangle]
@@ -10,52 +13,40 @@ pub extern "C" fn hello_from_rust() {
 }
 ```
 
-**Important**: note that `no_mangle` here is considered a type of unsafety by
-the Rust compiler, so you'll need to allow unsafe code in your `gn` target.
+**重要**：请注意这里的 `no_mangle` 被 Rust 编译器视为一种不安全类型，因此你需要在你的 `gn` 目标中允许不安全代码。
 
-Add this new Rust target as a dependency of `//ui/base:base`. Declare this
-function at the top of `ui/base/resource/resource_bundle.cc` (later, we'll see
-how this can be automated by bindings generation tools):
+将这个新的 Rust 目标作为 `//ui/base:base` 的依赖项。在 `ui/base/resource/resource_bundle.cc` 的顶部声明这个函数（稍后，我们将看到如何通过绑定生成工具自动化这个过程）：
 
 ```cpp
 extern "C" void hello_from_rust();
 ```
 
-Call this function from somewhere in `ui/base/resource/resource_bundle.cc` - we
-suggest the top of `ResourceBundle::MaybeMangleLocalizedString`. Build and run
-Chromium, and ensure that "Hello from Rust!" is printed lots of times.
+从 `ui/base/resource/resource_bundle.cc` 的某个地方调用这个函数 - 我们建议在 `ResourceBundle::MaybeMangleLocalizedString` 的顶部。构建并运行 Chromium，确保多次打印 "Hello from Rust!"。
 
-If you use VSCode, now set up Rust to work well in VSCode. It will be useful in
-subsequent exercises. If you've succeeded, you will be able to use right-click
-"Go to definition" on `println!`.
+如果你使用 VSCode，现在在 VSCode 中设置 Rust 以便良好工作。这将在后续练习中非常有用。如果你成功了，你将能够使用右键 "转到定义" 在 `println!` 上。
 
-## Where to find help
+## 寻找帮助的地方
 
-- The options available to the [`rust_static_library` gn template][0]
-- Information about [`#[no_mangle]`][1]
-- Information about [`extern "C"`][2]
-- Information about gn's [`--export-rust-project`][3] switch
-- [How to install rust-analyzer in VSCode][4]
+- [ `rust_static_library` gn 模板][0] 提供的选项
+- 关于 [`#[no_mangle]`][1] 的信息
+- 关于 [`extern "C"`][2] 的信息
+- 关于 gn 的 [`--export-rust-project`][3] 开关的信息
+- [如何在 VSCode 中安装 rust-analyzer][4]
 
 <details>
-It's really important that students get this running, because future exercises
-will build on it.
+确保学生能够运行此程序非常重要，因为未来的练习将以此为基础。
 
-This example is unusual because it boils down to the lowest-common-denominator
-interop language, C. Both C++ and Rust can natively declare and call C ABI
-functions. Later in the course, we'll connect C++ directly to Rust.
+这个示例是不寻常的，因为它归结为最低公分母的互操作语言 C。C++ 和 Rust 都可以本地声明和调用 C ABI 函数。在课程的后面部分，我们将直接将 C++ 连接到 Rust。
 
-`allow_unsafe = true` is required here because `#[no_mangle]` might allow Rust
-to generate two functions with the same name, and Rust can no longer guarantee
-that the right one is called.
+此处需要 `allow_unsafe = true`，因为 `#[no_mangle]` 可能允许 Rust 生成两个具有相同名称的函数，并且 Rust 无法再保证调用的是正确的一个。
 
-If you need a pure Rust executable, you can also do that using the
-`rust_executable` gn template.
+如果你需要一个纯 Rust 可执行文件，你也可以使用 `rust_executable` gn 模板实现。
 
 </details>
 
 [0]: https://source.chromium.org/chromium/chromium/src/+/main:build/rust/rust_static_library.gni;l=16
-[1]: https://doc.rust-lang.org/beta/reference/abi.html#the-no_mangle-attribute
-[2]: https://doc.rust-lang.org/std/keyword.extern.html
-[3]: https://gn.googlesource.com/gn/+/main/docs/reference.md#compilation-database
-[4]: https://code.visualstudio.com/docs/languages/rust
+
+\[1\]: https://doc.rust-lang.org/beta/reference/abi.html#the-no_mangle-attribute
+\[2\]: https://doc.rust-lang.org/std/keyword.extern.html
+\[3\]: https://gn.googlesource.com/gn/+/main/docs/reference.md#compilation-database
+\[4\]: https://code.visualstudio.com/docs/languages/rust

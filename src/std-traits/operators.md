@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:08:15.980Z'
 ---
 
-# Operators
+# 运算符
 
-Operator overloading is implemented via traits in [`std::ops`][1]:
+运算符重载通过 [`std::ops`][1] 中的特征来实现：
 
 ```rust,editable
 #[derive(Debug, Copy, Clone)]
@@ -30,19 +31,13 @@ fn main() {
 
 <details>
 
-Discussion points:
+讨论要点：
 
-- You could implement `Add` for `&Point`. In which situations is that useful?
-  - Answer: `Add:add` consumes `self`. If type `T` for which you are overloading
-    the operator is not `Copy`, you should consider overloading the operator for
-    `&T` as well. This avoids unnecessary cloning on the call site.
-- Why is `Output` an associated type? Could it be made a type parameter of the
-  method?
-  - Short answer: Function type parameters are controlled by the caller, but
-    associated types (like `Output`) are controlled by the implementer of a
-    trait.
-- You could implement `Add` for two different types, e.g.
-  `impl Add<(i32, i32)> for Point` would add a tuple to a `Point`.
+- 你可以为 `&Point` 实现 `Add`。这在哪些情况下有用？
+  - 回答：`Add:add` 消耗了 `self`。 如果你要重载的类型 `T` 不是 `Copy`，你应该考虑也为 `&T` 重载运算符。 这样可以避免在调用点上不必要的克隆。
+- 为什么 `Output` 是一个关联类型？能否将其作为方法的类型参数？
+  - 简答：函数类型参数由调用者控制，但关联类型（如 `Output`）由特征的实现者控制。
+- 你可以为两个不同类型实现 `Add`，例如 `impl Add<(i32, i32)> for Point` 将会把一个元组添加到一个 `Point`。
 
 </details>
 

@@ -1,16 +1,13 @@
 ---
 minutes: 4
+translated_at: '2024-03-26T11:03:16.452Z'
 ---
 
-# `break` and `continue`
+# `break` 和 `continue`
 
-If you want to immediately start the next iteration use
-[`continue`](https://doc.rust-lang.org/reference/expressions/loop-expr.html#continue-expressions).
+如果你想立即开始下一次迭代，请使用 [`continue`](https://doc.rust-lang.org/reference/expressions/loop-expr.html#continue-expressions)。
 
-If you want to exit any kind of loop early, use
-[`break`](https://doc.rust-lang.org/reference/expressions/loop-expr.html#break-expressions).
-For `loop`, this can take an optional expression that becomes the value of the
-`loop` expression.
+如果你想提前退出任何类型的循环，请使用 [`break`](https://doc.rust-lang.org/reference/expressions/loop-expr.html#break-expressions)。对于 `loop`，这可以带一个可选表达式，成为 `loop` 表达式的值。
 
 ```rust,editable
 fn main() {

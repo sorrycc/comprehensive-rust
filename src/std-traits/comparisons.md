@@ -1,16 +1,15 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:10:29.909Z'
 ---
 
-# Comparisons
+# 比较
 
-These traits support comparisons between values. All traits can be derived for
-types containing fields that implement these traits.
+这些特性支持值之间的比较。所有特性均可为包含实现这些特性的字段的类型派生。
 
-## `PartialEq` and `Eq`
+## `PartialEq` 和 `Eq`
 
-`PartialEq` is a partial equivalence relation, with required method `eq` and
-provided method `ne`. The `==` and `!=` operators will call these methods.
+`PartialEq` 是一个部分等价关系，要求实现方法 `eq` 并提供方法 `ne`。`==` 和 `!=` 运算符将调用这些方法。
 
 ```rust,editable
 struct Key {
@@ -24,14 +23,11 @@ impl PartialEq for Key {
 }
 ```
 
-`Eq` is a full equivalence relation (reflexive, symmetric, and transitive) and
-implies `PartialEq`. Functions that require full equivalence will use `Eq` as a
-trait bound.
+`Eq` 是一个完全等价关系（自反、对称和传递）并且蕴含 `PartialEq`。需要完全等价的函数会使用 `Eq` 作为特性界限。
 
-## `PartialOrd` and `Ord`
+## `PartialOrd` 和 `Ord`
 
-`PartialOrd` defines a partial ordering, with a `partial_cmp` method. It is used
-to implement the `<`, `<=`, `>=`, and `>` operators.
+`PartialOrd` 定义了一个部分排序，带有 `partial_cmp` 方法。它用于实现 `<`、`<=`、`>=` 和 `>` 运算符。
 
 ```rust,editable
 use std::cmp::Ordering;
@@ -50,12 +46,11 @@ impl PartialOrd for Citation {
 }
 ```
 
-`Ord` is a total ordering, with `cmp` returning `Ordering`.
+`Ord` 是一个全排序，`cmp` 方法返回 `Ordering`。
 
 <details>
 
-`PartialEq` can be implemented between different types, but `Eq` cannot, because
-it is reflexive:
+`PartialEq` 可以在不同类型之间实现，但 `Eq` 不可以，因为它是自反的：
 
 ```rust,editable
 struct Key {
@@ -69,6 +64,6 @@ impl PartialEq<u32> for Key {
 }
 ```
 
-In practice, it's common to derive these traits, but uncommon to implement them.
+在实践中，通常会派生这些特性，但不常自行实现它们。
 
 </details>

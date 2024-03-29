@@ -1,10 +1,10 @@
-# Running Code Locally with Cargo
+---
+translated_at: '2024-03-26T11:26:57.921Z'
+---
 
-If you want to experiment with the code on your own system, then you will need
-to first install Rust. Do this by following the
-[instructions in the Rust Book][1]. This should give you a working `rustc` and
-`cargo`. At the time of writing, the latest stable Rust release has these
-version numbers:
+# 本地使用 Cargo 运行代码
+
+如果你想在自己的系统上尝试代码，那么首先需要安装 Rust。请按照 [Rust 书籍中的指南][1] 完成安装。这应该会给你一个可工作的 `rustc` 和 `cargo`。在撰写本文时，最新的稳定 Rust 版本号如下：
 
 ```shell
 % rustc --version
@@ -13,21 +13,20 @@ rustc 1.69.0 (84c898d65 2023-04-16)
 cargo 1.69.0 (6e9a83356 2023-04-12)
 ```
 
-You can use any later version too since Rust maintains backwards compatibility.
+你也可以使用任何更新版本，因为 Rust 保持向后兼容。
 
-With this in place, follow these steps to build a Rust binary from one of the
-examples in this training:
+有了这些，按照以下步骤从本教程中的示例构建一个 Rust 二进制文件：
 
-1. Click the "Copy to clipboard" button on the example you want to copy.
+1. 点击你想复制的示例上的 "复制到剪贴板" 按钮。
 
-2. Use `cargo new exercise` to create a new `exercise/` directory for your code:
+2. 使用 `cargo new exercise` 创建一个新的 `exercise/` 目录用于你的代码：
 
    ```shell
    $ cargo new exercise
         Created binary (application) `exercise` package
    ```
 
-3. Navigate into `exercise/` and use `cargo run` to build and run your binary:
+3. 导航到 `exercise/` 并使用 `cargo run` 来构建并运行你的二进制文件：
 
    ```shell
    $ cd exercise
@@ -38,8 +37,7 @@ examples in this training:
    Hello, world!
    ```
 
-4. Replace the boiler-plate code in `src/main.rs` with your own code. For
-   example, using the example on the previous page, make `src/main.rs` look like
+4. 用你自己的代码替换 `src/main.rs` 中的样板代码。例如，使用上一页的示例，让 `src/main.rs` 看起来像
 
    ```rust
    fn main() {
@@ -47,7 +45,7 @@ examples in this training:
    }
    ```
 
-5. Use `cargo run` to build and run your updated binary:
+5. 使用 `cargo run` 来构建并运行你更新后的二进制文件：
 
    ```shell
    $ cargo run
@@ -57,21 +55,17 @@ examples in this training:
    Edit me!
    ```
 
-6. Use `cargo check` to quickly check your project for errors, use `cargo build`
-   to compile it without running it. You will find the output in `target/debug/`
-   for a normal debug build. Use `cargo build --release` to produce an optimized
-   release build in `target/release/`.
+6. 使用 `cargo check` 快速检查你的项目是否有错误，使用 `cargo build` 编译但不运行它。你会在 `target/debug/` 找到正常调试构建的输出。使用 `cargo build --release` 在 `target/release/` 生成一个优化的发布构建。
 
-7. You can add dependencies for your project by editing `Cargo.toml`. When you
-   run `cargo` commands, it will automatically download and compile missing
-   dependencies for you.
+7. 通过编辑 `Cargo.toml`，你可以为你的项目添加依赖项。当你
+
+执行 `cargo` 命令，它将会自动下载并编译所缺少的依赖项。
 
 [1]: https://doc.rust-lang.org/book/ch01-01-installation.html
 
 <details>
 
-Try to encourage the class participants to install Cargo and use a local editor.
-It will make their life easier since they will have a normal development
-environment.
+尽量鼓励课程参与者安装 Cargo 并使用本地编辑器。
+这将让他们的生活变得更轻松，因为他们将拥有一个正常的开发环境。
 
 </details>

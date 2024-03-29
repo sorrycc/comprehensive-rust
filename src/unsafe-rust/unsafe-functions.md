@@ -1,13 +1,13 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T09:53:04.375Z'
 ---
 
-# Unsafe Functions
+# 不安全函数
 
-## Calling Unsafe Functions
+## 调用不安全函数
 
-A function or method can be marked `unsafe` if it has extra preconditions you
-must uphold to avoid undefined behaviour:
+如果一个函数或方法需要额外的前提条件来避免未定义行为，那么它可以被标记为 `unsafe`：
 
 ```rust,editable
 extern "C" {
@@ -17,24 +17,24 @@ extern "C" {
 fn main() {
     let emojis = "🗻∈🌏";
 
-    // Safe because the indices are in the correct order, within the bounds of
-    // the string slice, and lie on UTF-8 sequence boundaries.
+    // 安全，因为索引顺序正确，且位于字符串切片的边界内，
+    // 且位于 UTF-8 序列边界上。
     unsafe {
         println!("emoji: {}", emojis.get_unchecked(0..4));
         println!("emoji: {}", emojis.get_unchecked(4..7));
         println!("emoji: {}", emojis.get_unchecked(7..11));
     }
 
-    println!("char count: {}", count_chars(unsafe { emojis.get_unchecked(0..7) }));
+    println!("字符计数: {}", count_chars(unsafe { emojis.get_unchecked(0..7) }));
 
     unsafe {
-        // Undefined behavior if abs misbehaves.
-        println!("Absolute value of -3 according to C: {}", abs(-3));
+        // 如果 abs 表现异常，将会导致未定义行为。
+        println!("C 语言中 -3 的绝对值: {}", abs(-3));
     }
 
-    // Not upholding the UTF-8 encoding requirement breaks memory safety!
+    // 不遵守 UTF-8 编码要求会破坏内存安全！
     // println!("emoji: {}", unsafe { emojis.get_unchecked(0..3) });
-    // println!("char count: {}", count_chars(unsafe {
+    // println!("字符计数: {}", count_chars(unsafe {
     // emojis.get_unchecked(0..3) }));
 }
 
@@ -43,17 +43,16 @@ fn count_chars(s: &str) -> usize {
 }
 ```
 
-## Writing Unsafe Functions
+## 编写不安全函数
 
-You can mark your own functions as `unsafe` if they require particular
-conditions to avoid undefined behaviour.
+如果你的函数需要特定条件来避免未定义行为，你可以将它标记为 `unsafe`。
 
 ```rust,editable
-/// Swaps the values pointed to by the given pointers.
+/// 交换给定指针所指向的值。
 ///
-/// # Safety
+/// # 安全性
 ///
-/// The pointers must be valid and properly aligned.
+/// 指针必须是有效的并且正确对齐。
 unsafe fn swap(a: *mut u8, b: *mut u8) {
     let temp = *a;
     *a = *b;
@@ -64,7 +63,7 @@ fn main() {
     let mut a = 42;
     let mut b = 66;
 
-    // Safe because ...
+    // 安全，因为 ...
     unsafe {
         swap(&mut a, &mut b);
     }
@@ -75,25 +74,18 @@ fn main() {
 
 <details>
 
-## Calling Unsafe Functions
+## 调用不安全函数
 
-`get_unchecked`, like most `_unchecked` functions, is unsafe, because it can
-create UB if the range is incorrect. `abs` is incorrect for a different reason:
-it is an external function (FFI). Calling external functions is usually only a
-problem when those functions do things with pointers which might violate Rust's
-memory model, but in general any C function might have undefined behaviour under
-any arbitrary circumstances.
+`get_unchecked`，像大多数 `_unchecked` 函数一样，是不安全的，因为如果范围不正确，它可能引起 UB（未定义行为）。`abs` 的不正确之处在于它是一个外部函数（FFI）。当这些函数执行可能违反 Rust 的指针操作时，通常只有在调用外部函数时才会出现问题。
 
-The `"C"` in this example is the ABI;
-[other ABIs are available too](https://doc.rust-lang.org/reference/items/external-blocks.html).
+内存模型，但通常任何 C 函数在任意情况下都可能有未定义行为。
 
-## Writing Unsafe Functions
+这里的 `"C"` 是指 ABI；[还有其他的 ABI 可用](https://doc.rust-lang.org/reference/items/external-blocks.html)。
 
-We wouldn't actually use pointers for a `swap` function - it can be done safely
-with references.
+## 编写不安全函数
 
-Note that unsafe code is allowed within an unsafe function without an `unsafe`
-block. We can prohibit this with `#[deny(unsafe_op_in_unsafe_fn)]`. Try adding
-it and see what happens. This will likely change in a future Rust edition.
+我们实际上不会用指针来做 `swap` 函数——这可以通过引用安全地完成。
+
+注意，不安全代码在不安全函数中无需 `unsafe` 块即可使用。我们可以通过 `#[deny(unsafe_op_in_unsafe_fn)]` 来禁止这种做法。尝试添加它并看看会发生什么。这在未来的 Rust 版本中很可能会有所变化。
 
 </details>

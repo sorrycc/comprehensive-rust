@@ -1,4 +1,8 @@
-# C++ Bridge Declarations
+---
+translated_at: '2024-03-26T12:02:59.115Z'
+---
+
+# C++ 桥接声明
 
 ```rust,ignore
 #[cxx::bridge]
@@ -7,7 +11,7 @@ mod ffi {
 }
 ```
 
-Results in (roughly) the following Rust:
+大致会产生以下 Rust 代码：
 
 ```rust,ignore
 #[repr(C)]
@@ -43,10 +47,7 @@ impl BlobstoreClient {
 
 <details>
 
-- The programmer does not need to promise that the signatures they have typed in
-  are accurate. CXX performs static assertions that the signatures exactly
-  correspond with what is declared in C++.
-- `unsafe extern` blocks allow you to declare C++ functions that are safe to
-  call from Rust.
+- 程序员不需要保证他们输入的签名是准确的。CXX 执行静态断言以确保签名完全对应于 C++ 中声明的内容。
+- `unsafe extern` 块允许你声明从 Rust 安全调用的 C++ 函数。
 
 </details>

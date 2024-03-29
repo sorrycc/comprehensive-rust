@@ -1,32 +1,30 @@
-# Adding Third Party Crates
+---
+translated_at: '2024-03-26T11:15:26.223Z'
+---
 
-Rust libraries are called "crates" and are found at [crates.io][0]. It's _very
-easy_ for Rust crates to depend upon one another. So they do!
+# 添加第三方 Crates
 
-| Property                | C++ library | Rust crate               |
-| ----------------------- | ----------- | ------------------------ |
-| Build system            | Lots        | Consistent: `Cargo.toml` |
-| Typical library size    | Large-ish   | Small                    |
-| Transitive dependencies | Few         | Lots                     |
+Rust 的库被称为 “crates”，可以在 [crates.io][0] 上找到。Rust crates 之间相互依赖是非常简单的。所以它们确实如此！
 
-For a Chromium engineer, this has pros and cons:
+| 属性                    | C++ 库      | Rust crate            |
+| ----------------------- | ----------- | --------------------- |
+| 构建系统                | 很多        | 统一：`Cargo.toml`    |
+| 典型库大小              | 较大        | 小                    |
+| 传递依赖                | 少          | 多                    |
 
-- All crates use a common build system so we can automate their inclusion into
-  Chromium...
-- ... but, crates typically have transitive dependencies, so you will likely
-  have to bring in multiple libraries.
+对于 Chromium 工程师来说，这既有优点也有缺点：
 
-We'll discuss:
+- 所有 crates 使用通用构建系统，因此我们可以自动将它们纳入 Chromium...
+- ... 但是，crates 通常具有传递依赖性，因此你可能需要引入多个库。
 
-- How to put a crate in the Chromium source code tree
-- How to make `gn` build rules for it
-- How to audit its source code for sufficient safety.
+我们将讨论：
+
+- 如何将 crate 放入 Chromium 源代码树
+- 如何为其制定 `gn` 构建规则
+- 如何审查其源代码以确保足够的安全性。
 
 [0]: https://crates.io
 
 <details>
-All of the things in the table on this slide are generalizations, and
-counter-examples can be found. But in general it's important for students
-to understand that most Rust code depends on other Rust libraries, because
-it's easy to do so, and that this has both benefits and costs.
+本幻灯片中表格中的所有内容都是概括性的，可以找到反例。但总的来说，让学生理解大多数 Rust 代码依赖于其他 Rust 库是重要的，因为这样做很容易，并且这既有好处也有成本。
 </details>

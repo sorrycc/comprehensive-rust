@@ -1,18 +1,20 @@
-# Depending on a Crate
+---
+translated_at: '2024-03-26T11:23:16.414Z'
+---
 
-Once you've added a third-party crate and generated build rules, depending on a
-crate is simple. Find your `rust_static_library` target, and add a `dep` on the
-`:lib` target within your crate.
+# 依赖一个 Crate
 
-Specifically,
+一旦您添加了第三方 crate 并生成了构建规则，依赖一个 crate 就变得很简单。找到您的 `rust_static_library` 目标，并在您的 crate 中添加一个对 `:lib` 目标的 `dep`。
+
+具体来说，
 
 ```bob
                      +------------+      +----------------------+
-"//third_party/rust" | crate name | "/v" | major semver version | ":lib"
+"//third_party/rust" | crate 名称 | "/v" | 主 semver 版本号 | ":lib"
                      +------------+      +----------------------+
 ```
 
-For instance,
+例如，
 
 ```gn
 rust_static_library("my_rust_lib") {

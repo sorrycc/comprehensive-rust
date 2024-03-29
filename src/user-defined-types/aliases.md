@@ -1,11 +1,11 @@
 ---
 minutes: 2
+translated_at: '2024-03-26T09:50:38.834Z'
 ---
 
-# Type Aliases
+# 类型别名
 
-A type alias creates a name for another type. The two types can be used
-interchangeably.
+类型别名为另一个类型创建一个名字。这两个类型可以互换使用。
 
 ```rust,editable
 enum CarryableConcreteItem {
@@ -15,7 +15,7 @@ enum CarryableConcreteItem {
 
 type Item = CarryableConcreteItem;
 
-// Aliases are more useful with long, complex types:
+// 别名在长的、复杂的类型中更有用：
 use std::cell::RefCell;
 use std::sync::{Arc, RwLock};
 type PlayerInventory = RwLock<Vec<Arc<RefCell<Item>>>>;
@@ -23,6 +23,6 @@ type PlayerInventory = RwLock<Vec<Arc<RefCell<Item>>>>;
 
 <details>
 
-C programmers will recognize this as similar to a `typedef`.
+C 程序员会认出这和 `typedef` 相似。
 
 </details>

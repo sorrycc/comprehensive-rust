@@ -1,20 +1,16 @@
-# Dining Philosophers
+---
+translated_at: '2024-03-26T10:49:46.164Z'
+---
 
-The dining philosophers problem is a classic problem in concurrency:
+# 哲学家就餐问题
 
-> Five philosophers dine together at the same table. Each philosopher has their
-> own place at the table. There is a fork between each plate. The dish served is
-> a kind of spaghetti which has to be eaten with two forks. Each philosopher can
-> only alternately think and eat. Moreover, a philosopher can only eat their
-> spaghetti when they have both a left and right fork. Thus two forks will only
-> be available when their two nearest neighbors are thinking, not eating. After
-> an individual philosopher finishes eating, they will put down both forks.
+哲学家就餐问题是并发中的一个典型问题：
 
-You will need a local [Cargo installation](../../cargo/running-locally.md) for
-this exercise. Copy the code below to a file called `src/main.rs`, fill out the
-blanks, and test that `cargo run` does not deadlock:
+> 五位哲学家共同在同一张桌子上就餐。每位哲学家都有自己在桌上的位置。每个盘子之间都放着一把叉子。上的是一种需要用两把叉子吃的意大利面。每位哲学家只能交替地思考和吃饭。此外，一位哲学家只有在手里拿着左边和右边的叉子时才能吃他的意大利面。因此，两把叉子只有当它们两边最近的邻居都在思考、没有在吃饭时才可用。一个哲学家吃完后，他们会放下两把叉子。
 
-<!-- File src/main.rs -->
+你将需要本地的 [Cargo 安装](../../cargo/running-locally.md) 来完成这个练习。将下面的代码复制到一个名为 `src/main.rs` 的文件中，填写空白处，并测试 `cargo run` 不会导致死锁：
+
+<!-- 文件 src/main.rs -->
 
 ```rust,compile_fail
 {{#include dining-philosophers.rs:Philosopher}}
@@ -26,21 +22,21 @@ blanks, and test that `cargo run` does not deadlock:
 {{#include dining-philosophers.rs:Philosopher-think}}
 
 {{#include dining-philosophers.rs:Philosopher-eat}}
-        // Pick up forks...
+        // 拿起叉子...
 {{#include dining-philosophers.rs:Philosopher-eat-end}}
-    // Create forks
+    // 创建叉子
 
-    // Create philosophers
+    // 创建哲学家
 
-    // Make each of them think and eat 100 times
+    // 使他们每人思考和吃饭 100 次
 
-    // Output their thoughts
+    // 输出他们的思考
 }
 ```
 
-You can use the following `Cargo.toml`:
+你可以使用下面的 `Cargo.toml`：
 
-<!-- File Cargo.toml -->
+<!-- 文件 Cargo.toml -->
 
 ```toml
 [package]

@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T09:48:18.791Z'
 ---
 
-# Named Structs
+# 命名结构体
 
-Like C and C++, Rust has support for custom structs:
+像 C 和 C++ 一样，Rust 支持自定义结构体：
 
 ```rust,editable
 struct Person {
@@ -13,7 +14,7 @@ struct Person {
 }
 
 fn describe(person: &Person) {
-    println!("{} is {} years old", person.name, person.age);
+    println!("{} 是 {} 岁", person.name, person.age);
 }
 
 fn main() {
@@ -35,22 +36,15 @@ fn main() {
 
 <details>
 
-Key Points:
+要点：
 
-- Structs work like in C or C++.
-  - Like in C++, and unlike in C, no typedef is needed to define a type.
-  - Unlike in C++, there is no inheritance between structs.
-- This may be a good time to let people know there are different types of
-  structs.
-  - Zero-sized structs (e.g. `struct Foo;`) might be used when implementing a
-    trait on some type but don’t have any data that you want to store in the
-    value itself.
-  - The next slide will introduce Tuple structs, used when the field names are
-    not important.
-- If you already have variables with the right names, then you can create the
-  struct using a shorthand.
-- The syntax `..avery` allows us to copy the majority of the fields from the old
-  struct without having to explicitly type it all out. It must always be the
-  last element.
+- 结构体的工作方式类似于 C 或 C++。
+  - 像在 C++ 中，不同于 C，定义类型时不需要 typedef。
+  - 不同于 C++，结构体之间没有继承关系。
+- 现在可能是一个好时机，让人们知道有不同类型的结构体。
+  - 零大小结构体（例如 `struct Foo;`）可能会在实现某类型的 trait 但不想在值本身存储任何数据时使用。
+  - 下一张幻灯片将介绍元组结构体，用于字段名不重要的场合。
+- 如果你已经有了正确名称的变量，那么你可以使用简写来创建结构体。
+- 语法 `..avery` 允许我们从旧结构体复制大部分字段，无需显式地全部键入。它必须始终是最后一个元素。
 
 </details>

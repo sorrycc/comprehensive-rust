@@ -1,13 +1,11 @@
 ---
 course: none
+translated_at: '2024-03-26T09:34:05.805Z'
 ---
 
-# Thanks!
+# 感谢！
 
-_Thank you for taking Comprehensive Rust 🦀!_ We hope you enjoyed it and that it
-was useful.
+_感谢您参加 Comprehensive Rust 🦀 课程！_ 希望您喜欢并且觉得有用。
 
-We've had a lot of fun putting the course together. The course is not perfect,
-so if you spotted any mistakes or have ideas for improvements, please get in
-[contact with us on GitHub](https://github.com/google/comprehensive-rust/discussions).
-We would love to hear from you.
+我们在编撰课程时非常乐在其中。这个课程并不完美，因此如果您发现了任何错误或者有改进的想法，请通过 [GitHub 联系我们](https://github.com/google/comprehensive-rust/discussions)。
+我们非常期待您的反馈。

@@ -3,46 +3,40 @@ minutes: 5
 course: Fundamentals
 session: Day 1 Morning
 target_minutes: 180
+translated_at: '2024-03-26T09:33:46.400Z'
 ---
 
-# Welcome to Day 1
+# 欢迎来到第 1 天
 
-This is the first day of Rust Fundamentals. We will cover a lot of ground today:
+这是 Rust 基础的第一天。今天我们将覆盖很多内容：
 
-- Basic Rust syntax: variables, scalar and compound types, enums, structs,
-  references, functions, and methods.
-- Types and type inference.
-- Control flow constructs: loops, conditionals, and so on.
-- User-defined types: structs and enums.
-- Pattern matching: destructuring enums, structs, and arrays.
+- 基本的 Rust 语法：变量、标量和复合类型、枚举、结构体、
+  引用、函数和方法。
+- 类型和类型推断。
+- 控制流构造：循环、条件语句等。
+- 用户定义类型：结构体和枚举。
+- 模式匹配：解构枚举、结构体和数组。
 
-## Schedule
+## 日程安排
 
 {{%session outline}}
 
 <details>
 
-Please remind the students that:
+请提醒学生：
 
-- They should ask questions when they get them, don't save them to the end.
-- The class is meant to be interactive and discussions are very much encouraged!
-  - As an instructor, you should try to keep the discussions relevant, i.e.,
-    keep the discussions related to how Rust does things vs some other language.
-    It can be hard to find the right balance, but err on the side of allowing
-    discussions since they engage people much more than one-way communication.
-- The questions will likely mean that we talk about things ahead of the slides.
-  - This is perfectly okay! Repetition is an important part of learning.
-    Remember that the slides are just a support and you are free to skip them as
-    you like.
+- 他们应该在有问题时提问，不要等到最后。
+- 课堂旨在互动，十分鼓励讨论！
+  - 作为一名讲师，你应该试图保持讨论的相关性，即，
+    保持讨论与 Rust 的做法相比较，而不是与其他语言比较。
+    找到正确的平衡可能有些难，但宁可允许讨论，
+    因为比起单向沟通，讨论能更多地吸引人们。
+- 问题可能会导致我们提前谈论幻灯片上的内容。
+  - 这完全没问题！重复是学习的重要部分。
+    请记住幻灯片只是一种辅助，你可以随意跳过它们。
 
-The idea for the first day is to show the "basic" things in Rust that should
-have immediate parallels in other languages. The more advanced parts of Rust
-come on the subsequent days.
+第一天的想法是展示 Rust 中的“基础”东西，这些在其他语言中应该有直接对应的部分。Rust 的更高级部分将在随后的几天中涉及。
 
-If you're teaching this in a classroom, this is a good place to go over the
-schedule. Note that there is an exercise at the end of each segment, followed by
-a break. Plan to cover the exercise solution after the break. The times listed
-here are a suggestion in order to keep the course on schedule. Feel free to be
-flexible and adjust as necessary!
+如果你在教室里教授这门课程，这是一个很好的时间来过一遍日程安排。注意每个部分的最后都有一个练习，然后是一个休息时间。计划在休息后讲解练习解答。这里列出的时间是为了保持课程进度的一个建议。请随意灵活调整，根据需要进行更改！
 
 </details>

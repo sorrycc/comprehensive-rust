@@ -1,52 +1,38 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:37:39.675Z'
 ---
 
-# Approaches to Memory Management
+# 内存管理的方法
 
-Traditionally, languages have fallen into two broad categories:
+传统上，编程语言分为两大类：
 
-- Full control via manual memory management: C, C++, Pascal, ...
-  - Programmer decides when to allocate or free heap memory.
-  - Programmer must determine whether a pointer still points to valid memory.
-  - Studies show, programmers make mistakes.
-- Full safety via automatic memory management at runtime: Java, Python, Go,
-  Haskell, ...
-  - A runtime system ensures that memory is not freed until it can no longer be
-    referenced.
-  - Typically implemented with reference counting, garbage collection, or RAII.
+- 通过手动内存管理获得完全控制：C、C++、Pascal, ...
+  - 程序员决定何时分配或释放堆内存。
+  - 程序员必须确定指针是否仍然指向有效内存。
+  - 研究表明，程序员会犯错误。
+- 通过运行时自动内存管理获得完全安全：Java、Python、Go、Haskell, ...
+  - 运行时系统确保内存不会被释放，直到它不再被引用为止。
+  - 通常使用引用计数、垃圾收集或 RAII 来实现。
 
-Rust offers a new mix:
+Rust 提供了一种新的混合方式：
 
-> Full control _and_ safety via compile time enforcement of correct memory
-> management.
+> 通过编译时强制执行正确的内存管理实现完全控制 _和_ 安全。
 
-It does this with an explicit ownership concept.
+它通过一个明确的所有权概念来实现这一点。
 
 <details>
 
-This slide is intended to help students coming from other languages to put Rust
-in context.
+此幻灯片旨在帮助来自其他语言的学生将 Rust 放在上下文中。
 
-- C must manage heap manually with `malloc` and `free`. Common errors include
-  forgetting to call `free`, calling it multiple times for the same pointer, or
-  dereferencing a pointer after the memory it points to has been freed.
+- C 必须手动使用 `malloc` 和 `free` 来管理堆。常见的错误包括忘记调用 `free`，对同一个指针调用它多次，或者在其指向的内存被释放后解引用一个指针。
 
-- C++ has tools like smart pointers (`unique_ptr`, `shared_ptr`) that take
-  advantage of language guarantees about calling destructors to ensure memory is
-  freed when a function returns. It is still quite easy to mis-use these tools
-  and create similar bugs to C.
+- C++ 有像智能指针（`unique_ptr`, `shared_ptr`）这样的工具，它利用语言关于调用析构函数的保证来确保函数返回时内存被释放。尽管如此，仍然很容易误用这些工具，并创建与 C 相似的错误。
 
-- Java, Go, and Python rely on the garbage collector to identify memory that is
-  no longer reachable and discard it. This guarantees that any pointer can be
-  dereferenced, eliminating use-after-free and other classes of bugs. But, GC
-  has a runtime cost and is difficult to tune properly.
+- Java、Go 和 Python 依赖垃圾收集器来识别不再可达的内存并丢弃它。这保证了任何指针都可以被解引用，消除了使用后自由和其他类别的错误。但是，GC 有运行时成本，并且很难适当地调整。
 
-Rust's ownership and borrowing model can, in many cases, get the performance of
-C, with alloc and free operations precisely where they are required -- zero
-cost. It also provides tools similar to C++'s smart pointers. When required,
-other options such as reference counting are available, and there are even
-third-party crates available to support runtime garbage collection (not covered
-in this class).
+Rust 的所有权和借用模型在许多情况下，可以获得 C 的性能，精确地在需要的地方进行 alloc 和 free 操作 —— 零成本。它还提供了类似于 C++ 的智能指针的工具。在需要的时候，其他选项如引用计数也可用，并且甚至有支持运行时垃圾收集的第三方 crates（未涵盖）。
+
+在这个课程中）。
 
 </details>

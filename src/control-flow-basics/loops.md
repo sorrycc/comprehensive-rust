@@ -1,17 +1,15 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T11:01:39.463Z'
 ---
 
-# Loops
+# 循环
 
-There are three looping keywords in Rust: `while`, `loop`, and `for`:
+在 Rust 中有三个循环关键字：`while`、`loop` 和 `for`：
 
 ## `while`
 
-The
-[`while` keyword](https://doc.rust-lang.org/reference/expressions/loop-expr.html#predicate-loops)
-works much like in other languages, executing the loop body as long as the
-condition is true.
+[`while` 关键字](https://doc.rust-lang.org/reference/expressions/loop-expr.html#predicate-loops) 的工作机制与其他语言非常相似，只要条件为真，就执行循环体。
 
 ```rust,editable
 fn main() {

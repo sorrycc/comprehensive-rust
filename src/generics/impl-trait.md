@@ -1,14 +1,14 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:46:20.551Z'
 ---
 
 # `impl Trait`
 
-Similar to trait bounds, an `impl Trait` syntax can be used in function
-arguments and return values:
+与 trait 约束类似，可在函数参数和返回值中使用 `impl Trait` 语法：
 
 ```rust,editable
-// Syntactic sugar for:
+// 语法糖等同于：
 //   fn add_42_millions<T: Into<i32>>(x: T) -> i32 {
 fn add_42_millions(x: impl Into<i32>) -> i32 {
     x.into() + 42_000_000
@@ -24,30 +24,20 @@ fn main() {
     let many_more = add_42_millions(10_000_000);
     println!("{many_more}");
     let debuggable = pair_of(27);
-    println!("debuggable: {debuggable:?}");
+    println!("可以调试的：{debuggable:?}");
 }
 ```
 
 <details>
 
-`impl Trait` allows you to work with types which you cannot name. The meaning of
-`impl Trait` is a bit different in the different positions.
+`impl Trait` 允许你操作无法命名的类型。`impl Trait` 在不同位置的含义有所不同。
 
-- For a parameter, `impl Trait` is like an anonymous generic parameter with a
-  trait bound.
+- 对于参数，`impl Trait` 像是一个具有 trait 约束的匿名泛型参数。
 
-- For a return type, it means that the return type is some concrete type that
-  implements the trait, without naming the type. This can be useful when you
-  don't want to expose the concrete type in a public API.
+- 对于返回类型，这意味着返回类型是某个实现了该 trait 的具体类型，但不命名该类型。当你不希望在公共 API 中暴露具体类型时，这非常有用。
 
-  Inference is hard in return position. A function returning `impl Foo` picks
-  the concrete type it returns, without writing it out in the source. A function
-  returning a generic type like `collect<B>() -> B` can return any type
-  satisfying `B`, and the caller may need to choose one, such as with
-  `let x: Vec<_> = foo.collect()` or with the turbofish,
-  `foo.collect::<Vec<_>>()`.
+  在返回位置进行类型推断是困难的。一个返回 `impl Foo` 的函数选择它返回的具体类型，而无需在源代码中书写。一个返回泛型类型如 `collect<B>() -> B` 的函数可以返回任何满足 `B` 的类型，调用者可能需要选择一个，例如使用 `let x: Vec<_> = foo.collect()` 或者使用 turbofish, `foo.collect::<Vec<_>>()`。
 
-What is the type of `debuggable`? Try `let debuggable: () = ..` to see what the
-error message shows.
+`debuggable` 的类型是什么？尝试使用 `let debuggable: () = ..` 来查看错误信息显示。
 
 </details>

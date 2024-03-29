@@ -1,7 +1,10 @@
-# More traits
+---
+translated_at: '2024-03-26T11:43:20.418Z'
+---
 
-We derived the `Debug` trait. It would be useful to implement a few more traits
-too.
+# 更多特性
+
+我们已经派生了 `Debug` 特性。实现一些其他特性也会很有用。
 
 ```rust,editable,compile_fail
 {{#include ../examples/src/pl011_minimal.rs:Traits}}
@@ -9,9 +12,7 @@ too.
 
 <details>
 
-- Implementing `Write` lets us use the `write!` and `writeln!` macros with our
-  `Uart` type.
-- Run the example in QEMU with `make qemu_minimal` under
-  `src/bare-metal/aps/examples`.
+- 实现 `Write` 使我们能够在我们的 `Uart` 类型上使用 `write!` 和 `writeln!` 宏。
+- 在 `src/bare-metal/aps/examples` 下通过 `make qemu_minimal` 运行示例。
 
 </details>

@@ -1,29 +1,20 @@
 ---
 minutes: 2
+translated_at: '2024-03-26T10:44:26.630Z'
 ---
 
-# Playground
+# 游乐场
 
-The [Rust Playground](https://play.rust-lang.org/) provides an easy way to run
-short Rust programs, and is the basis for the examples and exercises in this
-course. Try running the "hello-world" program it starts with. It comes with a
-few handy features:
+[Rust 游乐场](https://play.rust-lang.org/) 提供了一个简便的方式来运行简短的 Rust 程序，并且是本课程中示例和练习的基础。尝试运行它初始的 “hello-world” 程序。它具备了一些便捷的功能：
 
-- Under "Tools", use the `rustfmt` option to format your code in the "standard"
-  way.
+- 在 “工具” 下，使用 `rustfmt` 选项可以按照 “标准” 方法格式化你的代码。
 
-- Rust has two main "profiles" for generating code: Debug (extra runtime checks,
-  less optimization) and Release (fewer runtime checks, lots of optimization).
-  These are accessible under "Debug" at the top.
+- Rust 有两个主要的 “配置文件” 用于生成代码：Debug（额外的运行时检查，优化较少）和 Release（更少的运行时检查，大量优化）。这些可以在顶部的 “Debug” 里访问。
 
-- If you're interested, use "ASM" under "..." to see the generated assembly
-  code.
+- 如果你感兴趣，可以在 “...” 下使用 “ASM” 查看生成的汇编代码。
 
 <details>
 
-As students head into the break, encourage them to open up the playground and
-experiment a little. Encourage them to keep the tab open and try things out
-during the rest of the course. This is particularly helpful for advanced
-students who want to know more about Rust's optimizations or generated assembly.
+当学生们开始放假时，鼓励他们打开游乐场并试着做一些实验。鼓励他们在课程的其他时间保持标签页打开并尝试一些事情。这对于想要了解更多 Rust 优化或生成的汇编代码的高级学生特别有帮助。
 
 </details>

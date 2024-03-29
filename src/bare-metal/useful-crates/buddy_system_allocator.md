@@ -1,10 +1,10 @@
+---
+translated_at: '2024-03-26T11:35:17.045Z'
+---
+
 # `buddy_system_allocator`
 
-[`buddy_system_allocator`][1] is a third-party crate implementing a basic buddy
-system allocator. It can be used both for [`LockedHeap`][2] implementing
-[`GlobalAlloc`][3] so you can use the standard `alloc` crate (as we saw
-[before][4]), or for allocating other address space. For example, we might want
-to allocate MMIO space for PCI BARs:
+[`buddy_system_allocator`][1] 是一个第三方 crate，实现了基本的伙伴系统分配器。它既可以用于实现 [`GlobalAlloc`][3] 的 [`LockedHeap`][2]，从而你可以使用标准的 `alloc` crate（正如我们之前看到的[那样][4]），也可以用来分配其他地址空间。例如，我们可能想为 PCI BARs 分配 MMIO 空间：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -14,10 +14,8 @@ to allocate MMIO space for PCI BARs:
 
 <details>
 
-- PCI BARs always have alignment equal to their size.
-- Run the example with `cargo run` under
-  `src/bare-metal/useful-crates/allocator-example/`. (It won't run in the
-  Playground because of the crate dependency.)
+- PCI BARs 的对齐总是等于它们的大小。
+- 使用命令 `cargo run` 在 `src/bare-metal/useful-crates/allocator-example/` 下运行示例。（在 Playground 中无法运行，因为存在 crate 依赖。）
 
 </details>
 

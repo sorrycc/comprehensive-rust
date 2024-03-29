@@ -1,23 +1,19 @@
 ---
 course: Concurrency
 session: Morning
+translated_at: '2024-03-26T09:40:23.025Z'
 ---
 
-# Welcome to Concurrency in Rust
+# 欢迎来到 Rust 中的并发
 
-Rust has full support for concurrency using OS threads with mutexes and
-channels.
+Rust 对操作系统线程提供全面支持，包括互斥锁和通道。
 
-The Rust type system plays an important role in making many concurrency bugs
-compile time bugs. This is often referred to as _fearless concurrency_ since you
-can rely on the compiler to ensure correctness at runtime.
+Rust 的类型系统在将许多并发错误转变为编译时错误方面起着重要作用。这通常被称为 _无畏并发_，因为你可以依赖编译器来确保运行时的正确性。
 
 <details>
 
-- Rust lets us access OS concurrency toolkit: threads, sync. primitives, etc.
-- The type system gives us safety for concurrency without any special features.
-- The same tools that help with "concurrent" access in a single thread (e.g., a
-  called function that might mutate an argument or save references to it to read
-  later) save us from multi-threading issues.
+- Rust 允许我们访问操作系统的并发工具包：线程、同步原语等。
+- 类型系统为并发安全提供了保障，无需任何特殊功能。
+- 帮助我们在单个线程中实现“并发”访问的同样工具（例如，可能会修改参数或保存引用以便稍后读取的被调用函数）也能帮我们避免多线程问题。
 
 </details>

@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:03:53.815Z'
 ---
 
-# String
+# 字符串
 
-[`String`][1] is the standard heap-allocated growable UTF-8 string buffer:
+[`String`][1] 是标准的堆分配的可增长 UTF-8 字符串缓冲区：
 
 ```rust,editable
 fn main() {
@@ -22,42 +23,28 @@ fn main() {
 }
 ```
 
-`String` implements [`Deref<Target = str>`][2], which means that you can call
-all `str` methods on a `String`.
+`String` 实现了 [`Deref<Target = str>`][2]，这意味着你可以在 `String` 上调用所有 `str` 方法。
 
 [1]: https://doc.rust-lang.org/std/string/struct.String.html
 [2]: https://doc.rust-lang.org/std/string/struct.String.html#deref-methods-str
 
 <details>
 
-- `String::new` returns a new empty string, use `String::with_capacity` when you
-  know how much data you want to push to the string.
-- `String::len` returns the size of the `String` in bytes (which can be
-  different from its length in characters).
-- `String::chars` returns an iterator over the actual characters. Note that a
-  `char` can be different from what a human will consider a "character" due to
-  [grapheme clusters](https://docs.rs/unicode-segmentation/latest/unicode_segmentation/struct.Graphemes.html).
-- When people refer to strings they could either be talking about `&str` or
-  `String`.
-- When a type implements `Deref<Target = T>`, the compiler will let you
-  transparently call methods from `T`.
-  - We haven't discussed the `Deref` trait yet, so at this point this mostly
-    explains the structure of the sidebar in the documentation.
-  - `String` implements `Deref<Target = str>` which transparently gives it
-    access to `str`'s methods.
-  - Write and compare `let s3 = s1.deref();` and `let s3 = &*s1;`.
-- `String` is implemented as a wrapper around a vector of bytes, many of the
-  operations you see supported on vectors are also supported on `String`, but
-  with some extra guarantees.
-- Compare the different ways to index a `String`:
-  - To a character by using `s3.chars().nth(i).unwrap()` where `i` is in-bound,
-    out-of-bounds.
-  - To a substring by using `s3[0..4]`, where that slice is on character
-    boundaries or not.
-- Many types can be converted to a string with the
-  [`to_string`](https://doc.rust-lang.org/std/string/trait.ToString.html#tymethod.to_string)
-  method. This trait is automatically implemented for all types that implement
-  `Display`, so anything that can be formatted can also be converted to a
-  string.
+- `String::new` 返回一个新的空字符串，当你知道想要添加多少数据到字符串时，使用 `String::with_capacity`。
+- `String::len` 返回 `String` 的大小（以字节为单位），这和它的字符长度可能不同。
+- `String::chars` 返回一个实际字符的迭代器。注意，一个 `char` 和人类认为的“字符”可能不同，这是由于[字素簇](https://docs.rs/unicode-segmentation/latest/unicode_segmentation/struct.Graphemes.html)。
+- 当人们谈论字符串时，他们可能指的是 `&str` 或 `String`。
+- 当类型实现了 `Deref<Target = T>` 时，编译器会让你无障碍地调用 `T` 的方法。
+  - 我们还没有讨论过 `Deref` 特性，所以在这一点上，这主要解释了文档旁边栏的结构。
+  - `String` 实现了 `Deref<Target = str>`，这让它可以透明地访问 `str` 的方法。
+  - 写下并比较 `let s3 = s1.deref();` 和 `let s3 = &*s1;`。
+- `String` 被实现为一个字节向量的封装，许多你在向量上看到的操作也支持在 `String` 上，但是有一些额外的保证。
+- 比较不同的索引 `String` 的方法：
+
+```markdown
+  - 通过使用 `s3.chars().nth(i).unwrap()` 来访问字符，其中 `i` 为界内或界外。
+  - 通过使用 `s3[0..4]` 来访问子字符串，无论该切片是否在字符边界上。
+- 许多类型可以使用 [`to_string`](https://doc.rust-lang.org/std/string/trait.ToString.html#tymethod.to_string) 方法转换为字符串。这个特性会自动为所有实现了 `Display` 的类型实现，因此任何可以格式化的东西也都可以被转换为字符串。
 
 </details>
+```

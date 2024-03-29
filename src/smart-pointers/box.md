@@ -1,11 +1,11 @@
 ---
 minutes: 8
+translated_at: '2024-03-26T10:15:33.504Z'
 ---
 
 # `Box<T>`
 
-[`Box`](https://doc.rust-lang.org/std/boxed/struct.Box.html) is an owned pointer
-to data on the heap:
+[`Box`](https://doc.rust-lang.org/std/boxed/struct.Box.html) 是指向堆上数据的所有权指针：
 
 ```rust,editable
 fn main() {
@@ -15,7 +15,7 @@ fn main() {
 ```
 
 ```bob
- Stack                     Heap
+ 堆栈                      堆
 .- - - - - - -.     .- - - - - - -.
 :             :     :             :
 :    five     :     :             :
@@ -27,18 +27,17 @@ fn main() {
 `- - - - - - -'     `- - - - - - -'
 ```
 
-`Box<T>` implements `Deref<Target = T>`, which means that you can
-[call methods
-from `T` directly on a `Box<T>`](https://doc.rust-lang.org/std/ops/trait.Deref.html#more-on-deref-coercion).
+`Box<T>` 实现了 `Deref<Target = T>`，这意味着你可以
+[直接在 `Box<T>` 上调用 `T` 的方法](https://doc.rust-lang.org/std/ops/trait.Deref.html#on-deref-coercion)。
 
-Recursive data types or data types with dynamic sizes need to use a `Box`:
+递归数据类型或动态大小的数据类型需要使用 `Box`：
 
 ```rust,editable
 #[derive(Debug)]
 enum List<T> {
-    /// A non-empty list: first element and the rest of the list.
+    /// 非空列表：第一个元素和列表的剩余部分。
     Element(T, Box<List<T>>),
-    /// An empty list.
+    /// 空列表。
     Nil,
 }
 
@@ -50,7 +49,7 @@ fn main() {
 ```
 
 ```bob
- Stack                           Heap
+ 堆栈                                 堆
 .- - - - - - - - - - - - - - .     .- - - - - - - - - - - - - - - - - - - - - - - - -.
 :                            :     :                                                 :
 :    list                    :     :                                                 :
@@ -64,30 +63,20 @@ fn main() {
 
 <details>
 
-- `Box` is like `std::unique_ptr` in C++, except that it's guaranteed to be not
-  null.
-- A `Box` can be useful when you:
-  - have a type whose size that can't be known at compile time, but the Rust
-    compiler wants to know an exact size.
-  - want to transfer ownership of a large amount of data. To avoid copying large
-    amounts of data on the stack, instead store the data on the heap in a `Box`
-    so only the pointer is moved.
+- `Box` 类似于 C++ 中的 `std::unique_ptr`，不过它保证不会是空指针。
+- 当你需要时，`Box` 可以非常有用：
+  - 有一个在编译时大小未知的类型，但 Rust 编译器想要知道一个确切的大小。
+  - 想要转移大量数据的所有权。为了避免在栈上复制大量数据，可以使用 `Box` 在堆上存储数据，这样只需要移动指针。
 
-- If `Box` was not used and we attempted to embed a `List` directly into the
-  `List`, the compiler would not be able to compute a fixed size for the struct
-  in memory (the `List` would be of infinite size).
+- 如果不使用 `Box` 并尝试直接在 `List` 中嵌入 `List`，编译器将无法为内存中的结构计算出固定大小（`List` 会是无限大小）。
 
-- `Box` solves this problem as it has the same size as a regular pointer and
-  just points at the next element of the `List` in the heap.
+- `Box` 解决了这个问题，因为它的大小与常规指针相同，只是在堆中指向 `List` 的下一个元素。
 
-- Remove the `Box` in the List definition and show the compiler error. We get
-  the message "recursive without indirection", because for data recursion, we
-  have to use indirection, a `Box` or reference of some kind, instead of storing
-  the value directly.
+- 移除 `List` 定义中的 `Box` 并展示编译器错误。我们会得到消息 "递归无间接"，因为对于数据递归，我们必须使用间接手段，比如某种 `Box` 或引用，而不是直接存储值。
 
-# More to Explore
+# 更多探索
 
-## Niche Optimization
+## 别致的优化
 
 ```rust,editable
 #[derive(Debug)]
@@ -103,11 +92,10 @@ fn main() {
 }
 ```
 
-A `Box` cannot be empty, so the pointer is always valid and non-`null`. This
-allows the compiler to optimize the memory layout:
+`Box` 不能是空的，所以指针总是有效且非空。这允许编译器优化内存布局：
 
 ```bob
- Stack                           Heap
+ 栈                             堆
 .- - - - - - - - - - - - - - .     .- - - - - - - - - - - - - -.
 :                            :     :                           :
 :    list                    :     :                           :

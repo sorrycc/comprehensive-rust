@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:47:39.730Z'
 ---
 
-# Generic Data Types
+# 泛型数据类型
 
-You can use generics to abstract over the concrete field type:
+您可以使用泛型来抽象出具体的字段类型：
 
 ```rust,editable
 #[derive(Debug)]
@@ -24,24 +25,20 @@ impl<T> Point<T> {
 fn main() {
     let integer = Point { x: 5, y: 10 };
     let float = Point { x: 1.0, y: 4.0 };
-    println!("{integer:?} and {float:?}");
+    println!("{integer:?} 和 {float:?}");
     println!("coords: {:?}", integer.coords());
 }
 ```
 
 <details>
 
-- _Q:_ Why `T` is specified twice in `impl<T> Point<T> {}`? Isn't that
-  redundant?
-  - This is because it is a generic implementation section for generic type.
-    They are independently generic.
-  - It means these methods are defined for any `T`.
-  - It is possible to write `impl Point<u32> { .. }`.
-    - `Point` is still generic and you can use `Point<f64>`, but methods in this
-      block will only be available for `Point<u32>`.
+- _问题:_ 为什么在 `impl<T> Point<T> {}` 中 `T` 要指定两次？这不是多余的吗？
+  - 这是因为它是泛型类型的泛型实现部分。
+    它们是各自独立的泛型。
+  - 这意味着这些方法被定义用于任何 `T`。
+  - 你可以编写 `impl Point<u32> { .. }`。
+    - `Point` 仍然是泛型的，你可以使用 `Point<f64>`，但在此代码块中的方法只会适用于 `Point<u32>`。
 
-- Try declaring a new variable `let p = Point { x: 5, y: 10.0 };`. Update the
-  code to allow points that have elements of different types, by using two type
-  variables, e.g., `T` and `U`.
+- 尝试声明一个新的变量 `let p = Point { x: 5, y: 10.0 };`。通过使用两个类型变量，比如 `T` 和 `U`，更新代码以允许点的元素具有不同的类型。
 
 </details>

@@ -1,14 +1,14 @@
-# Code Samples in This Training
+---
+translated_at: '2024-03-26T11:27:38.077Z'
+---
 
-For this training, we will mostly explore the Rust language through examples
-which can be executed through your browser. This makes the setup much easier and
-ensures a consistent experience for everyone.
+# 本次培训中的代码示例
 
-Installing Cargo is still encouraged: it will make it easier for you to do the
-exercises. On the last day, we will do a larger exercise which shows you how to
-work with dependencies and for that you need Cargo.
+在这次培训中，我们将主要通过示例探索 Rust 语言，这些示例可以通过您的浏览器执行。这样使得设置变得更加容易，并确保每个人都有一致的体验。
 
-The code blocks in this course are fully interactive:
+仍然鼓励安装 Cargo：它将使您更容易完成练习。在最后一天，我们将进行一个较大的练习，向您展示如何处理依赖关系，届时您将需要 Cargo。
+
+本课程中的代码块是完全可交互的：
 
 ```rust,editable
 fn main() {
@@ -16,19 +16,14 @@ fn main() {
 }
 ```
 
-You can use <kbd>Ctrl + Enter</kbd> to execute the code when focus is in the
-text box.
+您可以使用 <kbd>Ctrl + Enter</kbd> 在焦点位于文本框时执行代码。
 
 <details>
 
-Most code samples are editable like shown above. A few code samples are not
-editable for various reasons:
+大多数代码示例都像上面显示的那样可编辑。出于各种原因，一些代码示例是不可编辑的：
 
-- The embedded playgrounds cannot execute unit tests. Copy-paste the code and
-  open it in the real Playground to demonstrate unit tests.
+- 嵌入的 playground 无法执行单元测试。复制粘贴代码并在真实的 Playground 中打开，以演示单元测试。
 
-- The embedded playgrounds lose their state the moment you navigate away from
-  the page! This is the reason that the students should solve the exercises
-  using a local Rust installation or via the Playground.
+- 一旦您离开页面，嵌入的 playground 就会失去它们的状态！这就是为什么学生应该使用本地 Rust 安装或通过 Playground 解决练习的原因。
 
 </details>

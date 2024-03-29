@@ -1,7 +1,10 @@
+---
+translated_at: '2024-03-26T11:03:37.474Z'
+---
+
 # `loop`
 
-The [`loop` statement](https://doc.rust-lang.org/std/keyword.loop.html) just
-loops forever, until a `break`.
+[`loop` 语句](https://doc.rust-lang.org/std/keyword.loop.html) 就是无限循环，直到遇到 `break`。
 
 ```rust,editable
 fn main() {

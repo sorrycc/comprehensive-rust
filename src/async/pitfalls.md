@@ -1,10 +1,12 @@
-# Pitfalls of async/await
+---
+translated_at: '2024-03-26T11:46:12.340Z'
+---
 
-Async / await provides convenient and efficient abstraction for concurrent
-asynchronous programming. However, the async/await model in Rust also comes with
-its share of pitfalls and footguns. We illustrate some of them in this chapter:
+# async / await 的陷阱
 
-- [Blocking the Executor](pitfalls/blocking-executor.md)
+Async / await 为并发异步编程提供了方便且高效的抽象。然而，Rust 中的 async / await 模型也伴随着一些陷阱和隐患。我们在这一章中举例说明了其中的一些：
+
+- [阻塞执行器](pitfalls/blocking-executor.md)
 - [Pin](pitfalls/pin.md)
-- [Async Traits](pitfalls/async-traits.md)
-- [Cancellation](pitfalls/cancellation.md)
+- [异步 Trait](pitfalls/async-traits.md)
+- [取消](pitfalls/cancellation.md)

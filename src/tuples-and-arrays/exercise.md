@@ -1,19 +1,19 @@
 ---
 minutes: 15
+translated_at: '2024-03-26T09:59:52.571Z'
 ---
 
-# Exercise: Nested Arrays
+# 练习：嵌套数组
 
-Arrays can contain other arrays:
+数组可以包含其他数组：
 
 ```rust
 let array = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 ```
 
-What is the type of this variable?
+这个变量的类型是什么？
 
-Use an array such as the above to write a function `transpose` which will
-transpose a matrix (turn rows into columns):
+使用类似上面的数组编写一个函数 `transpose`，它将转置一个矩阵（将行转为列）：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -23,13 +23,12 @@ transpose a matrix (turn rows into columns):
            ⎝⎣7 8 9⎦⎠      ⎣3 6 9⎦
 ```
 
-Hard-code both functions to operate on 3 × 3 matrices.
+硬编码这两个函数以操作 3 × 3 矩阵。
 
-Copy the code below to <https://play.rust-lang.org/> and implement the
-functions:
+将下面的代码复制到 <https://play.rust-lang.org/> 并实现函数：
 
 ```rust,should_panic
-// TODO: remove this when you're done with your implementation.
+// TODO: 在你完成实现后移除这个标记。
 #![allow(unused_variables, dead_code)]
 
 {{#include exercise.rs:transpose}}

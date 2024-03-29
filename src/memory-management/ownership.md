@@ -1,11 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:33:57.607Z'
 ---
 
-# Ownership
+# 所有权
 
-All variable bindings have a _scope_ where they are valid and it is an error to
-use a variable outside its scope:
+所有变量绑定都有一个它们有效的 _作用域_，在作用域之外使用变量是错误的：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -21,16 +21,13 @@ fn main() {
 }
 ```
 
-We say that the variable _owns_ the value. Every Rust value has precisely one
-owner at all times.
+我们说变量 _拥有_ 该值。每个 Rust 值在任何时候都恰好有一个所有者。
 
-At the end of the scope, the variable is _dropped_ and the data is freed. A
-destructor can run here to free up resources.
+在作用域结束时，变量被 _丢弃_（drop），数据也随之被释放。这里可以运行一个析构函数（destructor）来释放资源。
 
 <details>
 
-Students familiar with garbage-collection implementations will know that a
-garbage collector starts with a set of "roots" to find all reachable memory.
-Rust's "single owner" principle is a similar idea.
+熟悉垃圾回收（garbage-collection）实现的学生会知道，垃圾收集器从一组“根”（roots）开始来查找所有可达的内存。
+Rust 的“单一所有者”原则是一个类似的概念。
 
 </details>

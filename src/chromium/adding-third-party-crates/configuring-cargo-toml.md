@@ -1,22 +1,22 @@
-# Configuring the `Cargo.toml` file to add crates
+---
+translated_at: '2024-03-26T11:24:07.223Z'
+---
 
-Chromium has a single set of centrally-managed direct crate dependencies. These
-are managed through a single [`Cargo.toml`][0]:
+# 配置 `Cargo.toml` 文件以添加 crates
+
+Chromium 有一套单一的、集中管理的直接 crate 依赖。这些依赖通过一个 [`Cargo.toml`][0] 管理：
 
 ```toml
 [dependencies]
 bitflags = "1"
 cfg-if = "1"
 cxx = "1"
-# lots more...
+# 还有很多...
 ```
 
-As with any other `Cargo.toml`, you can specify
-[more details about the dependencies][1] --- most commonly, you'll want to
-specify the `features` that you wish to enable in the crate.
+如同任何其他的 `Cargo.toml`，你可以指定[更多关于依赖的详细信息][1] --- 最常见的，你会希望指定你希望在 crate 中启用的 `features`。
 
-When adding a crate to Chromium, you'll often need to provide some extra
-information in an additional file, `gnrt_config.toml`, which we'll meet next.
+当在 Chromium 中添加一个 crate 时，你通常需要在另一个文件 `gnrt_config.toml` 中提供一些额外的信息，接下来我们将介绍这个文件。
 
 [0]: https://source.chromium.org/chromium/chromium/src/+/main:third_party/rust/chromium_crates_io/Cargo.toml
 [1]: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html

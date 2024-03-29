@@ -1,22 +1,17 @@
 ---
 minutes: 2
+translated_at: '2024-03-26T11:01:26.470Z'
 ---
 
-# Macros
+# 宏
 
-Macros are expanded into Rust code during compilation, and can take a variable
-number of arguments. They are distinguished by a `!` at the end. The Rust
-standard library includes an assortment of useful macros.
+宏会在编译期间展开成 Rust 代码，可以接收变化的参数数量。它们通过结尾的 `!` 来区分。Rust 标准库包括了一系列有用的宏。
 
-- `println!(format, ..)` prints a line to standard output, applying formatting
-  described in [`std::fmt`](https://doc.rust-lang.org/std/fmt/index.html).
-- `format!(format, ..)` works just like `println!` but returns the result as a
-  string.
-- `dbg!(expression)` logs the value of the expression and returns it.
-- `todo!()` marks a bit of code as not-yet-implemented. If executed, it will
-  panic.
-- `unreachable!()` marks a bit of code as unreachable. If executed, it will
-  panic.
+- `println!(format, ..)` 将一行内容打印到标准输出，应用在 [`std::fmt`](https://doc.rust-lang.org/std/fmt/index.html) 中描述的格式化。
+- `format!(format, ..)` 的工作方式与 `println!` 相同，但它返回结果为一个字符串。
+- `dbg!(expression)` 记录表达式的值并返回它。
+- `todo!()` 标记一段代码为尚未实现。如果执行，它会 panic。
+- `unreachable!()` 标记一段代码为不可达。如果执行，它会 panic。
 
 ```rust,editable
 fn factorial(n: u32) -> u32 {
@@ -39,11 +34,8 @@ fn main() {
 
 <details>
 
-The takeaway from this section is that these common conveniences exist, and how
-to use them. Why they are defined as macros, and what they expand to, is not
-especially critical.
+本节的要点是这些常见的便利工具存在，以及如何使用它们。它们为什么被定义为宏，以及它们展开成什么，不是特别关键。
 
-The course does not cover defining macros, but a later section will describe use
-of derive macros.
+本课程不涵盖定义宏，但后续章节将描述 derive 宏的使用。
 
 </details>

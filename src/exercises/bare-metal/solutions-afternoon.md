@@ -1,16 +1,20 @@
-# Bare Metal Rust Afternoon
+---
+translated_at: '2024-03-26T10:54:59.356Z'
+---
 
-## RTC driver
+# 赤裸裸的 Rust 下午
 
-([back to exercise](rtc.md))
+## RTC 驱动程序
 
-_main.rs_:
+（[返回到练习](rtc.md)）
+
+_main.rs_：
 
 ```rust,compile_fail
 {{#include rtc/src/main.rs:solution}}
 ```
 
-_pl031.rs_:
+_pl031.rs_：
 
 ```rust
 {{#include rtc/src/pl031.rs:solution}}

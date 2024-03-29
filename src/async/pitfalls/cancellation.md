@@ -1,9 +1,10 @@
-# Cancellation
+---
+translated_at: '2024-03-26T11:50:22.614Z'
+---
 
-Dropping a future implies it can never be polled again. This is called
-_cancellation_ and it can occur at any `await` point. Care is needed to ensure
-the system works correctly even when futures are cancelled. For example, it
-shouldn't deadlock or lose data.
+# 取消
+
+放弃一个 future 意味着它将不再被轮询。这被称为 _取消_，它可以在任何 `await` 点发生。需要小心确保即使 future 被取消，系统也能正确工作。例如，它不应该死锁或丢失数据。
 
 ```rust,editable,compile_fail
 use std::io::{self, ErrorKind};
@@ -69,19 +70,15 @@ async fn main() -> std::io::Result<()> {
 
 <details>
 
-- The compiler doesn't help with cancellation-safety. You need to read API
-  documentation and consider what state your `async fn` holds.
+- 编译器并不帮助确保取消安全性。你需要阅读 API 文档，并考虑你的 `async fn` 保持什么状态。
 
-- Unlike `panic` and `?`, cancellation is part of normal control flow (vs
-  error-handling).
+- 与 `panic` 和 `?` 不同，取消（cancellation）是正常控制流的一部分（相对于错误处理而言）。
 
-- The example loses parts of the string.
+- 该示例丢失了字符串的部分。
 
-  - Whenever the `tick()` branch finishes first, `next()` and its `buf` are
-    dropped.
+  - 无论何时 `tick()` 分支首先结束，`next()` 和它的 `buf` 都会被丢弃。
 
-  - `LinesReader` can be made cancellation-safe by making `buf` part of the
-    struct:
+  - 通过将 `buf` 作为结构体的一部分，可以使 `LinesReader` 对取消操作安全：
     ```rust,compile_fail
     struct LinesReader {
         stream: DuplexStream,
@@ -94,7 +91,7 @@ async fn main() -> std::io::Result<()> {
             Self { stream, bytes: Vec::new(), buf: [0] }
         }
         async fn next(&mut self) -> io::Result<Option<String>> {
-            // prefix buf and bytes with self.
+            // 使用 self. 前缀 buf 和 bytes。
             // ...
             let raw = std::mem::take(&mut self.bytes);
             let s = String::from_utf8(raw)
@@ -104,14 +101,12 @@ async fn main() -> std::io::Result<()> {
     ```
 
 - [`Interval::tick`](https://docs.rs/tokio/latest/tokio/time/struct.Interval.html#method.tick)
-  is cancellation-safe because it keeps track of whether a tick has been
-  'delivered'.
+  是对取消操作安全的，因为它会跟踪是否有 tick 被“送达”。
 
 - [`AsyncReadExt::read`](https://docs.rs/tokio/latest/tokio/io/trait.AsyncReadExt.html#method.read)
-  is cancellation-safe because it either returns or doesn't read data.
+  是对取消操作安全的，因为它要么返回数据，要么不读取数据。
 
 - [`AsyncBufReadExt::read_line`](https://docs.rs/tokio/latest/tokio/io/trait.AsyncBufReadExt.html#method.read_line)
-  is similar to the example and _isn't_ cancellation-safe. See its documentation
-  for details and alternatives.
+  与示例类似，并且_不是_对取消操作安全的。有关详细信息和替代方案，请参阅其文档。
 
 </details>

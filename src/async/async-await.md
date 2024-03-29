@@ -1,13 +1,17 @@
+---
+translated_at: '2024-03-26T11:48:02.257Z'
+---
+
 # `async`/`await`
 
-At a high level, async Rust code looks very much like "normal" sequential code:
+从高层次上来看，异步 Rust 代码看起来非常像“普通”的顺序代码：
 
 ```rust,editable,compile_fail
 use futures::executor::block_on;
 
 async fn count_to(count: i32) {
     for i in 1..=count {
-        println!("Count is: {i}!");
+        println!("数到：{i}！");
     }
 }
 
@@ -22,27 +26,21 @@ fn main() {
 
 <details>
 
-Key points:
+关键点：
 
-- Note that this is a simplified example to show the syntax. There is no long
-  running operation or any real concurrency in it!
+- 注意，这是一个简化的例子，用以展示语法。其中并没有长时间运行的操作，也没有真正的并发！
 
-- What is the return type of an async call?
-  - Use `let future: () = async_main(10);` in `main` to see the type.
+- 异步调用的返回类型是什么？
+  - 在 `main` 中使用 `let future: () = async_main(10);` 来查看类型。
 
-- The "async" keyword is syntactic sugar. The compiler replaces the return type
-  with a future.
+- “async” 关键字是语法糖。编译器将返回类型替换为 future。
 
-- You cannot make `main` async, without additional instructions to the compiler
-  on how to use the returned future.
+- 你不能把 `main` 函数变成异步的，除非给编译器一些额外的指令来说明如何使用返回的 future。
 
-- You need an executor to run async code. `block_on` blocks the current thread
-  until the provided future has run to completion.
+- 你需要一个执行器来运行异步代码。`block_on` 阻塞当前线程，直到提供的 future 完成运行。
 
-- `.await` asynchronously waits for the completion of another operation. Unlike
-  `block_on`, `.await` doesn't block the current thread.
+- `.await` 异步地等待另一个操作的完成。与 `block_on` 不同，`.await` 不会阻塞当前线程。
 
-- `.await` can only be used inside an `async` function (or block; these are
-  introduced later).
+- 只能在 `async` 函数（或稍后介绍的块）内部使用 `.await`。
 
 </details>

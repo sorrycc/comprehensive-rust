@@ -1,6 +1,10 @@
-# Calling Rust
+---
+translated_at: '2024-03-26T11:59:21.394Z'
+---
 
-Exporting Rust functions and types to C is easy:
+# 调用 Rust
+
+将 Rust 函数和类型导出到 C 中非常简单：
 
 _interoperability/rust/libanalyze/analyze.rs_
 
@@ -20,7 +24,7 @@ _interoperability/rust/libanalyze/Android.bp_
 {{#include rust/libanalyze/Android.bp}}
 ```
 
-We can now call this from a C binary:
+我们现在可以从一个 C 二进制文件中调用它：
 
 _interoperability/rust/analyze/main.c_
 
@@ -34,7 +38,7 @@ _interoperability/rust/analyze/Android.bp_
 {{#include rust/analyze/Android.bp}}
 ```
 
-Build, push, and run the binary on your device:
+构建、推送并在你的设备上运行二进制文件：
 
 ```shell
 {{#include ../../build_all.sh:analyze_numbers}}
@@ -42,8 +46,6 @@ Build, push, and run the binary on your device:
 
 <details>
 
-`#[no_mangle]` disables Rust's usual name mangling, so the exported symbol will
-just be the name of the function. You can also use
-`#[export_name = "some_name"]` to specify whatever name you want.
+`#[no_mangle]` 禁用了 Rust 的常规名称改编，所以导出的符号将会是函数的名称。你也可以使用 `#[export_name = "some_name"]` 来指定任何你想要的名字。
 
 </details>

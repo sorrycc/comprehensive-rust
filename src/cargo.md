@@ -1,30 +1,22 @@
-# Using Cargo
+---
+translated_at: '2024-03-26T09:41:25.925Z'
+---
 
-When you start reading about Rust, you will soon meet
-[Cargo](https://doc.rust-lang.org/cargo/), the standard tool used in the Rust
-ecosystem to build and run Rust applications. Here we want to give a brief
-overview of what Cargo is and how it fits into the wider ecosystem and how it
-fits into this training.
+# 使用 Cargo
 
-## Installation
+当你开始阅读 Rust 相关的资料时，你很快就会遇到 [Cargo](https://doc.rust-lang.org/cargo/)，这是 Rust 生态系统中用来构建和运行 Rust 应用程序的标准工具。在这里我们想简要介绍一下 Cargo 是什么，以及它如何融入更广泛的生态系统和本培训中。
 
-> **Please follow the instructions on <https://rustup.rs/>.**
+## 安装
 
-This will give you the Cargo build tool (`cargo`) and the Rust compiler
-(`rustc`). You will also get `rustup`, a command line utility that you can use
-to install to different compiler versions.
+> **请按照 <https://rustup.rs/> 上的说明进行操作。**
 
-After installing Rust, you should configure your editor or IDE to work with
-Rust. Most editors do this by talking to [rust-analyzer], which provides
-auto-completion and jump-to-definition functionality for [VS Code], [Emacs],
-[Vim/Neovim], and many others. There is also a different IDE available called
-[RustRover].
+这将为你提供 Cargo 构建工具（`cargo`）和 Rust 编译器（`rustc`）。你还会得到 `rustup`，一个命令行实用程序，你可以使用它来安装不同版本的编译器。
+
+安装 Rust 之后，你应该配置你的编辑器或 IDE 来兼容 Rust。大多数编辑器通过对话 [rust-analyzer] 来实现这一点，为 [VS Code]、[Emacs]、[Vim/Neovim] 等提供自动补全和跳转到定义的功能。还有另一个叫做 [RustRover] 的不同 IDE 可用。
 
 <details>
 
-- On Debian/Ubuntu, you can also install Cargo, the Rust source and the
-  [Rust formatter] via `apt`. However, this gets you an outdated rust version
-  and may lead to unexpected behavior. The command would be:
+- 在 Debian/Ubuntu 上，你也可以通过 `apt` 安装 Cargo、Rust 源代码和 [Rust 格式化工具]。但是，这会让你得到一个过时的 rust 版本，并可能导致意外的行为。命令如下：
 
   ```shell
   sudo apt install cargo rust-src rustfmt
@@ -37,4 +29,4 @@ auto-completion and jump-to-definition functionality for [VS Code], [Emacs],
 [Emacs]: https://rust-analyzer.github.io/manual.html#emacs
 [Vim/Neovim]: https://rust-analyzer.github.io/manual.html#vimneovim
 [RustRover]: https://www.jetbrains.com/rust/
-[Rust formatter]: https://github.com/rust-lang/rustfmt
+[Rust 格式化工具]: https://github.com/rust-lang/rustfmt

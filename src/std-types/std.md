@@ -1,18 +1,14 @@
 ---
 minutes: 3
+translated_at: '2024-03-26T10:04:12.130Z'
 ---
 
-# Standard Library
+# 标准库
 
-Rust comes with a standard library which helps establish a set of common types
-used by Rust libraries and programs. This way, two libraries can work together
-smoothly because they both use the same `String` type.
+Rust 内置了一个标准库，它帮助建立了一套 Rust 库和程序通用的类型。这样，两个库就能顺畅地一起工作，因为它们都使用相同的 `String` 类型。
 
-In fact, Rust contains several layers of the Standard Library: `core`, `alloc`
-and `std`.
+实际上，Rust 包含了几层标准库：`core`、`alloc` 和 `std`。
 
-- `core` includes the most basic types and functions that don't depend on
-  `libc`, allocator or even the presence of an operating system.
-- `alloc` includes types which require a global heap allocator, such as `Vec`,
-  `Box` and `Arc`.
-- Embedded Rust applications often only use `core`, and sometimes `alloc`.
+- `core` 包含了最基本的类型和函数，这些不依赖于 `libc`、分配器或甚至操作系统的存在。
+- `alloc` 包含了需要全局堆分配器的类型，例如 `Vec`、`Box` 和 `Arc`。
+- 嵌入式 Rust 应用程序经常只使用 `core`，有时候会使用 `alloc`。

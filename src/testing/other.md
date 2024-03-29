@@ -1,14 +1,15 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:01:45.265Z'
 ---
 
-# Other Types of Tests
+# 其他类型的测试
 
-## Integration Tests
+## 集成测试
 
-If you want to test your library as a client, use an integration test.
+如果你想作为客户端测试你的库，请使用集成测试。
 
-Create a `.rs` file under `tests/`:
+在 `tests/` 下创建一个 `.rs` 文件：
 
 ```rust,ignore
 // tests/my_library.rs
@@ -20,14 +21,14 @@ fn test_init() {
 }
 ```
 
-These tests only have access to the public API of your crate.
+这些测试只能访问你的 crate 的公共 API。
 
-## Documentation Tests
+## 文档测试
 
-Rust has built-in support for documentation tests:
+Rust 内置了对文档测试的支持：
 
 ````rust
-/// Shortens a string to the given length.
+/// 将字符串缩短到给定长度。
 ///
 /// ```
 /// # use playground::shorten_string;
@@ -39,9 +40,7 @@ pub fn shorten_string(s: &str, length: usize) -> &str {
 }
 ````
 
-- Code blocks in `///` comments are automatically seen as Rust code.
-- The code will be compiled and executed as part of `cargo test`.
-- Adding `#` in the code will hide it from the docs, but will still compile/run
-  it.
-- Test the above code on the
-  [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3ce2ad13ea1302f6572cb15cd96becf0).
+- 在 `///` 注释中的代码块会自动被视为 Rust 代码。
+- 该代码将作为 `cargo test` 的一部分被编译和执行。
+- 在代码中添加 `#` 会从文档中隐藏它，但仍然会编译/运行它。
+- 在 [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=3ce2ad13ea1302f6572cb15cd96becf0) 上测试上述代码。

@@ -1,59 +1,51 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:22:03.570Z'
 ---
 
-# Matching Values
+# 匹配值
 
-The `match` keyword lets you match a value against one or more _patterns_. The
-comparisons are done from top to bottom and the first match wins.
+`match` 关键字允许你将一个值与一个或多个 _模式_ 相匹配。比较会从上到下进行，且首个匹配成功的会胜出。
 
-The patterns can be simple values, similarly to `switch` in C and C++:
+模式可以是简单值，类似 C 和 C++ 中的 `switch`：
 
 ```rust,editable
 #[rustfmt::skip]
 fn main() {
     let input = 'x';
     match input {
-        'q'                       => println!("Quitting"),
-        'a' | 's' | 'w' | 'd'     => println!("Moving around"),
-        '0'..='9'                 => println!("Number input"),
-        key if key.is_lowercase() => println!("Lowercase: {key}"),
-        _                         => println!("Something else"),
+        'q'                       => println!("退出"),
+        'a' | 's' | 'w' | 'd'     => println!("移动"),
+        '0'..='9'                 => println!("数字输入"),
+        key if key.is_lowercase() => println!("小写字母: {key}"),
+        _                         => println!("其他内容"),
     }
 }
 ```
 
-The `_` pattern is a wildcard pattern which matches any value. The expressions
-_must_ be exhaustive, meaning that it covers every possibility, so `_` is often
-used as the final catch-all case.
+`_` 模式是一个通配符模式，它可以匹配任何值。表达式 _必须_ 要穷尽所有可能，这意味着它要覆盖所有情况，所以 `_` 经常被用作最后的捕获所有情况的情况。
 
-Match can be used as an expression. Just like `if`, each match arm must have the
-same type. The type is the last expression of the block, if any. In the example
-above, the type is `()`.
+Match 可以被用作表达式。就像 `if`，每个 match 分支必须有相同的类型。类型是块的最后一个表达式，如果有的话。在上面的例子中，类型是 `()`。
 
-A variable in the pattern (`key` in this example) will create a binding that can
-be used within the match arm.
+模式中的变量（这个例子中的 `key`）将创建一个可以在 match 分支内使用的绑定。
 
-A match guard causes the arm to match only if the condition is true.
+匹配卫士使得分支只有在条件为真时才匹配。
 
 <details>
 
-Key Points:
+关键点：
 
-- You might point out how some specific characters are being used when in a
-  pattern
-  - `|` as an `or`
-  - `..` can expand as much as it needs to be
-  - `1..=5` represents an inclusive range
-  - `_` is a wild card
+- 你可能要指出在模式中一些特定字符的使用
+  - `|` 作为一个 `或`
+  - `..` 可以扩展到它需要的程度
+  - `1..=5` 表示一个包含性范围
+  - `_` 是一个通配符
 
-- Match guards as a separate syntax feature are important and necessary when we
-  wish to concisely express more complex ideas than patterns alone would allow.
-- They are not the same as separate `if` expression inside of the match arm. An
-  `if` expression inside of the branch block (after `=>`) happens after the
-  match arm is selected. Failing the `if` condition inside of that block won't
-  result in other arms of the original `match` expression being considered.
-- The condition defined in the guard applies to every expression in a pattern
-  with an `|`.
+- 匹配卫士作为一个单独的语法特性很重要，当我们希望简洁地表达比单凭模式允许的更复杂的思想时，它是必要的。
+- 它们与 match 分支内的单独 `if` 表达式不同。分支块内部（在 `=>` 之后的）的 `if` 表达式是在选择 match 分支之后发生的。在该块内部未通过 `if` 条件不会导致考虑原始 `match` 表达式的其他分支。
+- 卫士中定义的条件适用于模式中的每一个表达式
+
+
+与 `|` 一起使用。
 
 </details>

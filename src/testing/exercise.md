@@ -1,33 +1,27 @@
 ---
 minutes: 30
+translated_at: '2024-03-26T10:02:35.856Z'
 ---
 
-# Exercise: Luhn Algorithm
+# 练习：Luhn 算法
 
-# Luhn Algorithm
+# Luhn 算法
 
-The [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm) is used to
-validate credit card numbers. The algorithm takes a string as input and does the
-following to validate the credit card number:
+[Luhn 算法](https://en.wikipedia.org/wiki/Luhn_algorithm) 用于验证信用卡号。该算法接受一个字符串作为输入，并执行以下操作来验证信用卡号：
 
-- Ignore all spaces. Reject number with fewer than two digits.
+- 忽略所有空格。如果数字少于两位，则拒绝该数字。
 
-- Moving from **right to left**, double every second digit: for the number
-  `1234`, we double `3` and `1`. For the number `98765`, we double `6` and `8`.
+- 从**右向左**移动，对每个第二个数字加倍：对于数字 `1234`，我们加倍 `3` 和 `1`。对于数字 `98765`，我们加倍 `6` 和 `8`。
 
-- After doubling a digit, sum the digits if the result is greater than 9. So
-  doubling `7` becomes `14` which becomes `1 + 4 = 5`.
+- 加倍一个数字后，如果结果大于 9，则将这些数字相加。因此，加倍 `7` 得到 `14`，然后变成 `1 + 4 = 5`。
 
-- Sum all the undoubled and doubled digits.
+- 将未加倍和已加倍的数字全部相加。
 
-- The credit card number is valid if the sum ends with `0`.
+- 如果总和以 `0` 结尾，则信用卡号有效。
 
-The provided code provides a buggy implementation of the luhn algorithm, along
-with two basic unit tests that confirm that most the algorithm is implemented
-correctly.
+提供的代码提供了 Luhn 算法的一个错误实现，以及两个基本的单元测试，确认算法大部分被正确实现。
 
-Copy the code below to <https://play.rust-lang.org/> and write additional tests
-to uncover bugs in the provided implementation, fixing any bugs you find.
+将下面的代码复制到 <https://play.rust-lang.org/> 并编写额外的测试以发现提供实现中的错误，修复你找到的任何错误。
 
 ```rust
 {{#include exercise.rs:luhn}}

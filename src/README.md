@@ -1,11 +1,9 @@
-# Course Content
+---
+translated_at: '2024-03-26T09:45:56.597Z'
+---
 
-The files in this directory make up the content of the course. The files here
-can include third-party content from `../third_party/` as well.
+# 课程内容
 
-When we publish a translation of the course, we `git restore` the `src/` and
-`third_party/` directories at the repository root back to the date listed in the
-POT-Creation-Date header of the translation. **It is crucial, that all
-translatable content lives in those two directories.** The other files (such as
-`book.toml` and `theme/`) are not restored and we always use the latest version
-of them.
+此目录中的文件构成了课程的内容。这些文件也可以包括来自 `../third_party/` 的第三方内容。
+
+在我们发布课程的翻译版时，我们会用 `git restore` 命令将版本库根目录下的 `src/` 和 `third_party/` 目录恢复到翻译中列出的 POT-Creation-Date 头部标识的日期。**至关重要的是，所有可翻译的内容都存在于这两个目录中。** 其他文件（例如 `book.toml` 和 `theme/`）不会被恢复，我们总是使用他们的最新版本。

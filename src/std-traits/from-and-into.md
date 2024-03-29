@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:09:14.264Z'
 ---
 
-# `From` and `Into`
+# `From` 和 `Into`
 
-Types implement [`From`][1] and [`Into`][2] to facilitate type conversions:
+类型实现 [`From`][1] 和 [`Into`][2] 来促进类型转换：
 
 ```rust,editable
 fn main() {
@@ -16,7 +17,7 @@ fn main() {
 }
 ```
 
-[`Into`][2] is automatically implemented when [`From`][1] is implemented:
+当实现了 [`From`][1] 时，[`Into`][2] 会自动被实现：
 
 ```rust,editable
 fn main() {
@@ -30,12 +31,8 @@ fn main() {
 
 <details>
 
-- That's why it is common to only implement `From`, as your type will get `Into`
-  implementation too.
-- When declaring a function argument input type like "anything that can be
-  converted into a `String`", the rule is opposite, you should use `Into`. Your
-  function will accept types that implement `From` and those that _only_
-  implement `Into`.
+- 这就是为什么通常只需要实现 `From`，因为你的类型也会自动实现 `Into`。
+- 当声明一个函数参数输入类型，如“可以转换成 `String` 的任何类型”时，规则是相反的，你应该使用 `Into`。你的函数将会接受实现了 `From` 的类型，以及那些_只_实现了 `Into` 的类型。
 
 </details>
 

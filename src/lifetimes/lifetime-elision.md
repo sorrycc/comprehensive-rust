@@ -1,21 +1,15 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:39:20.378Z'
 ---
 
-# Lifetimes in Function Calls
+# 函数调用中的生命周期
 
-Lifetimes for function arguments and return values must be fully specified, but
-Rust allows lifetimes to be elided in most cases with
-[a few simple rules](https://doc.rust-lang.org/nomicon/lifetime-elision.html).
-This is not inference -- it is just a syntactic shorthand.
+函数参数和返回值的生命周期必须被完全指定，但 Rust 允许在大多数情况下省略生命周期，通过[一些简单的规则](https://doc.rust-lang.org/nomicon/lifetime-elision.html)。这不是推断——它只是一种语法简写。
 
-- Each argument which does not have a lifetime annotation is given one.
-- If there is only one argument lifetime, it is given to all un-annotated return
-  values.
-- If there are multiple argument lifetimes, but the first one is for `self`,
-  that lifetime is given to all un-annotated return values.
-
-<!-- mdbook-xgettext: skip -->
+- 没有生命周期注解的每个参数都会被赋予一个生命周期。
+- 如果只有一个参数生命周期，它将被赋予所有未注解的返回值。
+- 如果有多个参数生命周期，但第一个参数是 `self`，那个生命周期将被赋予所有未注解的返回值。
 
 ```rust,editable
 #[derive(Debug)]
@@ -53,25 +47,18 @@ fn main() {
 
 <details>
 
-In this example, `cab_distance` is trivially elided.
+在这个示例中，`cab_distance` 的生命周期被轻松省略了。
 
-The `nearest` function provides another example of a function with multiple
-references in its arguments that requires explicit annotation.
+`nearest` 函数提供了另一个需要显式注解的函数示例，该函数在其参数中包含多个引用。
 
-Try adjusting the signature to "lie" about the lifetimes returned:
+尝试调整签名以“说谎”关于返回的生命周期：
 
 ```rust,ignore
 fn nearest<'a, 'q>(points: &'a [Point], query: &'q Point) -> Option<&'q Point> {
 ```
 
-This won't compile, demonstrating that the annotations are checked for validity
-by the compiler. Note that this is not the case for raw pointers (unsafe), and
-this is a common source of errors with unsafe Rust.
+这将无法编译，演示了注解会被编译器检查有效性。注意，对于原始指针（不安全）来说，情况并非如此，这是不安全 Rust 中的一个常见错误来源。
 
-Students may ask when to use lifetimes. Rust borrows _always_ have lifetimes.
-Most of the time, elision and type inference mean these don't need to be written
-out. In more complicated cases, lifetime annotations can help resolve ambiguity.
-Often, especially when prototyping, it's easier to just work with owned data by
-cloning values where necessary.
+学生们可能会问何时使用生命周期。Rust 借用**始终**具有生命周期。
 
-</details>
+大多数情况下，省略和类型推导意味着这些无需明确写出。在更复杂的情形下，生命周期注释可以帮助解决歧义。通常，尤其是在原型阶段，使用克隆值来操作所拥有的数据会更简单。

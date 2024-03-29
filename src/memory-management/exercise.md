@@ -1,14 +1,13 @@
 ---
 minutes: 20
+translated_at: '2024-03-26T10:35:14.469Z'
 ---
 
-# Exercise: Builder Type
+# 练习：构造器类型
 
-In this example, we will implement a complex data type that owns all of its
-data. We will use the "builder pattern" to support building a new value
-piece-by-piece, using convenience functions.
+在这个例子中，我们将实现一个复杂的数据类型，它拥有自己的所有数据。我们将使用“构造器模式”来支持逐步构建一个新值，使用便利函数。
 
-Fill in the missing pieces.
+填写缺失的部分。
 
 ```rust,should_panic,editable
 {{#include exercise.rs:Package}}

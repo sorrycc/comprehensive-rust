@@ -1,27 +1,26 @@
 ---
 minutes: 15
+translated_at: '2024-03-26T10:28:55.714Z'
 ---
 
-# Traits
+# 特性
 
-Rust lets you abstract over types with traits. They're similar to interfaces:
+Rust 允许你使用特性（traits）来抽象不同的类型。它们类似于接口：
 
 ```rust,editable
 trait Pet {
-    /// Return a sentence from this pet.
+    /// 返回这个宠物的一句话。
     fn talk(&self) -> String;
 
-    /// Print a string to the terminal greeting this pet.
+    /// 向终端打印一句问候这个宠物的话。
     fn greet(&self);
 }
 ```
 
 <details>
 
-- A trait defines a number of methods that types must have in order to implement
-  the trait.
+- 特性定义了类型必须具备的一些方法，才能实现该特性。
 
-- In the "Generics" segment, next, we will see how to build functionality that
-  is generic over all types implementing a trait.
+- 在接下来的 “泛型” 环节中，我们将看到如何构建对所有实现了特性的类型通用的功能。
 
 </details>

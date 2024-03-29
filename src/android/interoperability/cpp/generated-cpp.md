@@ -1,4 +1,8 @@
-# Generated C++
+---
+translated_at: '2024-03-26T12:02:06.220Z'
+---
+
+# 生成的 C++
 
 ```rust,ignore
 #[cxx::bridge]
@@ -7,7 +11,7 @@ mod ffi {
 }
 ```
 
-Results in (roughly) the following C++:
+大致会生成以下的 C++ 代码：
 
 ```cpp
 struct MultiBuf final : public ::rust::Opaque {

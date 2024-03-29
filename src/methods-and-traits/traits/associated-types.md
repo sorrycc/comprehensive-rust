@@ -1,7 +1,10 @@
-# Associated Types
+---
+translated_at: '2024-03-26T10:32:39.366Z'
+---
 
-Associated types are placeholder types which are supplied by the trait
-implementation.
+# 关联类型
+
+关联类型是占位符类型，由 trait 实现提供。
 
 ```rust,editable
 #[derive(Debug)]
@@ -28,10 +31,8 @@ fn main() {
 
 <details>
 
-- Associated types are sometimes also called "output types". The key observation
-  is that the implementer, not the caller, chooses this type.
+- 关联类型有时也被称为“输出类型”。关键的观察是，选择这种类型的是实现者，而不是调用者。
 
-- Many standard library traits have associated types, including arithmetic
-  operators and `Iterator`.
+- 许多标准库的 traits 都有关联类型，包括算术运算符和 `Iterator`。
 
 </details>

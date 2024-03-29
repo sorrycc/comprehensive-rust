@@ -1,7 +1,10 @@
-# Example Bindings
+---
+translated_at: '2024-03-26T11:18:25.370Z'
+---
 
-CXX requires that the whole C++/Rust boundary is declared in `cxx::bridge`
-modules inside `.rs` source code.
+# 示例绑定
+
+CXX 要求在 `.rs` 源代码文件内的 `cxx::bridge` 模块中声明整个 C++/Rust 边界。
 
 ```rust,ignore
 {{#include ../../../third_party/cxx/book/snippets.rs:cxx_overview}}
@@ -9,19 +12,14 @@ modules inside `.rs` source code.
 
 <details>
 
-Point out:
+指出：
 
-- Although this looks like a regular Rust `mod`, the `#[cxx::bridge]` procedural
-  macro does complex things to it. The generated code is quite a bit more
-  sophisticated - though this does still result in a `mod` called `ffi` in your
-  code.
-- Native support for C++'s `std::unique_ptr` in Rust
-- Native support for Rust slices in C++
-- Calls from C++ to Rust, and Rust types (in the top part)
-- Calls from Rust to C++, and C++ types (in the bottom part)
+- 虽然这看起来像一个常规的 Rust `mod`，但 `#[cxx::bridge]` 过程宏对它进行了复杂的处理。生成的代码要复杂得多 - 尽管这确实在你的代码中生成了一个名为 `ffi` 的 `mod`。
+- Rust 中对 C++ 的 `std::unique_ptr` 的原生支持
+- C++ 中对 Rust 切片的原生支持
+- 从 C++ 调用 Rust，以及 Rust 类型（在顶部部分）
+- 从 Rust 调用 C++，以及 C++ 类型（在底部部分）
 
-**Common misconception**: It _looks_ like a C++ header is being parsed by Rust,
-but this is misleading. This header is never interpreted by Rust, but simply
-`#include`d in the generated C++ code for the benefit of C++ compilers.
+**常见误解**：它 _看起来_ 像是 Rust 正在解析一个 C++ 头文件，但这是误导。这个头文件从未被 Rust 解释，而只是在生成的 C++ 代码中被 `#include`，以便于 C++ 编译器使用。
 
 </details>

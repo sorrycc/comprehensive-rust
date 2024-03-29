@@ -1,11 +1,11 @@
 ---
 minutes: 2
+translated_at: '2024-03-26T10:36:52.723Z'
 ---
 
-# Clone
+# 克隆
 
-Sometimes you _want_ to make a copy of a value. The `Clone` trait accomplishes
-this.
+有时候你_想要_复制一个值。“Clone” 特性就是为了完成这个目的。
 
 ```rust,editable
 #[derive(Default)]
@@ -24,10 +24,8 @@ impl Backends {
 
 <details>
 
-The idea of `Clone` is to make it easy to spot where heap allocations are
-occurring. Look for `.clone()` and a few others like `Vec::new` or `Box::new`.
+“Clone”的理念是为了让人更容易发现堆分配是在哪里发生的。寻找 `.clone()` 和一些其他的方法，比如 `Vec::new` 或 `Box::new`。
 
-It's common to "clone your way out" of problems with the borrow checker, and
-return later to try to optimize those clones away.
+通常会通过“克隆出路”来解决借用检查器的问题，然后回过头来尝试优化这些克隆。
 
 </details>

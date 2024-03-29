@@ -1,7 +1,10 @@
-# GN Rules for Rust Tests
+---
+translated_at: '2024-03-26T11:16:54.232Z'
+---
 
-The simplest way to build Rust `gtest` tests is to add them to an existing test
-binary that already contains tests authored in C++. For example:
+# GN 规则用于 Rust 测试
+
+构建 Rust `gtest` 测试的最简单方法是将它们添加到已经包含用 C++ 编写的测试的现有测试二进制文件中。例如：
 
 ```gn
 test("ui_base_unittests") {
@@ -11,8 +14,7 @@ test("ui_base_unittests") {
 }
 ```
 
-Authoring Rust tests in a separate `static_library` also works, but requires
-manually declaring the dependency on the support libraries:
+在一个单独的 `static_library` 中撰写 Rust 测试也是可行的，但需要手动声明对支持库的依赖：
 
 ```gn
 rust_static_library("my_rust_lib_unittests") {

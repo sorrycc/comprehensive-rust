@@ -1,21 +1,18 @@
-# Async Traits
+---
+translated_at: '2024-03-26T11:52:43.948Z'
+---
 
-Async methods in traits are were stabilized only recently, in the 1.75 release.
-This required support for using return-position `impl Trait` (RPIT) in traits,
-as the desugaring for `async fn` includes `-> impl Future<Output = ...>`.
+# 异步特性
 
-However, even with the native support today there are some pitfalls around
-`async fn` and RPIT in traits:
+在特性中使用异步方法直至最近才被稳定化，在 1.75 版本中。这要求对特性使用返回位置的 `impl Trait`（RPIT）的支持，因为 `async fn` 的语法糖包括 `-> impl Future<Output = ...>`。
 
-- Return-position impl Trait captures all in-scope lifetimes (so some patterns
-  of borrowing cannot be expressed)
+然而，即使在今天有了原生支持，围绕特性中的 `async fn` 和 RPIT 仍有一些陷阱：
 
-- Traits whose methods use return-position `impl trait` or `async` are not `dyn`
-  compatible.
+- 返回位置的 impl Trait 捕获所有作用域生命周期（因此无法表达某些借用模式）
+  
+- 其方法使用返回位置的 `impl trait` 或 `async` 的特性不兼容 `dyn`。
 
-If we do need `dyn` support, the crate
-[async_trait](https://docs.rs/async-trait/latest/async_trait/) provides a
-workaround through a macro, with some caveats:
+如果我们确实需要 `dyn` 支持，crates [async_trait](https://docs.rs/async-trait/latest/async_trait/) 通过宏提供了一种解决方法，不过它有一些注意事项：
 
 ```rust,editable,compile_fail
 use async_trait::async_trait;
@@ -43,11 +40,11 @@ async fn run_all_sleepers_multiple_times(
     n_times: usize,
 ) {
     for _ in 0..n_times {
-        println!("running all sleepers..");
+        println!("正在运行所有的 sleeper..");
         for sleeper in &sleepers {
             let start = Instant::now();
             sleeper.sleep().await;
-            println!("slept for {}ms", start.elapsed().as_millis());
+            println!("睡眠了 {}ms", start.elapsed().as_millis());
         }
     }
 }
@@ -64,16 +61,11 @@ async fn main() {
 
 <details>
 
-- `async_trait` is easy to use, but note that it's using heap allocations to
-  achieve this. This heap allocation has performance overhead.
+- `async_trait` 易于使用，但请注意，它使用堆分配来实现这一点。这种堆分配有性能开销。
 
-- The challenges in language support for `async trait` are deep Rust and
-  probably not worth describing in-depth. Niko Matsakis did a good job of
-  explaining them in
-  [this post](https://smallcultfollowing.com/babysteps/blog/2019/10/26/async-fn-in-traits-are-hard/)
-  if you are interested in digging deeper.
+- `async trait` 的语言支持挑战深入到 Rust 的深处，可能不值得深入描述。如果您有兴趣深入了解，Niko Matsakis 在 [这篇帖子](https://smallcultfollowing.com/babysteps/blog/2019/10/26/async-fn-in-traits-are-hard/) 中解释得很好。
 
-- Try creating a new sleeper struct that will sleep for a random amount of time
-  and adding it to the Vec.
+
+- 尝试创建一个新的 sleeper 结构体，让它随机休眠一段时间，并将其添加到 Vec 中。
 
 </details>

@@ -1,8 +1,10 @@
-# Blocking the executor
+---
+translated_at: '2024-03-26T11:51:34.492Z'
+---
 
-Most async runtimes only allow IO tasks to run concurrently. This means that CPU
-blocking tasks will block the executor and prevent other tasks from being
-executed. An easy workaround is to use async equivalent methods where possible.
+# 阻塞执行器
+
+大多数异步运行时只允许 IO 任务并发运行。这意味着 CPU 阻塞任务将会阻塞执行器，阻止其他任务的执行。一个简单的解决办法是尽可能使用异步等效方法。
 
 ```rust,editable,compile_fail
 use futures::future::join_all;
@@ -11,7 +13,7 @@ use std::time::Instant;
 async fn sleep_ms(start: &Instant, id: u64, duration_ms: u64) {
     std::thread::sleep(std::time::Duration::from_millis(duration_ms));
     println!(
-        "future {id} slept for {duration_ms}ms, finished after {}ms",
+        "future {id} 睡眠了 {duration_ms}ms，完成于 {}ms",
         start.elapsed().as_millis()
     );
 }
@@ -26,25 +28,16 @@ async fn main() {
 
 <details>
 
-- Run the code and see that the sleeps happen consecutively rather than
-  concurrently.
+- 运行代码并注意到 sleep 操作是连续发生的，而不是并发的。
 
-- The `"current_thread"` flavor puts all tasks on a single thread. This makes
-  the effect more obvious, but the bug is still present in the multi-threaded
-  flavor.
+- `"current_thread"` 模式将所有任务都放在单个线程上。这使得效果更加明显，但在多线程模式下，这个问题仍然存在。
 
-- Switch the `std::thread::sleep` to `tokio::time::sleep` and await its result.
+- 将 `std::thread::sleep` 替换为 `tokio::time::sleep` 并等待它的结果。
 
-- Another fix would be to `tokio::task::spawn_blocking` which spawns an actual
-  thread and transforms its handle into a future without blocking the executor.
+- 另一个解决办法是使用 `tokio::task::spawn_blocking`，它会生成一个实际的线程，并将它的句柄转化为未来，而不会阻塞执行器。
 
-- You should not think of tasks as OS threads. They do not map 1 to 1 and most
-  executors will allow many tasks to run on a single OS thread. This is
-  particularly problematic when interacting with other libraries via FFI, where
-  that library might depend on thread-local storage or map to specific OS
-  threads (e.g., CUDA). Prefer `tokio::task::spawn_blocking` in such situations.
+- 你不应该将任务视为 OS 线程。它们之间没有 1 对 1 的映射，大多数执行器会允许许多任务在单个 OS 线程上运行。特别是在通过 FFI 与其他库交互时，这就成问题了，因为那些库可能依赖于线程本地存储或映射到特定的 OS 线程（例如 CUDA）。在这种情况下，推荐使用 `tokio::task::spawn_blocking`。
 
-- Use sync mutexes with care. Holding a mutex over an `.await` may cause another
-  task to block, and that task may be running on the same thread.
+- 小心使用同步互斥锁。在 `.await` 上持有互斥锁可能会导致另一个任务阻塞，而且那个任务可能在同一个线程上运行。
 
 </details>

@@ -1,29 +1,18 @@
 ---
 session: Afternoon
+translated_at: '2024-03-26T09:42:59.762Z'
 ---
 
-# Async Rust
+# 异步 Rust
 
-"Async" is a concurrency model where multiple tasks are executed concurrently by
-executing each task until it would block, then switching to another task that is
-ready to make progress. The model allows running a larger number of tasks on a
-limited number of threads. This is because the per-task overhead is typically
-very low and operating systems provide primitives for efficiently identifying
-I/O that is able to proceed.
+"异步" 是一种并发模型，通过执行每个任务直到它将要阻塞，然后切换到准备好继续执行的另一个任务，从而使多个任务并发执行。该模型允许在有限数量的线程上运行更多的任务。这是因为每个任务的开销通常非常低，且操作系统提供了高效识别可进行 I/O 的原语。
 
-Rust's asynchronous operation is based on "futures", which represent work that
-may be completed in the future. Futures are "polled" until they signal that they
-are complete.
+Rust 的异步操作基于 "Futures"，它代表将来可能完成的工作。Future 被 "轮询" 直到它们表明自己已经完成。
 
-Futures are polled by an async runtime, and several different runtimes are
-available.
+Future 由异步运行时轮询，有几种不同的运行时可供选择。
 
-## Comparisons
+## 对比
 
-- Python has a similar model in its `asyncio`. However, its `Future` type is
-  callback-based, and not polled. Async Python programs require a "loop",
-  similar to a runtime in Rust.
+- Python 在其 `asyncio` 中有类似的模型。但是，它的 `Future` 类型是基于回调的，而不是被轮询的。异步 Python 程序需要一个 "循环"，类似于 Rust 中的运行时。
 
-- JavaScript's `Promise` is similar, but again callback-based. The language
-  runtime implements the event loop, so many of the details of Promise
-  resolution are hidden.
+- JavaScript 的 `Promise` 是相似的，但同样基于回调。语言运行时实现了事件循环，因此许多关于 Promise 解析的细节被隐藏了。

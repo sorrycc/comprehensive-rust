@@ -1,6 +1,10 @@
-# Scoped Threads
+---
+translated_at: '2024-03-26T11:06:05.966Z'
+---
 
-Normal threads cannot borrow from their environment:
+# 作用域线程
+
+普通线程不能从其环境中借用：
 
 ```rust,editable,compile_fail
 use std::thread;
@@ -17,7 +21,7 @@ fn main() {
 }
 ```
 
-However, you can use a [scoped thread][1] for this:
+然而，你可以使用[作用域线程][1]来实现这一点：
 
 ```rust,editable
 use std::thread;
@@ -37,9 +41,7 @@ fn main() {
 
 <details>
 
-- The reason for that is that when the `thread::scope` function completes, all
-  the threads are guaranteed to be joined, so they can return borrowed data.
-- Normal Rust borrowing rules apply: you can either borrow mutably by one
-  thread, or immutably by any number of threads.
+- 其原因在于当 `thread::scope` 函数完成时，所有线程都保证会被 join，所以它们能够返回借用的数据。
+- 正常的 Rust 借用规则依然适用：你可以由一个线程可变借用，或者由任意数量的线程不可变借用。
 
 </details>

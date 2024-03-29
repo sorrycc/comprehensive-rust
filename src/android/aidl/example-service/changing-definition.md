@@ -1,19 +1,22 @@
-# Changing API
+---
+translated_at: '2024-03-26T12:11:20.362Z'
+---
 
-Let us extend the API with more functionality: we want to let clients specify a
-list of lines for the birthday card:
+# 更改 API
+
+让我们扩展 API，增加更多功能：我们希望允许客户指定一系列生日卡片上的文字：
 
 ```java
 package com.example.birthdayservice;
 
-/** Birthday service interface. */
+/** 生日服务接口。*/
 interface IBirthdayService {
-    /** Generate a Happy Birthday message. */
+    /** 生成一个生日快乐消息。*/
     String wishHappyBirthday(String name, int years, in String[] text);
 }
 ```
 
-This results in an updated trait definition for `IBirthdayService`:
+这导致了 `IBirthdayService` 特征定义的更新：
 
 ```rust,ignore
 trait IBirthdayService {
@@ -28,11 +31,9 @@ trait IBirthdayService {
 
 <details>
 
-- Note how the `String[]` in the AIDL definition is translated as a `&[String]`
-  in Rust, i.e. that idiomatic Rust types are used in the generated bindings
-  wherever possible:
-  - `in` array arguments are translated to slices.
-  - `out` and `inout` args are translated to `&mut Vec<T>`.
-  - Return values are translated to returning a `Vec<T>`.
+- 注意，AIDL 定义中的 `String[]` 如何被翻译为 Rust 中的 `&[String]`，即在生成的绑定中尽可能使用惯用的 Rust 类型：
+  - `in` 数组参数被翻译为切片。
+  - `out` 和 `inout` 参数被翻译为 `&mut Vec<T>`。
+  - 返回值被翻译为返回一个 `Vec<T>`。
 
 </details>

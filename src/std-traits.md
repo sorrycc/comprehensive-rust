@@ -1,12 +1,15 @@
-# Standard Library Traits
+---
+translated_at: '2024-03-26T09:34:23.692Z'
+---
+
+# 标准库特性
 
 {{%segment outline}}
 
 <details>
 
-As with the standard-library types, spend time reviewing the documentation for
-each trait.
+与标准库类型一样，花时间回顾每个特性的文档。
 
-This section is long. Take a break midway through.
+这一部分很长。中途休息一下。
 
 </details>

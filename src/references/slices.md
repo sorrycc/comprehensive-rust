@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:19:25.683Z'
 ---
 
-# Slices
+# 切片
 
-A slice gives you a view into a larger collection:
+切片为您提供了对更大集合的视图：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -19,34 +20,23 @@ fn main() {
 }
 ```
 
-- Slices borrow data from the sliced type.
-- Question: What happens if you modify `a[3]` right before printing `s`?
+- 切片从被切类型那里借用数据。
+- 问题：如果在打印 `s` 之前修改了 `a[3]`，会发生什么情况？
 
 <details>
 
-- We create a slice by borrowing `a` and specifying the starting and ending
-  indexes in brackets.
+- 我们通过借用 `a` 并在方括号中指定起始和结束索引来创建一个切片。
 
-- If the slice starts at index 0, Rust’s range syntax allows us to drop the
-  starting index, meaning that `&a[0..a.len()]` and `&a[..a.len()]` are
-  identical.
+- 如果切片从索引 0 开始，Rust 的范围语法允许我们省略起始索引，这意味着 `&a[0..a.len()]` 和 `&a[..a.len()]` 是相同的。
 
-- The same is true for the last index, so `&a[2..a.len()]` and `&a[2..]` are
-  identical.
+- 对于最后一个索引也是如此，所以 `&a[2..a.len()]` 和 `&a[2..]` 是相同的。
 
-- To easily create a slice of the full array, we can therefore use `&a[..]`.
+- 若要轻松创建整个数组的切片，我们可以使用 `&a[..]`。
 
-- `s` is a reference to a slice of `i32`s. Notice that the type of `s`
-  (`&[i32]`) no longer mentions the array length. This allows us to perform
-  computation on slices of different sizes.
+- `s` 是对 `i32` 切片的引用。请注意 `s` 的类型（`&[i32]`）不再提及数组长度。这使我们能够对不同大小的切片执行计算。
 
-- Slices always borrow from another object. In this example, `a` has to remain
-  'alive' (in scope) for at least as long as our slice.
+- 切片总是从另一个对象借用。在这个例子中，`a` 必须至少保持 “活着”（在作用域内），直到我们的切片不再使用。
 
-- The question about modifying `a[3]` can spark an interesting discussion, but
-  the answer is that for memory safety reasons you cannot do it through `a` at
-  this point in the execution, but you can read the data from both `a` and `s`
-  safely. It works before you created the slice, and again after the `println`,
-  when the slice is no longer used.
+- 关于修改 `a[3]` 的问题可以引发有趣的讨论，但答案是出于内存安全的原因，此时通过 `a` 你不能进行修改，但你可以安全地从 `a` 和 `s` 读取数据。在你创建切片之前它是可行的，以及在 `println` 之后，当切片不再被使用时，它再次变得可行。
 
 </details>

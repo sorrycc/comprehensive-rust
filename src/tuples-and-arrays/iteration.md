@@ -1,10 +1,11 @@
 ---
 minutes: 3
+translated_at: '2024-03-26T09:59:31.527Z'
 ---
 
-# Array Iteration
+# 数组迭代
 
-The `for` statement supports iterating over arrays (but not tuples).
+`for` 语句支持迭代数组（但不支持元组）。
 
 ```rust,editable
 fn main() {
@@ -19,11 +20,8 @@ fn main() {
 
 <details>
 
-This functionality uses the `IntoIterator` trait, but we haven't covered that
-yet.
+这个功能使用了 `IntoIterator` 特征，但我们还没有覆盖到这一点。
 
-The `assert_ne!` macro is new here. There are also `assert_eq!` and `assert!`
-macros. These are always checked while, debug-only variants like `debug_assert!`
-compile to nothing in release builds.
+这里新出现的宏是 `assert_ne!`。还有 `assert_eq!` 和 `assert!` 这些宏。这些都是始终会检查的，而像 `debug_assert!` 这样的仅在 debug 模式下会检查的变体，在发布构建中会编译成无内容。
 
 </details>

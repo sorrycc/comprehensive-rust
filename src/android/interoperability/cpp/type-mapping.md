@@ -1,6 +1,10 @@
-# Additional Types
+---
+translated_at: '2024-03-26T12:00:37.477Z'
+---
 
-| Rust Type         | C++ Type             |
+# 额外的类型
+
+| Rust 类型         | C++ 类型             |
 | ----------------- | -------------------- |
 | `String`          | `rust::String`       |
 | `&str`            | `rust::Str`          |
@@ -13,14 +17,10 @@
 
 <details>
 
-- These types can be used in the fields of shared structs and the arguments and
-  returns of extern functions.
-- Note that Rust's `String` does not map directly to `std::string`. There are a
-  few reasons for this:
-  - `std::string` does not uphold the UTF-8 invariant that `String` requires.
-  - The two types have different layouts in memory and so can't be passed
-    directly between languages.
-  - `std::string` requires move constructors that don't match Rust's move
-    semantics, so a `std::string` can't be passed by value to Rust.
+- 这些类型可以用于共享结构的字段、外部函数的参数和返回值中。
+- 注意，Rust 的 `String` 并不直接映射到 `std::string`。这是因为几个原因：
+  - `std::string` 不维护 `String` 所要求的 UTF-8 不变性。
+  - 两种类型在内存中的布局不同，因此不能直接在语言之间传递。
+  - `std::string` 需要移动构造函数，这与 Rust 的移动语义不匹配，所以 `std::string` 不能按值传递给 Rust。
 
 </details>

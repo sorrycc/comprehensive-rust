@@ -1,22 +1,21 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T09:51:40.083Z'
 ---
 
-# Implementing Unsafe Traits
+# 实现不安全特质
 
-Like with functions, you can mark a trait as `unsafe` if the implementation must
-guarantee particular conditions to avoid undefined behaviour.
+就像函数一样，如果实现必须保证特定条件以避免未定义行为，你可以将特质标记为 `unsafe`。
 
-For example, the `zerocopy` crate has an unsafe trait that looks
-[something like this](https://docs.rs/zerocopy/latest/zerocopy/trait.AsBytes.html):
+例如，`zerocopy` crate 有一个不安全特质，看起来像[这样](https://docs.rs/zerocopy/latest/zerocopy/trait.AsBytes.html)：
 
 ```rust,editable
 use std::mem::size_of_val;
 use std::slice;
 
 /// ...
-/// # Safety
-/// The type must have a defined representation and no padding.
+/// # 安全性
+/// 类型必须有一个定义的表示形式且没有填充。
 pub unsafe trait AsBytes {
     fn as_bytes(&self) -> &[u8] {
         unsafe {
@@ -28,17 +27,16 @@ pub unsafe trait AsBytes {
     }
 }
 
-// Safe because u32 has a defined representation and no padding.
+// 因为 u32 有一个定义的表示形式且没有填充，所以安全。
 unsafe impl AsBytes for u32 {}
 ```
 
 <details>
 
-There should be a `# Safety` section on the Rustdoc for the trait explaining the
-requirements for the trait to be safely implemented.
+在 Rustdoc 中应该有一个 `# 安全性` 部分，解释安全实现特质的要求。
 
-The actual safety section for `AsBytes` is rather longer and more complicated.
+实际上，`AsBytes` 的安全性部分要长得多，也更复杂。
 
-The built-in `Send` and `Sync` traits are unsafe.
+内置的 `Send` 和 `Sync` 特质是不安全的。
 
 </details>

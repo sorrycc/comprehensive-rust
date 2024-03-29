@@ -1,22 +1,20 @@
 ---
 minutes: 20
+translated_at: '2024-03-26T11:29:50.345Z'
 ---
 
-# Exercise: Health Statistics
+# 练习：健康统计
 
-{{#include ../../third_party/rust-on-exercism/health-statistics.md}}
-
-Copy the code below to <https://play.rust-lang.org/> and fill in the missing
-method:
+将以下代码复制到 <https://play.rust-lang.org/> 并填充缺失的方法：
 
 ```rust
-// TODO: remove this when you're done with your implementation.
+// TODO: 完成你的实现后去除此行。
 #![allow(unused_variables, dead_code)]
 
 {{#include ../../third_party/rust-on-exercism/health-statistics.rs:setup}}
 
 {{#include ../../third_party/rust-on-exercism/health-statistics.rs:User_visit_doctor}}
-        todo!("Update a user's statistics based on measurements from a visit to the doctor")
+        todo!("根据访问医生时的测量结果更新用户的统计数据")
     }
 }
 

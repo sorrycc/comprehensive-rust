@@ -1,15 +1,17 @@
-# Exercises
+---
+translated_at: '2024-03-26T10:57:18.495Z'
+---
 
-This is a group exercise: We will look at one of the projects you work with and
-try to integrate some Rust into it. Some suggestions:
+# 练习
 
-- Call your AIDL service with a client written in Rust.
+这是一个小组练习：我们将查看你们正在进行的一个项目，并尝试将一些 Rust 代码集成进去。一些建议：
 
-- Move a function from your project to Rust and call it.
+- 使用 Rust 编写的客户端调用你的 AIDL 服务。
+
+- 将你项目中的一个函数移至 Rust，并调用它。
 
 <details>
 
-No solution is provided here since this is open-ended: it relies on someone in
-the class having a piece of code which you can turn in to Rust on the fly.
+由于这是一个开放性问题，并没有提供解决方案：它依赖于班上某人有一段代码，你们可以即时将其转换成 Rust。
 
 </details>

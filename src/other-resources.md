@@ -1,62 +1,40 @@
-# Other Rust Resources
+---
+translated_at: '2024-03-26T09:36:59.682Z'
+---
 
-The Rust community has created a wealth of high-quality and free resources
-online.
+# 其他 Rust 资源
 
-## Official Documentation
+Rust 社区创造了丰富的高质量免费在线资源。
 
-The Rust project hosts many resources. These cover Rust in general:
+## 官方文档
 
-- [The Rust Programming Language](https://doc.rust-lang.org/book/): the
-  canonical free book about Rust. Covers the language in detail and includes a
-  few projects for people to build.
-- [Rust By Example](https://doc.rust-lang.org/rust-by-example/): covers the Rust
-  syntax via a series of examples which showcase different constructs. Sometimes
-  includes small exercises where you are asked to expand on the code in the
-  examples.
-- [Rust Standard Library](https://doc.rust-lang.org/std/): full documentation of
-  the standard library for Rust.
-- [The Rust Reference](https://doc.rust-lang.org/reference/): an incomplete book
-  which describes the Rust grammar and memory model.
+Rust 项目有许多资源。这些涵盖了 Rust 的一般情况：
 
-More specialized guides hosted on the official Rust site:
+- [The Rust Programming Language](https://doc.rust-lang.org/book/)：关于 Rust 的权威免费书籍。详细介绍了语言并包括了一些构建项目的案例。
+- [Rust By Example](https://doc.rust-lang.org/rust-by-example/)：通过一系列示例介绍 Rust 语法，这些示例展示了不同的结构。有时包括小练习，让你扩展示例中的代码。
+- [Rust Standard Library](https://doc.rust-lang.org/std/)：Rust 标准库的完整文档。
+- [The Rust Reference](https://doc.rust-lang.org/reference/)：一本不完整的书，描述了 Rust 语法和内存模型。
 
-- [The Rustonomicon](https://doc.rust-lang.org/nomicon/): covers unsafe Rust,
-  including working with raw pointers and interfacing with other languages
-  (FFI).
-- [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/):
-  covers the new asynchronous programming model which was introduced after the
-  Rust Book was written.
-- [The Embedded Rust Book](https://doc.rust-lang.org/stable/embedded-book/): an
-  introduction to using Rust on embedded devices without an operating system.
+官方 Rust 网站上的更专业指南：
 
-## Unofficial Learning Material
+- [The Rustonomicon](https://doc.rust-lang.org/nomicon/)：介绍不安全的 Rust，包括如何处理原始指针以及如何与其他语言进行接口对接（FFI）。
+- [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)：介绍在 Rust 书写成之后引入的新的异步编程模型。
+- [The Embedded Rust Book](https://doc.rust-lang.org/stable/embedded-book/)：介绍如何在没有操作系统的嵌入式设备上使用 Rust。
 
-A small selection of other guides and tutorial for Rust:
+## 非官方学习资料
 
-- [Learn Rust the Dangerous Way](http://cliffle.com/p/dangerust/): covers Rust
-  from the perspective of low-level C programmers.
-- [Rust for Embedded C Programmers](https://docs.opentitan.org/doc/ug/rust_for_c/):
-  covers Rust from the perspective of developers who write firmware in C.
-- [Rust for professionals](https://overexact.com/rust-for-professionals/):
-  covers the syntax of Rust using side-by-side comparisons with other languages
-  such as C, C++, Java, JavaScript, and Python.
-- [Rust on Exercism](https://exercism.org/tracks/rust): 100+ exercises to help
-  you learn Rust.
-- [Ferrous Teaching Material](https://ferrous-systems.github.io/teaching-material/index.html):
-  a series of small presentations covering both basic and advanced part of the
-  Rust language. Other topics such as WebAssembly, and async/await are also
-  covered.
-- [Beginner's Series to Rust](https://docs.microsoft.com/en-us/shows/beginners-series-to-rust/)
-  and
-  [Take your first steps with Rust](https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/):
-  two Rust guides aimed at new developers. The first is a set of 35 videos and
-  the second is a set of 11 modules which covers Rust syntax and basic
-  constructs.
-- [Learn Rust With Entirely Too Many Linked
-  Lists](https://rust-unofficial.github.io/too-many-lists/): in-depth
-  exploration of Rust's memory management rules, through implementing a few
-  different types of list structures.
+一些其他的 Rust 指南和教程：
 
-Please see the [Little Book of Rust Books](https://lborb.github.io/book/) for
-even more Rust books.
+- [Learn Rust the Dangerous Way](http://cliffle.com/p/dangerust/)：从低层次的 C 程序员的视角介绍 Rust。
+- [Rust for Embedded C Programmers](https://docs.opentitan.org/doc/ug/rust_for_c/)：从编写 C 固件的开发者的视角介绍 Rust。
+- [Rust for professionals](https://overexact.com/rust-for-professionals/)：使用与 C、C++、Java、JavaScript 和 Python 等其他语言的并列对比，来介绍 Rust 语法。
+- [Rust on Exercism](https://exercism.org/tracks/rust)：100 多个练习帮助你学习 Rust。
+
+- [Ferrous 教学材料](https://ferrous-systems.github.io/teaching-material/index.html)：一系列的小型演示，涵盖 Rust 语言的基础和高级部分。也覆盖了 WebAssembly 和 async/await 等主题。
+- [Rust 新手系列](https://docs.microsoft.com/en-us/shows/beginners-series-to-rust/)
+  和
+  [Rust 第一步](https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/)：
+  针对新开发者的两个 Rust 指南。第一个是一系列 35 个视频，第二个是包含 11 个模块的系列，覆盖了 Rust 语法和基本构造。
+- [通过完全过多的链表学习 Rust](https://rust-unofficial.github.io/too-many-lists/)：通过实现几种不同类型的列表结构，深入探讨 Rust 的内存管理规则。
+
+更多 Rust 书籍请查看 [Rust 小书大全](https://lborb.github.io/book/)。

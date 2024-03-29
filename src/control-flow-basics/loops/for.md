@@ -1,7 +1,10 @@
+---
+translated_at: '2024-03-26T11:03:51.148Z'
+---
+
 # `for`
 
-The [`for` loop](https://doc.rust-lang.org/std/keyword.for.html) iterates over
-ranges of values or the items in a collection:
+[`for` 循环](https://doc.rust-lang.org/std/keyword.for.html) 用于迭代值的范围或集合中的元素：
 
 ```rust,editable
 fn main() {
@@ -17,10 +20,7 @@ fn main() {
 
 <details>
 
-- Under the hood `for` loops use a concept called "iterators" to handle
-  iterating over different kinds of ranges/collections. Iterators will be
-  discussed in more detail later.
-- Note that the `for` loop only iterates to `4`. Show the `1..=5` syntax for an
-  inclusive range.
+- 在底层，`for` 循环使用了一个名为 “迭代器” 的概念来处理不同类型的范围 / 集合的迭代。迭代器稍后会更详细地讨论。
+- 注意 `for` 循环只迭代到 `4`。展示 `1..=5` 语法来进行包含终值的范围。
 
 </details>

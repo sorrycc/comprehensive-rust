@@ -1,14 +1,13 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:42:52.895Z'
 ---
 
 # `IntoIterator`
 
-The `Iterator` trait tells you how to _iterate_ once you have created an
-iterator. The related trait
+`Iterator` trait 告诉你一旦创建了迭代器该如何 _迭代_。相关 trait
 [`IntoIterator`](https://doc.rust-lang.org/std/iter/trait.IntoIterator.html)
-defines how to create an iterator for a type. It is used automatically by the
-`for` loop.
+定义了如何为一个类型创建迭代器。它会被 `for` 循环自动使用。
 
 ```rust,editable
 struct Grid {
@@ -57,26 +56,21 @@ fn main() {
 
 <details>
 
-Click through to the docs for `IntoIterator`. Every implementation of
-`IntoIterator` must declare two types:
+点击查阅 `IntoIterator` 文档。每个 `IntoIterator` 的实现都必须声明两种类型：
 
-- `Item`: the type to iterate over, such as `i8`,
-- `IntoIter`: the `Iterator` type returned by the `into_iter` method.
+- `Item`：迭代的类型，例如 `i8`，
+- `IntoIter`：`into_iter` 方法返回的 `Iterator` 类型。
 
-Note that `IntoIter` and `Item` are linked: the iterator must have the same
-`Item` type, which means that it returns `Option<Item>`
+注意 `IntoIter` 和 `Item` 是相连的：迭代器必须有相同的 `Item` 类型，意味着它返回 `Option<Item>`
 
-The example iterates over all combinations of x and y coordinates.
+例子中迭代了所有 x 和 y 坐标的组合。
 
-Try iterating over the grid twice in `main`. Why does this fail? Note that
-`IntoIterator::into_iter` takes ownership of `self`.
+尝试在 `main` 中对网格进行两次迭代。为什么会失败？注意 `IntoIterator::into_iter` 会取得 `self` 的所有权。
 
-Fix this issue by implementing `IntoIterator` for `&Grid` and storing a
-reference to the `Grid` in `GridIter`.
+通过为 `&Grid` 实现 `IntoIterator` 并在 `GridIter` 中存储对 `Grid` 的引用来解决这个问题。
 
-The same problem can occur for standard library types: `for e in some_vector`
-will take ownership of `some_vector` and iterate over owned elements from that
-vector. Use `for e in &some_vector` instead, to iterate over references to
-elements of `some_vector`.
+对于标准库类型也可能出现同样的问题：`for e in some_vector` 会取得 `some_vector` 的所有权并迭代该向量中拥有的元素。
 
-</details>
+```markdown
+vector。请使用 `for e in &some_vector` 来遍历 `some_vector` 中元素的引用。
+```

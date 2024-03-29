@@ -1,10 +1,10 @@
-# Exceptions
+---
+translated_at: '2024-03-26T11:41:18.496Z'
+---
 
-AArch64 defines an exception vector table with 16 entries, for 4 types of
-exceptions (synchronous, IRQ, FIQ, SError) from 4 states (current EL with SP0,
-current EL with SPx, lower EL using AArch64, lower EL using AArch32). We
-implement this in assembly to save volatile registers to the stack before
-calling into Rust code:
+# 异常
+
+AArch64 定义了一个具有 16 个条目的异常向量表，用于 4 种类型的异常（同步、IRQ、FIQ、SError）来自 4 种状态（当前 EL 与 SP0、当前 EL 与 SPx、使用 AArch64 的较低 EL、使用 AArch32 的较低 EL）。我们在汇编中实现它，以便在调用 Rust 代码之前将易失性寄存器保存到堆栈中：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -14,17 +14,10 @@ calling into Rust code:
 
 <details>
 
-- EL is exception level; all our examples this afternoon run in EL1.
-- For simplicity we aren't distinguishing between SP0 and SPx for the current EL
-  exceptions, or between AArch32 and AArch64 for the lower EL exceptions.
-- For this example we just log the exception and power down, as we don't expect
-  any of them to actually happen.
-- We can think of exception handlers and our main execution context more or less
-  like different threads. [`Send` and `Sync`][1] will control what we can share
-  between them, just like with threads. For example, if we want to share some
-  value between exception handlers and the rest of the program, and it's `Send`
-  but not `Sync`, then we'll need to wrap it in something like a `Mutex` and put
-  it in a static.
+- EL 是异常级别；我们所有的示例今天下午都在 EL1 中运行。
+- 为了简单起见，我们不区分当前 EL 的异常的 SP0 和 SPx，或较低 EL 的异常的 AArch32 和 AArch64。
+- 对于这个例子，我们只是记录异常并关闭电源，因为我们不希望它们实际发生。
+- 我们可以将异常处理程序和我们的主执行上下文或多或少地视为不同的线程。[`Send` 和 `Sync`][1] 将控制我们可以在它们之间共享什么，就像线程一样。例如，如果我们想在异常处理程序和程序的其他部分之间共享一些值，并且它是 `Send` 但不是 `Sync`，那么我们将需要将它包装在像 `Mutex` 这样的东西中并将其放在静态中。
 
 </details>
 

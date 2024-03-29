@@ -1,33 +1,31 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T09:56:27.930Z'
 ---
 
-# Values
+# 值
 
-Here are some basic built-in types, and the syntax for literal values of each
-type.
+以下是一些基础内置类型，以及每种类型的字面量语法。
 
-|                        | Types                                      | Literals                       |
-| ---------------------- | ------------------------------------------ | ------------------------------ |
-| Signed integers        | `i8`, `i16`, `i32`, `i64`, `i128`, `isize` | `-10`, `0`, `1_000`, `123_i64` |
-| Unsigned integers      | `u8`, `u16`, `u32`, `u64`, `u128`, `usize` | `0`, `123`, `10_u16`           |
-| Floating point numbers | `f32`, `f64`                               | `3.14`, `-10.0e20`, `2_f32`    |
-| Unicode scalar values  | `char`                                     | `'a'`, `'α'`, `'∞'`            |
-| Booleans               | `bool`                                     | `true`, `false`                |
+|                        | 类型                                        | 字面量                        |
+| ---------------------- | ------------------------------------------ | ----------------------------- |
+| 有符号整数              | `i8`，`i16`，`i32`，`i64`，`i128`，`isize` | `-10`，`0`，`1_000`，`123_i64` |
+| 无符号整数              | `u8`，`u16`，`u32`，`u64`，`u128`，`usize` | `0`，`123`，`10_u16`           |
+| 浮点数                  | `f32`，`f64`                               | `3.14`，`-10.0e20`，`2_f32`    |
+| Unicode 标量值          | `char`                                     | `'a'`，`'α'`，`'∞'`           |
+| 布尔值                  | `bool`                                     | `true`，`false`                |
 
-The types have widths as follows:
+类型的宽度如下：
 
-- `iN`, `uN`, and `fN` are _N_ bits wide,
-- `isize` and `usize` are the width of a pointer,
-- `char` is 32 bits wide,
-- `bool` is 8 bits wide.
+- `iN`，`uN` 和 `fN` 是 _N_ 位宽，
+- `isize` 和 `usize` 是指针的宽度，
+- `char` 是 32 位宽，
+- `bool` 是 8 位宽。
 
 <details>
 
-There are a few syntaxes which are not shown above:
+有几种语法在上面没有展示：
 
-- All underscores in numbers can be left out, they are for legibility only. So
-  `1_000` can be written as `1000` (or `10_00`), and `123_i64` can be written as
-  `123i64`.
+- 所有数字中的下划线都可以省略，它们仅用于提高可读性。所以 `1_000` 可以写作 `1000`（或 `10_00`），而 `123_i64` 可以写作 `123i64`。
 
 </details>

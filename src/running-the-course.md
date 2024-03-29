@@ -1,56 +1,30 @@
-# Running the Course
+---
+translated_at: '2024-03-26T09:35:29.672Z'
+---
 
-> This page is for the course instructor.
+# 开展课程
 
-Here is a bit of background information about how we've been running the course
-internally at Google.
+> 本页面为课程讲师准备。
 
-We typically run classes from 9:00 am to 4:00 pm, with a 1 hour lunch break in
-the middle. This leaves 3 hours for the morning class and 3 hours for the
-afternoon class. Both sessions contain multiple breaks and time for students to
-work on exercises.
+以下是一些关于我们在谷歌内部运营课程的背景信息。
 
-Before you run the course, you will want to:
+我们通常安排从上午 9:00 到下午 4:00 的课程，中间有 1 小时的午餐休息。这样早上的课程有 3 小时，下午的课程也是 3 小时。两个课程都包含多个休息时间以及学生做练习的时间。
 
-1. Make yourself familiar with the course material. We've included speaker notes
-   to help highlight the key points (please help us by contributing more speaker
-   notes!). When presenting, you should make sure to open the speaker notes in a
-   popup (click the link with a little arrow next to "Speaker Notes"). This way
-   you have a clean screen to present to the class.
+在你开展课程之前，你需要：
 
-1. Decide on the dates. Since the course takes four days, we recommend that you
-   schedule the days over two weeks. Course participants have said that they
-   find it helpful to have a gap in the course since it helps them process all
-   the information we give them.
+1. 熟悉课程材料。我们已经包含了演讲者备注，以帮助强调关键点（请通过贡献更多演讲者备注来帮助我们！）。演示时，你应该确保在弹出窗口中开启演讲者备注（点击 “演讲者备注” 旁边的小箭头链接）。这样你就能呈现一个干净的屏幕给班级。
 
-1. Find a room large enough for your in-person participants. We recommend a
-   class size of 15-25 people. That's small enough that people are comfortable
-   asking questions --- it's also small enough that one instructor will have
-   time to answer the questions. Make sure the room has _desks_ for yourself and
-   for the students: you will all need to be able to sit and work with your
-   laptops. In particular, you will be doing a lot of live-coding as an
-   instructor, so a lectern won't be very helpful for you.
+2. 决定日期。由于课程需要四天，我们建议你将这些日子安排在两周之内。课程参与者表示，他们发现课程间隙有助于他们处理我们给出的所有信息。
 
-1. On the day of your course, show up to the room a little early to set things
-   up. We recommend presenting directly using `mdbook serve` running on your
-   laptop (see the [installation instructions][3]). This ensures optimal
-   performance with no lag as you change pages. Using your laptop will also
-   allow you to fix typos as you or the course participants spot them.
+3. 找一个足够大的房间供你现场的参与者使用。我们推荐的班级规模为 15-25 人。这样的规模既使人们提问时感到舒适——也足够小，以至于一名讲师有时间回答问题。确保房间有 _桌子_ 供你和学生使用：你们都需要能够坐下来并使用你们的笔记本电脑工作。尤其是，作为讲师，你将进行大量的现场编码，所以讲台对你来说不会很有帮助。
 
-1. Let people solve the exercises by themselves or in small groups. We typically
-   spend 30-45 minutes on exercises in the morning and in the afternoon
-   (including time to review the solutions). Make sure to ask people if they're
-   stuck or if there is anything you can help with. When you see that several
-   people have the same problem, call it out to the class and offer a solution,
-   e.g., by showing people where to find the relevant information in the
-   standard library.
+4. 在课程当天，提前一点到教室准备。我们推荐直接使用在你笔记本电脑上运行的 `mdbook serve` 来进行演示（参见 [安装说明][3]）。这样可以确保在你翻页时性能最优，没有延迟。使用你的笔记本电脑也将允许你在你或课程参与者发现打字错误时立即进行修正。
 
-That is all, good luck running the course! We hope it will be as much fun for
-you as it has been for us!
+1. 让人们自己或在小组内解决练习题。我们通常早上和下午各花费 30-45 分钟做练习（包括复习解答的时间）。确保询问大家是否遇到困难或有什么可以帮忙的。当你发现几个人有相同的问题时，向全班说明并提供解决方案，例如，通过向人们展示在标准库中如何找到相关信息。
 
-Please [provide feedback][1] afterwards so that we can keep improving the
-course. We would love to hear what worked well for you and what can be made
-better. Your students are also very welcome to [send us feedback][2]!
+这就是全部，祝你运行课程顺利！我们希望这对你来说和对我们一样有趣！
+
+请[提供反馈][1]，以便我们继续改进课程。我们很乐意听到对你来说哪些地方做得好，哪些地方可以做得更好。你的学生也非常欢迎[给我们发送反馈][2]！
 
 [1]: https://github.com/google/comprehensive-rust/discussions/86
 [2]: https://github.com/google/comprehensive-rust/discussions/100

@@ -1,65 +1,55 @@
-# Welcome to Comprehensive Rust 🦀
+---
+translated_at: '2024-03-26T09:38:07.138Z'
+---
 
-[![Build workflow](https://img.shields.io/github/actions/workflow/status/google/comprehensive-rust/build.yml?style=flat-square)](https://github.com/google/comprehensive-rust/actions/workflows/build.yml?query=branch%3Amain)
-[![GitHub contributors](https://img.shields.io/github/contributors/google/comprehensive-rust?style=flat-square)](https://github.com/google/comprehensive-rust/graphs/contributors)
-[![GitHub stars](https://img.shields.io/github/stars/google/comprehensive-rust?style=flat-square)](https://github.com/google/comprehensive-rust/stargazers)
+# 欢迎来到全面的 Rust 语言课程 🦀
 
-This is a free Rust course developed by the Android team at Google. The course
-covers the full spectrum of Rust, from basic syntax to advanced topics like
-generics and error handling.
+[![构建工作流](https://img.shields.io/github/actions/workflow/status/google/comprehensive-rust/build.yml?style=flat-square)](https://github.com/google/comprehensive-rust/actions/workflows/build.yml?query=branch%3Amain)
+[![GitHub 贡献者](https://img.shields.io/github/contributors/google/comprehensive-rust?style=flat-square)](https://github.com/google/comprehensive-rust/graphs/contributors)
+[![GitHub 星标](https://img.shields.io/github/stars/google/comprehensive-rust?style=flat-square)](https://github.com/google/comprehensive-rust/stargazers)
 
-> The latest version of the course can be found at
-> <https://google.github.io/comprehensive-rust/>. If you are reading somewhere
-> else, please check there for updates.
+这是由 Google 的 Android 团队开发的免费 Rust 语言课程。课程涵盖了 Rust 的整个光谱，从基础语法到高级主题，如泛型和错误处理。
+
+> 课程的最新版本可在
+> <https://google.github.io/comprehensive-rust/> 找到。如果您在其他地方阅读，请在那里检查更新。
 >
-> The course is also available [as a PDF](comprehensive-rust.pdf).
+> 课程还提供了 [PDF 版本](comprehensive-rust.pdf)。
 
-The goal of the course is to teach you Rust. We assume you don't know anything
-about Rust and hope to:
+本课程的目标是教您学习 Rust。我们假设您对 Rust 一无所知，并希望能够：
 
-- Give you a comprehensive understanding of the Rust syntax and language.
-- Enable you to modify existing programs and write new programs in Rust.
-- Show you common Rust idioms.
+- 给您一个全面的 Rust 语法和语言理解。
+- 使您能够修改现有程序并用 Rust 编写新程序。
+- 向您展示常见的 Rust 习惯用法。
 
-We call the first four course days Rust Fundamentals.
+我们将课程的前四天称为 Rust 基础。
 
-Building on this, you're invited to dive into one or more specialized topics:
+在此基础上，我们邀请您深入研究一个或多个专门话题：
 
-- [Android](android.md): a half-day course on using Rust for Android platform
-  development (AOSP). This includes interoperability with C, C++, and Java.
-- [Chromium](chromium.md): a half-day course on using Rust within Chromium based
-  browsers. This includes interoperability with C++ and how to include
-  third-party crates in Chromium.
-- [Bare-metal](bare-metal.md): a whole-day class on using Rust for bare-metal
-  (embedded) development. Both microcontrollers and application processors are
-  covered.
-- [Concurrency](concurrency.md): a whole-day class on concurrency in Rust. We
-  cover both classical concurrency (preemptively scheduling using threads and
-  mutexes) and async/await concurrency (cooperative multitasking using futures).
+- [Android](android.md)：半天的关于使用 Rust 进行 Android 平台开发（AOSP）的课程。这包括与 C、C++ 和 Java 的互操作性。
+- [Chromium](chromium.md)：半天的关于在基于 Chromium 的浏览器中使用 Rust 的课程。这包括与 C++ 的互操作性，以及如何在 Chromium 中包含第三方 crate。
+- [裸机](bare-metal.md)：关于使用 Rust 进行裸机（嵌入式）开发的一整天课程。涵盖了微控制器和应用处理器。
+- [并发](concurrency.md)：一整天关于 Rust 中并发的课程。我们
 
-## Non-Goals
+## 本课程覆盖的内容
 
-Rust is a large language and we won't be able to cover all of it in a few days.
-Some non-goals of this course are:
+本课程将同时涵盖传统的并发（使用线程和互斥锁的抢占式调度）以及异步/等待并发（使用 Future 的协作式多任务处理）。
 
-- Learning how to develop macros: please see
-  [Chapter 19.5 in the Rust Book](https://doc.rust-lang.org/book/ch19-06-macros.html)
-  and [Rust by Example](https://doc.rust-lang.org/rust-by-example/macros.html)
-  instead.
+## 非目标
 
-## Assumptions
+Rust 是一种庞大的语言，我们不可能在几天内涵盖其全部内容。本课程的一些非目标包括：
 
-The course assumes that you already know how to program. Rust is a
-statically-typed language and we will sometimes make comparisons with C and C++
-to better explain or contrast the Rust approach.
+- 学习如何开发宏：请参阅
+  [Rust 书籍中的第 19.5 章](https://doc.rust-lang.org/book/ch19-06-macros.html)
+  以及 [Rust by Example](https://doc.rust-lang.org/rust-by-example/macros.html)。
 
-If you know how to program in a dynamically-typed language such as Python or
-JavaScript, then you will be able to follow along just fine too.
+## 假设
+
+本课程假定你已经知道如何编程。Rust 是一种静态类型语言，我们有时会与 C 和 C++ 做比较，以更好地解释或对比 Rust 的方法。
+
+如果你知道如何使用动态类型语言（如 Python 或 JavaScript）编程，那么你也会很容易跟上课程的内容。
 
 <details>
 
-This is an example of a _speaker note_. We will use these to add additional
-information to the slides. This could be key points which the instructor should
-cover as well as answers to typical questions which come up in class.
+这是一个 _演讲者笔记_ 的示例。我们将使用这些笔记来为幻灯片添加额外的信息。这可能是讲师应该覆盖的要点，以及课堂上常见问题的答案。
 
 </details>

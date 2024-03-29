@@ -1,28 +1,24 @@
-# Setup
+---
+translated_at: '2024-03-26T11:10:54.001Z'
+---
 
-Make sure you can build and run Chromium. Any platform and set of build flags is
-OK, so long as your code is relatively recent (commit position 1223636 onwards,
-corresponding to November 2023):
+# 设置
+
+确保你能够构建并运行 Chromium。任何平台和一组构建标志都是可以的，只要你的代码相对较新（提交位置 1223636 以后，对应于 2023 年 11 月）：
 
 ```shell
 gn gen out/Debug
 autoninja -C out/Debug chrome
-out/Debug/chrome # or on Mac, out/Debug/Chromium.app/Contents/MacOS/Chromium
+out/Debug/chrome # 或在 Mac 上，out/Debug/Chromium.app/Contents/MacOS/Chromium
 ```
 
-(A component, debug build is recommended for quickest iteration time. This is
-the default!)
+（组件调试构建被推荐用于最快的迭代时间。这是默认设置！）
 
-See
-[How to build Chromium](https://www.chromium.org/developers/how-tos/get-the-code/)
-if you aren't already at that point. Be warned: setting up to build Chromium
-takes time.
+如果你还没准备好，请查看[如何构建 Chromium](https://www.chromium.org/developers/how-tos/get-the-code/)。要注意：设置构建 Chromium 需要时间。
 
-It's also recommended that you have Visual Studio code installed.
+同时建议你安装 Visual Studio Code。
 
-# About the exercises
+# 关于练习
 
-This part of the course has a series of exercises which build on each other.
-We'll be doing them spread throughout the course instead of just at the end. If
-you don't have time to complete a certain part, don't worry: you can catch up in
-the next slot.
+这部分课程包含了一系列互相依赖的练习。
+我们将在整个课程中分散进行，而不是仅在最后。如果你没有时间完成某个部分，不用担心：你可以在下一环节中赶上。

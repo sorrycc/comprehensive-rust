@@ -1,8 +1,12 @@
-# Keyboard Shortcuts
+---
+translated_at: '2024-03-26T10:16:36.698Z'
+---
 
-There are several useful keyboard shortcuts in mdBook:
+# 键盘快捷键
 
-- <kbd>Arrow-Left</kbd>: Navigate to the previous page.
-- <kbd>Arrow-Right</kbd>: Navigate to the next page.
-- <kbd>Ctrl + Enter</kbd>: Execute the code sample that has focus.
-- <kbd>s</kbd>: Activate the search bar.
+在 mdBook 中有几个实用的键盘快捷键：
+
+- <kbd>Arrow-Left</kbd>：导航至上一个页面。
+- <kbd>Arrow-Right</kbd>：导航至下一个页面。
+- <kbd>Ctrl + Enter</kbd>：执行当前聚焦的代码示例。
+- <kbd>s</kbd>：激活搜索栏。

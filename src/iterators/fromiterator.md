@@ -1,10 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:43:22.826Z'
 ---
 
 # FromIterator
 
-[`FromIterator`][1] lets you build a collection from an [`Iterator`][2].
+[`FromIterator`][1] 允许你从一个 [`Iterator`][2] 构建集合。
 
 ```rust,editable
 fn main() {
@@ -16,7 +17,7 @@ fn main() {
 
 <details>
 
-`Iterator` implements
+`Iterator` 实现了
 
 ```rust,ignore
 fn collect<B>(self) -> B
@@ -25,16 +26,16 @@ where
     Self: Sized
 ```
 
-There are two ways to specify `B` for this method:
+有两种方法可以为这个方法指定 `B`：
 
-- With the "turbofish": `some_iterator.collect::<COLLECTION_TYPE>()`, as shown.
-  The `_` shorthand used here lets Rust infer the type of the `Vec` elements.
-- With type inference: `let prime_squares: Vec<_> = some_iterator.collect()`.
-  Rewrite the example to use this form.
+- 使用 “turbofish”：`some_iterator.collect::<COLLECTION_TYPE>()`，就像上面展示的。
+  这里使用的 `_` 简写允许 Rust 推断 `Vec` 元素的类型。
+- 使用类型推断：`let prime_squares: Vec<_> = some_iterator.collect()`。
+  重写示例以使用这种形式。
 
-There are basic implementations of `FromIterator` for `Vec`, `HashMap`, etc.
-There are also more specialized implementations which let you do cool things
-like convert an `Iterator<Item = Result<V, E>>` into a `Result<Vec<V>, E>`.
+`FromIterator` 为 `Vec`、`HashMap` 等提供了基本实现。
+还有一些更专业的实现，可以让你做一些很酷的事情，
+比如将 `Iterator<Item = Result<V, E>>` 转换为 `Result<Vec<V>, E>`。
 
 </details>
 

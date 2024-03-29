@@ -1,6 +1,10 @@
+---
+translated_at: '2024-03-26T11:07:55.669Z'
+---
+
 # `Arc`
 
-[`Arc<T>`][1] allows shared read-only access via `Arc::clone`:
+[`Arc<T>`][1] 允许通过 `Arc::clone` 实现共享只读访问：
 
 ```rust,editable
 use std::sync::Arc;
@@ -26,14 +30,10 @@ fn main() {
 
 <details>
 
-- `Arc` stands for "Atomic Reference Counted", a thread safe version of `Rc`
-  that uses atomic operations.
-- `Arc<T>` implements `Clone` whether or not `T` does. It implements `Send` and
-  `Sync` if and only if `T` implements them both.
-- `Arc::clone()` has the cost of atomic operations that get executed, but after
-  that the use of the `T` is free.
-- Beware of reference cycles, `Arc` does not use a garbage collector to detect
-  them.
-  - `std::sync::Weak` can help.
+- `Arc` 代表 "原子引用计数"，一个使用原子操作的线程安全的 `Rc` 版本。
+- `Arc<T>` 无论 `T` 是否实现了 `Clone` ，都实现了 `Clone`。只有当 `T` 同时实现了 `Send` 和 `Sync` 时，它们也才会实现。
+- `Arc::clone()` 的代价在于执行的原子操作，但之后对 `T` 的使用是自由的。
+- 注意避免引用循环，`Arc` 不使用垃圾回收器来检测它们。
+  - `std::sync::Weak` 可以帮助解决这个问题。
 
 </details>

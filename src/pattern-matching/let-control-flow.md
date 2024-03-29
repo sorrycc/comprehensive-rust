@@ -1,21 +1,19 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:22:58.785Z'
 ---
 
-# Let Control Flow
+# 让控制流转
 
-Rust has a few control flow constructs which differ from other languages. They
-are used for pattern matching:
+Rust 有一些与其他语言不同的控制流结构。它们用于模式匹配：
 
-- `if let` expressions
-- `while let` expressions
-- `match` expressions
+- `if let` 表达式
+- `while let` 表达式
+- `match` 表达式
 
-# `if let` expressions
+# `if let` 表达式
 
-The
-[`if let` expression](https://doc.rust-lang.org/reference/expressions/if-expr.html#if-let-expressions)
-lets you execute different code depending on whether a value matches a pattern:
+[`if let` 表达式](https://doc.rust-lang.org/reference/expressions/if-expr.html#if-let-expressions) 允许您根据值是否与模式匹配来执行不同的代码：
 
 ```rust,editable
 fn sleep_for(secs: f32) {
@@ -25,7 +23,7 @@ fn sleep_for(secs: f32) {
         std::time::Duration::from_millis(500)
     };
     std::thread::sleep(dur);
-    println!("slept for {:?}", dur);
+    println!("睡眠了 {:?}", dur);
 }
 
 fn main() {
@@ -34,42 +32,37 @@ fn main() {
 }
 ```
 
-# `let else` expressions
+# `let else` 表达式
 
-For the common case of matching a pattern and returning from the function, use
-[`let else`](https://doc.rust-lang.org/rust-by-example/flow_control/let_else.html).
-The "else" case must diverge (`return`, `break`, or panic - anything but falling
-off the end of the block).
+对于匹配模式并返回函数的常见情况，请使用 [`let else`](https://doc.rust-lang.org/rust-by-example/flow_control/let_else.html)。"else" 情况必须发散（`return`、`break` 或 panic——只是不会落在代码块的末端）。
 
 ```rust,editable
 fn hex_or_die_trying(maybe_string: Option<String>) -> Result<u32, String> {
     let s = if let Some(s) = maybe_string {
         s
     } else {
-        return Err(String::from("got None"));
+        return Err(String::from("得到 None"));
     };
 
     let first_byte_char = if let Some(first_byte_char) = s.chars().next() {
         first_byte_char
     } else {
-        return Err(String::from("got empty string"));
+        return Err(String::from("得到空字符串"));
     };
 
     if let Some(digit) = first_byte_char.to_digit(16) {
         Ok(digit)
     } else {
-        Err(String::from("not a hex digit"))
+        Err(String::from("不是十六进制数字"))
     }
 }
 
 fn main() {
-    println!("result: {:?}", hex_or_die_trying(Some(String::from("foo"))));
+    println!("结果: {:?}", hex_or_die_trying(Some(String::from("foo"))));
 }
 ```
 
-Like with `if let`, there is a
-[`while let`](https://doc.rust-lang.org/reference/expressions/loop-expr.html#predicate-pattern-loops)
-variant which repeatedly tests a value against a pattern:
+像 `if let` 一样，还有一个 [`while let`](https://doc.rust-lang.org/reference/expressions/loop-expr.html#predicate-pattern-loops) 变体，它会反复将值与模式进行测试：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -77,33 +70,25 @@ variant which repeatedly tests a value against a pattern:
 fn main() {
     let mut name = String::from("Comprehensive Rust 🦀");
     while let Some(c) = name.pop() {
-        println!("character: {c}");
+        println!("字符: {c}");
     }
-    // (There are more efficient ways to reverse a string!)
+    // （有更高效的方法来反转字符串！）
 }
 ```
-
-Here
-[`String::pop`](https://doc.rust-lang.org/stable/std/string/struct.String.html#method.pop)
-returns `Some(c)` until the string is empty, after which it will return `None`.
-The `while let` lets us keep iterating through all items.
 
 <details>
 
 ## if-let
 
-- Unlike `match`, `if let` does not have to cover all branches. This can make it
-  more concise than `match`.
-- A common usage is handling `Some` values when working with `Option`.
-- Unlike `match`, `if let` does not support guard clauses for pattern matching.
+- 与 `match` 不同，`if let` 不需要覆盖所有分支。这使得它比 `match` 更简洁。
+- 常见用法是在使用 `Option` 时处理 `Some` 值。
+- 与 `match` 不同的是，`if let` 不支持模式匹配的守卫子句。
 
 ## let-else
 
-`if-let`s can pile up, as shown. The `let-else` construct supports flattening
-this nested code. Rewrite the awkward version for students, so they can see the
-transformation.
+如所示，`if-let` 可能会堆积。`let-else` 结构支持展平这些嵌套代码。为学生们改写那个笨拙的版本，让他们看到转换后的效果。
 
-The rewritten version is:
+改写后的版本是：
 
 ```rust
 fn hex_or_die_trying(maybe_string: Option<String>) -> Result<u32, String> {
@@ -125,10 +110,7 @@ fn hex_or_die_trying(maybe_string: Option<String>) -> Result<u32, String> {
 
 # while-let
 
-- Point out that the `while let` loop will keep going as long as the value
-  matches the pattern.
-- You could rewrite the `while let` loop as an infinite loop with an if
-  statement that breaks when there is no value to unwrap for `name.pop()`. The
-  `while let` provides syntactic sugar for the above scenario.
+- 指出 `while let` 循环将持续进行，只要值与模式匹配。
+- 你可以将 `while let` 循环重写为一个无限循环，使用一个 `if` 语句在 `name.pop()` 没有值可解包时中断循环。`while let` 为上述场景提供了语法糖。
 
 </details>

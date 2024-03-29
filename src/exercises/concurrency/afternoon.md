@@ -1,17 +1,19 @@
-# Exercises
+---
+translated_at: '2024-03-26T10:51:14.647Z'
+---
 
-To practice your Async Rust skills, we have again two exercises for you:
+# 练习
 
-- Dining philosophers: we already saw this problem in the morning. This time you
-  are going to implement it with Async Rust.
+为了练习你的 Async Rust 技巧，我们为你准备了两个练习：
 
-- A Broadcast Chat Application: this is a larger project that allows you
-  experiment with more advanced Async Rust features.
+- 哲学家就餐问题：我们已经在早上看到了这个问题。这次你需要用 Async Rust 来实现它。
+
+- 广播聊天应用程序：这是一个较大的项目，让你可以尝试更高级的 Async Rust 特性。
 
 <details>
 
-After looking at the exercises, you can look at the [solutions] provided.
+在查看完练习之后，你可以看一下提供的[解决方案]。
 
-[solutions]: solutions-afternoon.md
+[解决方案]: solutions-afternoon.md
 
 </details>

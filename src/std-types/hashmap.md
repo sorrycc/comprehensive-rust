@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:05:52.428Z'
 ---
 
 # `HashMap`
 
-Standard hash map with protection against HashDoS attacks:
+具备 HashDoS 攻击保护的标准哈希映射：
 
 ```rust,editable
 use std::collections::HashMap;
@@ -17,19 +18,19 @@ fn main() {
 
     if !page_counts.contains_key("Les Misérables") {
         println!(
-            "We know about {} books, but not Les Misérables.",
+            "我们知道 {} 本书籍信息，但不包括 Les Misérables。",
             page_counts.len()
         );
     }
 
     for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
         match page_counts.get(book) {
-            Some(count) => println!("{book}: {count} pages"),
-            None => println!("{book} is unknown."),
+            Some(count) => println!("{book}: {count} 页"),
+            None => println!("{book} 信息未知。"),
         }
     }
 
-    // Use the .entry() method to insert a value if nothing is found.
+    // 如果找不到，则使用 .entry() 方法插入一个值。
     for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
         let page_count: &mut i32 = page_counts.entry(book.to_string()).or_insert(0);
         *page_count += 1;
@@ -41,10 +42,8 @@ fn main() {
 
 <details>
 
-- `HashMap` is not defined in the prelude and needs to be brought into scope.
-- Try the following lines of code. The first line will see if a book is in the
-  hashmap and if not return an alternative value. The second line will insert
-  the alternative value in the hashmap if the book is not found.
+- `HashMap` 没有在预导入中定义，需要将其引入作用域。
+- 尝试以下几行代码。第一行代码会检查 hashmap 中是否有某本书，如果没有，则返回一个备选值。如果书籍未找到，第二行代码会在 hashmap 中插入这个备选值。
 
   ```rust,ignore
   let pc1 = page_counts
@@ -54,9 +53,9 @@ fn main() {
       .entry("The Hunger Games".to_string())
       .or_insert(374);
   ```
-- Unlike `vec!`, there is unfortunately no standard `hashmap!` macro.
-  - Although, since Rust 1.56, HashMap implements [`From<[(K, V); N]>`][1],
-    which allows us to easily initialize a hash map from a literal array:
+- 不幸的是，不像 `vec!`，没有一个标准的 `hashmap!` 宏。
+  - 尽管如此，自 Rust 1.56 起，HashMap 实现了 [`From<[(K, V); N]>`][1]，
+    这使得我们可以轻松地从字面量数组初始化一个哈希映射：
 
     ```rust,ignore
     let page_counts = HashMap::from([
@@ -65,18 +64,11 @@ fn main() {
     ]);
     ```
 
-- Alternatively HashMap can be built from any `Iterator` which yields key-value
-  tuples.
-- We are showing `HashMap<String, i32>`, and avoid using `&str` as key to make
-  examples easier. Using references in collections can, of course, be done, but
-  it can lead into complications with the borrow checker.
-  - Try removing `to_string()` from the example above and see if it still
-    compiles. Where do you think we might run into issues?
+- 另外，HashMap 也可以通过任何产生键值对元组的 `Iterator` 构建。
+- 我们展示的是 `HashMap<String, i32>`，并避免使用 `&str` 作为键，以使示例简化。当然，集合中可以使用引用，但这可能会导致与借用检查器的复杂情况。
+  - 尝试从上面的例子中移除 `to_string()`，看看它是否还能编译。你认为我们可能会在哪里遇到问题？
 
-- This type has several "method-specific" return types, such as
-  `std::collections::hash_map::Keys`. These types often appear in searches of
-  the Rust docs. Show students the docs for this type, and the helpful link back
-  to the `keys` method.
+- 这种类型有几种“特定方法”的返回类型，例如 `std::collections::hash_map::Keys`。这些类型经常出现在 Rust 文档的搜索中。向学生展示这个类型的文档，以及返回到 `keys` 方法的有用链接。
 
 [1]: https://doc.rust-lang.org/std/collections/hash_map/struct.HashMap.html#impl-From%3C%5B(K,+V);+N%5D%3E-for-HashMap%3CK,+V,+RandomState%3E
 

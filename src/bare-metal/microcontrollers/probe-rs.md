@@ -1,34 +1,25 @@
-# `probe-rs` and `cargo-embed`
+---
+translated_at: '2024-03-26T11:36:32.223Z'
+---
 
-[probe-rs](https://probe.rs/) is a handy toolset for embedded debugging, like
-OpenOCD but better integrated.
+# `probe-rs` 和 `cargo-embed`
 
-- SWD (Serial Wire Debug) and JTAG via CMSIS-DAP, ST-Link and J-Link probes
-- GDB stub and Microsoft DAP (Debug Adapter Protocol) server
-- Cargo integration
+[probe-rs](https://probe.rs/) 是一套便捷的用于嵌入式调试的工具集，类似于 OpenOCD 但集成得更好。
 
-`cargo-embed` is a cargo subcommand to build and flash binaries, log RTT (Real
-Time Transfers) output and connect GDB. It's configured by an `Embed.toml` file
-in your project directory.
+- 通过 CMSIS-DAP、ST-Link 和 J-Link 探针实现 SWD（串行线调试）和 JTAG
+- GDB 存根和微软 DAP（调试适配器协议）服务器
+- Cargo 集成
+
+`cargo-embed` 是一个用于构建和刷写二进制文件、记录 RTT（实时传输）输出和连接 GDB 的 cargo 子命令。它通过你的项目目录中的 `Embed.toml` 文件配置。
 
 <details>
 
-- [CMSIS-DAP](https://arm-software.github.io/CMSIS_5/DAP/html/index.html) is an
-  Arm standard protocol over USB for an in-circuit debugger to access the
-  CoreSight Debug Access Port of various Arm Cortex processors. It's what the
-  on-board debugger on the BBC micro:bit uses.
-- ST-Link is a range of in-circuit debuggers from ST Microelectronics, J-Link is
-  a range from SEGGER.
-- The Debug Access Port is usually either a 5-pin JTAG interface or 2-pin Serial
-  Wire Debug.
-- probe-rs is a library which you can integrate into your own tools if you want
-  to.
-- The
-  [Microsoft Debug Adapter Protocol](https://microsoft.github.io/debug-adapter-protocol/)
-  lets VSCode and other IDEs debug code running on any supported
-  microcontroller.
-- cargo-embed is a binary built using the probe-rs library.
-- RTT (Real Time Transfers) is a mechanism to transfer data between the debug
-  host and the target through a number of ringbuffers.
+- [CMSIS-DAP](https://arm-software.github.io/CMSIS_5/DAP/html/index.html) 是 Arm 标准协议，通过 USB 让在电路中的调试器访问各种 Arm Cortex 处理器的 CoreSight 调试访问端口。它就是 BBC micro:bit 上的板载调试器所使用的协议。
+- ST-Link 是意法半导体（ST Microelectronics）的一系列在电路调试器，J-Link 是 SEGGER 的一系列。
+- 调试访问端口通常是一个 5 引脚的 JTAG 接口或 2 引脚的串行线调试。
+- probe-rs 是一个你可以集成到你自己的工具中的库。
+- [微软调试适配器协议](https://microsoft.github.io/debug-adapter-protocol/) 允许 VSCode 和其他 IDE 在任何支持的微控制器上调试代码。
+- cargo-embed 是使用 probe-rs 库构建的二进制文件。
+- RTT（实时传输）是一种在调试主机和目标设备之间通过一系列环形缓冲区传输数据的机制。
 
 </details>

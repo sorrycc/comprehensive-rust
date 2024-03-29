@@ -1,6 +1,10 @@
-# Building in Android
+---
+translated_at: '2024-03-26T12:04:06.881Z'
+---
 
-Create a `rust_binary` that depends on `libcxx` and your `cc_library_static`.
+# 在 Android 中构建
+
+创建一个依赖 `libcxx` 和你的 `cc_library_static` 的 `rust_binary`。
 
 ```javascript
 rust_binary {

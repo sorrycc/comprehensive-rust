@@ -1,7 +1,10 @@
+---
+translated_at: '2024-03-26T09:50:25.502Z'
+---
+
 # `const`
 
-Constants are evaluated at compile time and their values are inlined wherever
-they are used:
+常量在编译时被求值，它们的值在被使用的地方内联：
 
 <!-- mdbook-xgettext: skip -->
 
@@ -23,16 +26,14 @@ fn main() {
 }
 ```
 
-According to the [Rust RFC Book][1] these are inlined upon use.
+根据 [Rust RFC Book][1]，这些在使用时被内联。
 
-Only functions marked `const` can be called at compile time to generate `const`
-values. `const` functions can however be called at runtime.
+只有标记为 `const` 的函数可以在编译时调用以生成 `const` 值。然而，`const` 函数可以在运行时被调用。
 
 <details>
 
-- Mention that `const` behaves semantically similar to C++'s `constexpr`
-- It isn't super common that one would need a runtime evaluated constant, but it
-  is helpful and safer than using a static.
+- 提到 `const` 在语义上类似于 C++ 的 `constexpr`
+- 一个人需要在运行时求值的常量并不是很常见，但这样做有助于安全，比使用静态更好。
 
 </details>
 

@@ -1,27 +1,30 @@
-# Testing in Android
+---
+translated_at: '2024-03-26T11:54:49.807Z'
+---
 
-Building on [Testing](../testing.md), we will now look at how unit tests work in
-AOSP. Use the `rust_test` module for your unit tests:
+# 在 Android 中进行测试
 
-_testing/Android.bp_:
+基于 [测试](../testing.md)，我们现在将查看 AOSP 中单元测试是如何工作的。使用 `rust_test` 模块来进行你的单元测试：
+
+_testing/Android.bp_：
 
 ```javascript
 {{#include testing/Android.bp}}
 ```
 
-_testing/src/lib.rs_:
+_testing/src/lib.rs_：
 
 ```rust
 {{#include testing/src/lib.rs:leftpad}}
 ```
 
-You can now run the test with
+现在你可以使用以下命令运行测试：
 
 ```shell
 {{#include build_all.sh:libleftpad_test}}
 ```
 
-The output looks like this:
+输出看起来是这样的：
 
 ```text
 INFO: Elapsed time: 2.666s, Critical Path: 2.40s
@@ -30,8 +33,7 @@ INFO: Build completed successfully, 3 total actions
 //comprehensive-rust-android/testing:libleftpad_test_host            PASSED in 2.3s
     PASSED  libleftpad_test.tests::long_string (0.0s)
     PASSED  libleftpad_test.tests::short_string (0.0s)
-Test cases: finished with 2 passing and 0 failing out of 2 test cases
+测试用例：完成 2 个测试用例的执行，2 个通过且 0 个失败
 ```
 
-Notice how you only mention the root of the library crate. Tests are found
-recursively in nested modules.
+注意你只需提及库 crate 的根目录。测试会在嵌套模块中递归地被发现。

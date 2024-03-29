@@ -1,8 +1,9 @@
 ---
 minutes: 3
+translated_at: '2024-03-26T09:58:51.669Z'
 ---
 
-# Arithmetic
+# 算术运算
 
 ```rust,editable
 fn interproduct(a: i32, b: i32, c: i32) -> i32 {
@@ -16,22 +17,14 @@ fn main() {
 
 <details>
 
-This is the first time we've seen a function other than `main`, but the meaning
-should be clear: it takes three integers, and returns an integer. Functions will
-be covered in more detail later.
+这是我们第一次见到除了 `main` 之外的函数，但其含义应该是清晰的：它接受三个整数，并返回一个整数。函数将在后面更详细地介绍。
 
-Arithmetic is very similar to other languages, with similar precedence.
+算术运算与其他语言非常相似，具有相似的优先级。
 
-What about integer overflow? In C and C++ overflow of _signed_ integers is
-actually undefined, and might do different things on different platforms or
-compilers. In Rust, it's defined.
+那么整数溢出呢？在 C 和 C++ 中，_有符号_ 整数的溢出实际上是未定义的，可能在不同的平台或编译器上做不同的事情。在 Rust 中，它是定义的。
 
-Change the `i32`'s to `i16` to see an integer overflow, which panics (checked)
-in a debug build and wraps in a release build. There are other options, such as
-overflowing, saturating, and carrying. These are accessed with method syntax,
-e.g., `(a * b).saturating_add(b * c).saturating_add(c * a)`.
+将 `i32` 改为 `i16` 可以看到一个整数溢出，它在调试构建中会 panic（检查），而在发布构建中会包装。还有其他选择，如溢出、饱和和携带。这些可以通过方法语法访问，例如，`(a * b).saturating_add(b * c).saturating_add(c * a)`。
 
-In fact, the compiler will detect overflow of constant expressions, which is why
-the example requires a separate function.
+实际上，编译器会检测常量表达式的溢出，这就是为什么示例需要一个单独的函数。
 
 </details>

@@ -1,36 +1,30 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:05:09.545Z'
 ---
 
-# Option
+# 选项
 
-We have already seen some use of `Option<T>`. It stores either a value of type
-`T` or nothing. For example,
-[`String::find`](https://doc.rust-lang.org/stable/std/string/struct.String.html#method.find)
-returns an `Option<usize>`.
+我们已经见过一些 `Option<T>` 的用法。它存储类型为 `T` 的值或无。例如，[`String::find`](https://doc.rust-lang.org/stable/std/string/struct.String.html#method.find) 返回一个 `Option<usize>`。
 
 ```rust,editable,should_panic
 fn main() {
     let name = "Löwe 老虎 Léopard Gepardi";
     let mut position: Option<usize> = name.find('é');
-    println!("find returned {position:?}");
+    println!("find 返回 {position:?}");
     assert_eq!(position.unwrap(), 14);
     position = name.find('Z');
-    println!("find returned {position:?}");
-    assert_eq!(position.expect("Character not found"), 0);
+    println!("find 返回 {position:?}");
+    assert_eq!(position.expect("字符未找到"), 0);
 }
 ```
 
 <details>
 
-- `Option` is widely used, not just in the standard library.
-- `unwrap` will return the value in an `Option`, or panic. `expect` is similar
-  but takes an error message.
-  - You can panic on None, but you can't "accidentally" forget to check for
-    None.
-  - It's common to `unwrap`/`expect` all over the place when hacking something
-    together, but production code typically handles `None` in a nicer fashion.
-- The niche optimization means that `Option<T>` often has the same size in
-  memory as `T`.
+- `Option` 广泛用于标准库之外。
+- `unwrap` 会返回 `Option` 中的值，或触发 panic。`expect` 类似，但会带一个错误信息。
+  - 你可以对 None 触发 panic，但你不能“意外地”忘记检查 None。
+  - 当草拟一些东西时到处使用 `unwrap`/`expect` 是很常见的，但生产代码通常以更优雅的方式处理 `None`。
+- 利基优化意味着 `Option<T>` 在内存中的大小往往与 `T` 相同。
 
 </details>

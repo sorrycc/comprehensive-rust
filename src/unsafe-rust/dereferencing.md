@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T09:55:43.425Z'
 ---
 
-# Dereferencing Raw Pointers
+# 解引用原始指针
 
-Creating pointers is safe, but dereferencing them requires `unsafe`:
+创建指针是安全的，但解引用它们需要 `unsafe`：
 
 ```rust,editable
 fn main() {
@@ -13,47 +14,38 @@ fn main() {
     let r1 = &mut s as *mut String;
     let r2 = r1 as *const String;
 
-    // Safe because r1 and r2 were obtained from references and so are
-    // guaranteed to be non-null and properly aligned, the objects underlying
-    // the references from which they were obtained are live throughout the
-    // whole unsafe block, and they are not accessed either through the
-    // references or concurrently through any other pointers.
+    // 安全，因为 r1 和 r2 是从引用中获得的，因此保证非空且对齐正确，
+    // 且在整个 unsafe 块期间，它们所基于的引用对象是存活的，
+    // 并且它们不会通过引用或其他任何指针并发访问。
     unsafe {
-        println!("r1 is: {}", *r1);
+        println!("r1 是：{}", *r1);
         *r1 = String::from("uhoh");
-        println!("r2 is: {}", *r2);
+        println!("r2 是：{}", *r2);
     }
 
-    // NOT SAFE. DO NOT DO THIS.
+    // 不安全。不要这么做。
     /*
     let r3: &String = unsafe { &*r1 };
     drop(s);
-    println!("r3 is: {}", *r3);
+    println!("r3 是：{}", *r3);
     */
 }
 ```
 
 <details>
 
-It is good practice (and required by the Android Rust style guide) to write a
-comment for each `unsafe` block explaining how the code inside it satisfies the
-safety requirements of the unsafe operations it is doing.
+根据 Android Rust 风格指南的要求（以及良好的实践），编写每个 `unsafe` 块的注释解释其中的代码是如何满足其进行的不安全操作的安全要求的是很好的。
 
-In the case of pointer dereferences, this means that the pointers must be
-[_valid_](https://doc.rust-lang.org/std/ptr/index.html#safety), i.e.:
+在指针解引用的情况下，这意味着指针必须是[_有效的_](https://doc.rust-lang.org/std/ptr/index.html#safety)，即：
 
-- The pointer must be non-null.
-- The pointer must be _dereferenceable_ (within the bounds of a single allocated
-  object).
-- The object must not have been deallocated.
-- There must not be concurrent accesses to the same location.
-- If the pointer was obtained by casting a reference, the underlying object must
-  be live and no reference may be used to access the memory.
+- 指针必须非空。
+- 指针必须是_可解引用的_（在单个分配的对象的范围内）。
+- 对象未被释放。
+- 不能有对同一位置的并发访问。
+- 如果指针是通过强制转换引用获得的，底层对象必须是存活的并且不能使用引用来访问内存。
 
-In most cases the pointer must also be properly aligned.
+在大多数情况下，指针还必须正确对齐。
 
-The "NOT SAFE" section gives an example of a common kind of UB bug: `*r1` has
-the `'static` lifetime, so `r3` has type `&'static String`, and thus outlives
-`s`. Creating a reference from a pointer requires _great care_.
+“不安全”部分给出了一个常见的 UB（未定义行为）错误示例：`*r1` 有 `'static` 生命周期，所以 `r3` 的类型是 `&'static String`，因此比 `s` 拥有更长的生存期。从指针创建引用需要_极其小心_。
 
 </details>

@@ -1,26 +1,26 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:33:27.318Z'
 ---
 
-# Review of Program Memory
+# 程序内存回顾
 
-Programs allocate memory in two ways:
+程序分配内存的两种方式：
 
-- Stack: Continuous area of memory for local variables.
-  - Values have fixed sizes known at compile time.
-  - Extremely fast: just move a stack pointer.
-  - Easy to manage: follows function calls.
-  - Great memory locality.
+- 栈：连续的内存区域用于局部变量。
+  - 值的大小在编译时已知固定。
+  - 极快：只需移动栈指针。
+  - 容易管理：遵循函数调用。
+  - 极佳的内存局部性。
 
-- Heap: Storage of values outside of function calls.
-  - Values have dynamic sizes determined at runtime.
-  - Slightly slower than the stack: some book-keeping needed.
-  - No guarantee of memory locality.
+- 堆：用于函数调用外的值存储。
+  - 值的大小在运行时决定，具有动态性。
+  - 比栈稍慢：需要一些簿记工作。
+  - 无内存局部性保证。
 
-## Example
+## 示例
 
-Creating a `String` puts fixed-sized metadata on the stack and dynamically sized
-data, the actual string, on the heap:
+创建一个 `String` 会将固定大小的元数据放在栈上，而动态大小的数据（实际的字符串）放在堆上：
 
 ```rust,editable
 fn main() {
@@ -29,8 +29,8 @@ fn main() {
 ```
 
 ```bob
- Stack
-.- - - - - - - - - - - - - -.      Heap
+ 栈
+.- - - - - - - - - - - - - -.      堆
 :                           :     .- - - - - - - - - - - - - - - -.
 :    s1                     :     :                               :
 :   +-----------+-------+   :     :                               :
@@ -44,26 +44,21 @@ fn main() {
 
 <details>
 
-- Mention that a `String` is backed by a `Vec`, so it has a capacity and length
-  and can grow if mutable via reallocation on the heap.
+- 提到 `String` 是由 `Vec` 支撑的，因此它有容量和长度，并且如果可变，可以通过在堆上重新分配来增长。
 
-- If students ask about it, you can mention that the underlying memory is heap
-  allocated using the [System Allocator] and custom allocators can be
-  implemented using the [Allocator API]
+- 如果学生询问，你可以提到底层内存是使用 [系统分配器] 分配的，并且可以使用 [分配器 API] 实现自定义分配器。
 
-## More to Explore
+## 更多探索
 
-We can inspect the memory layout with `unsafe` Rust. However, you should point
-out that this is rightfully unsafe!
+我们可以用 `unsafe` Rust 检查内存布局。不过，你应该指出这是正当的不安全操作！
 
 ```rust,editable
 fn main() {
     let mut s1 = String::from("Hello");
     s1.push(' ');
     s1.push_str("world");
-    // DON'T DO THIS AT HOME! For educational purposes only.
-    // String provides no guarantees about its layout, so this could lead to
-    // undefined behavior.
+    // 千万不要在家里面这么做！仅供教育用途。
+    // String 不提供关于其布局的任何保证，因此这可能导致未定义的行为。
     unsafe {
         let (capacity, ptr, len): (usize, usize, usize) = std::mem::transmute(s1);
         println!("capacity = {capacity}, ptr = {ptr:#x}, len = {len}");
@@ -71,7 +66,9 @@ fn main() {
 }
 ```
 
+```markdown
 </details>
 
-[System Allocator]: https://doc.rust-lang.org/std/alloc/struct.System.html
-[Allocator API]: https://doc.rust-lang.org/std/alloc/index.html
+[系统分配器]: https://doc.rust-lang.org/std/alloc/struct.System.html
+[分配器 API]: https://doc.rust-lang.org/std/alloc/index.html
+```

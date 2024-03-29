@@ -1,25 +1,22 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:06:55.630Z'
 ---
 
-# Documentation
+# 文档
 
-Rust comes with extensive documentation. For example:
+Rust 拥有丰富的文档资料。例如：
 
-- All of the details about
-  [loops](https://doc.rust-lang.org/stable/reference/expressions/loop-expr.html).
-- Primitive types like
-  [`u8`](https://doc.rust-lang.org/stable/std/primitive.u8.html).
-- Standard library types like
-  [`Option`](https://doc.rust-lang.org/stable/std/option/enum.Option.html) or
-  [`BinaryHeap`](https://doc.rust-lang.org/stable/std/collections/struct.BinaryHeap.html).
+- 有关 [循环](https://doc.rust-lang.org/stable/reference/expressions/loop-expr.html) 的所有细节。
+- 原始类型，如 [`u8`](https://doc.rust-lang.org/stable/std/primitive.u8.html)。
+- 标准库类型，如 [`Option`](https://doc.rust-lang.org/stable/std/option/enum.Option.html) 或 [`BinaryHeap`](https://doc.rust-lang.org/stable/std/collections/struct.BinaryHeap.html)。
 
-In fact, you can document your own code:
+实际上，你可以给自己的代码编写文档：
 
 ```rust,editable
-/// Determine whether the first argument is divisible by the second argument.
+/// 确定第一个参数是否能被第二个参数整除。
 ///
-/// If the second argument is zero, the result is false.
+/// 如果第二个参数为零，则结果为假。
 fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
     if rhs == 0 {
         return false;
@@ -28,21 +25,16 @@ fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
 }
 ```
 
-The contents are treated as Markdown. All published Rust library crates are
-automatically documented at [`docs.rs`](https://docs.rs) using the
-[rustdoc](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html) tool. It is
-idiomatic to document all public items in an API using this pattern.
+内容被视为 Markdown 格式。所有发布的 Rust 库包都会在 [`docs.rs`](https://docs.rs) 上自动使用 [rustdoc](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html) 工具生成文档。习惯上，会使用这种模式记录 API 中所有公共项的文档。
 
-To document an item from inside the item (such as inside a module), use `//!` or
-`/*! .. */`, called "inner doc comments":
+要从条目内部（例如在模块内）记录条目，请使用 `//!` 或 `/*! .. */`，称为“内部文档注释”：
 
 ```rust,editable
-//! This module contains functionality relating to divisibility of integers.
+//! 本模块包含与整数可除性相关的功能。
 ```
 
 <details>
 
-- Show students the generated docs for the `rand` crate at
-  <https://docs.rs/rand>.
+- 为学生展示 `rand` 包生成的文档，网址为 <https://docs.rs/rand>。
 
 </details>

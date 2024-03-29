@@ -1,10 +1,14 @@
+---
+translated_at: '2024-03-26T11:48:31.843Z'
+---
+
 # Tokio
 
-Tokio provides:
+Tokio 提供：
 
-- A multi-threaded runtime for executing asynchronous code.
-- An asynchronous version of the standard library.
-- A large ecosystem of libraries.
+- 一个用于执行异步代码的多线程运行时。
+- 标准库的异步版本。
+- 一个庞大的库生态系统。
 
 ```rust,editable,compile_fail
 use tokio::time;
@@ -29,20 +33,18 @@ async fn main() {
 
 <details>
 
-- With the `tokio::main` macro we can now make `main` async.
+- 使用 `tokio::main` 宏，我们现在可以使 `main` 异步。
 
-- The `spawn` function creates a new, concurrent "task".
+- `spawn` 函数创建一个新的，并发的“任务”。
 
-- Note: `spawn` takes a `Future`, you don't call `.await` on `count_to`.
+- 注意：`spawn` 接受一个 `Future`，你不需要在 `count_to` 上调用 `.await`。
 
-**Further exploration:**
+**进一步探索：**
 
-- Why does `count_to` not (usually) get to 10? This is an example of async
-  cancellation. `tokio::spawn` returns a handle which can be awaited to wait
-  until it finishes.
+- 为什么 `count_to` 通常不会计数到 10？这是异步取消的一个例子。`tokio::spawn` 返回一个句柄，可以等待它完成。
 
-- Try `count_to(10).await` instead of spawning.
+- 尝试用 `count_to(10).await` 替代生成。
 
-- Try awaiting the task returned from `tokio::spawn`.
+- 尝试等待 `tokio::spawn` 返回的任务。
 
 </details>

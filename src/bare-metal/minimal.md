@@ -1,4 +1,8 @@
-# A minimal `no_std` program
+---
+translated_at: '2024-03-26T11:31:54.629Z'
+---
+
+# 一个最简单的 `no_std` 程序
 
 <!-- mdbook-xgettext: skip -->
 
@@ -16,13 +20,10 @@ fn panic(_panic: &PanicInfo) -> ! {
 
 <details>
 
-- This will compile to an empty binary.
-- `std` provides a panic handler; without it we must provide our own.
-- It can also be provided by another crate, such as `panic-halt`.
-- Depending on the target, you may need to compile with `panic = "abort"` to
-  avoid an error about `eh_personality`.
-- Note that there is no `main` or any other entry point; it's up to you to
-  define your own entry point. This will typically involve a linker script and
-  some assembly code to set things up ready for Rust code to run.
+- 这将编译成一个空的二进制文件。
+- `std` 提供一个 panic 处理函数；没有它我们必须自己提供。
+- 它也可以被其它 crate 提供，比如 `panic-halt`。
+- 根据目标平台，你可能需要使用 `panic = "abort"` 来编译，以避免关于 `eh_personality` 的错误。
+- 注意这里没有 `main` 函数或者任何其它入口点；你需要自己定义入口点。这通常涉及到链接脚本和一些汇编代码来设置好一切，为 Rust 代码的运行做好准备。
 
 </details>

@@ -1,10 +1,11 @@
 ---
 minutes: 10
+translated_at: '2024-03-26T10:13:11.427Z'
 ---
 
-# Trait Objects
+# 特征对象
 
-Trait objects allow for values of different types, for instance in a collection:
+特征对象允许不同类型的值，例如在集合中：
 
 ```rust,editable
 struct Dog {
@@ -21,13 +22,13 @@ trait Pet {
 
 impl Pet for Dog {
     fn talk(&self) -> String {
-        format!("Woof, my name is {}!", self.name)
+        format!("汪汪，我的名字是 {}！", self.name)
     }
 }
 
 impl Pet for Cat {
     fn talk(&self) -> String {
-        String::from("Miau!")
+        String::from("喵！")
     }
 }
 
@@ -37,16 +38,16 @@ fn main() {
         Box::new(Dog { name: String::from("Fido"), age: 5 }),
     ];
     for pet in pets {
-        println!("Hello, who are you? {}", pet.talk());
+        println!("你好，你是谁？{}", pet.talk());
     }
 }
 ```
 
-Memory layout after allocating `pets`:
+在分配 `pets` 后的内存布局：
 
 ```bob
- Stack                             Heap
-.- - - - - - - - - - - - - -.     .- - - - - - - - - - - - - - - - - - - - - - -.
+ 栈                                堆
+.- - - - - - - - - - - - - - -.     .- - - - - - - - - - - - - - - - - - - - - -.
 :                           :     :                                             :
 :    "pets: Vec<dyn Pet>"   :     :   "data: Cat"         +----+----+----+----+ :
 :   +-----------+-------+   :     :  +-------+-------+    | F  | i  | d  | o  | :
@@ -62,7 +63,7 @@ Memory layout after allocating `pets`:
                                   :     |     |                                 :
                                   `- - -| - - |- - - - - - - - - - - - - - - - -'
                                         |     |
-                                        |     |                      "Program text"
+                                        |     |                      "程序文本"
                                   .- - -| - - |- - - - - - - - - - - - - - - - -.
                                   :     |     |       vtable                    :
                                   :     |     |      +----------------------+   :
@@ -78,18 +79,12 @@ Memory layout after allocating `pets`:
 
 <details>
 
-- Types that implement a given trait may be of different sizes. This makes it
-  impossible to have things like `Vec<dyn Pet>` in the example above.
-- `dyn Pet` is a way to tell the compiler about a dynamically sized type that
-  implements `Pet`.
-- In the example, `pets` is allocated on the stack and the vector data is on the
-  heap. The two vector elements are _fat pointers_:
-  - A fat pointer is a double-width pointer. It has two components: a pointer to
-    the actual object and a pointer to the [virtual method table] (vtable) for
-    the `Pet` implementation of that particular object.
-  - The data for the `Dog` named Fido is the `name` and `age` fields. The `Cat`
-    has a `lives` field.
-- Compare these outputs in the above example:
+- 实现了特定 trait 的类型可能具有不同的大小。这使得像上面例子中的 `Vec<dyn Pet>` 这样的事情成为不可能。
+- `dyn Pet` 是一种告诉编译器关于动态尺寸类型实现了 `Pet` 的方式。
+- 在示例中，`pets` 被分配在栈上，向量数据位于堆上。这两个向量元素是 _胖指针_：
+  - 胖指针是一个双宽度指针。它有两个组件：一个指向实际对象的指针和一个指向该特定对象的 `Pet` 实现的 [虚方法表] （vtable）的指针。
+  - 名为 Fido 的 `Dog` 的数据是 `name` 和 `age` 字段。`Cat` 有一个 `lives` 字段。
+- 比较上例中的这些输出：
   ```rust,ignore
   println!("{} {}", std::mem::size_of::<Dog>(), std::mem::size_of::<Cat>());
   println!("{} {}", std::mem::size_of::<&Dog>(), std::mem::size_of::<&Cat>());
@@ -97,6 +92,6 @@ Memory layout after allocating `pets`:
   println!("{}", std::mem::size_of::<Box<dyn Pet>>());
   ```
 
-[virtual method table]: https://en.wikipedia.org/wiki/Virtual_method_table
+[虚方法表]: https://en.wikipedia.org/wiki/Virtual_method_table
 
 </details>

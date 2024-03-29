@@ -1,14 +1,18 @@
+---
+translated_at: '2024-03-26T12:06:23.849Z'
+---
+
 # Parcelables
 
-Binder for Rust supports sending parcelables directly:
+Binder for Rust 支持直接发送 parcelables：
 
-**birthday_service/aidl/com/example/birthdayservice/BirthdayInfo.aidl**:
+**birthday_service/aidl/com/example/birthdayservice/BirthdayInfo.aidl**：
 
 ```java
 {{#include ../birthday_service/aidl/com/example/birthdayservice/BirthdayInfo.aidl}}
 ```
 
-**birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl**:
+**birthday_service/aidl/com/example/birthdayservice/IBirthdayService.aidl**：
 
 ```java
 import com.example.birthdayservice.BirthdayInfo;
@@ -18,7 +22,7 @@ interface IBirthdayService {
 }
 ```
 
-**birthday_service/src/client.rs**:
+**birthday_service/src/client.rs**：
 
 ```rust,ignore
 fn main() {

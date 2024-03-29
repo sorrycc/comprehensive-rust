@@ -1,11 +1,11 @@
 ---
 minutes: 5
+translated_at: '2024-03-26T10:14:01.365Z'
 ---
 
 # `Rc`
 
-[`Rc`][1] is a reference-counted shared pointer. Use this when you need to refer
-to the same data from multiple places:
+[`Rc`][1] 是一个引用计数的共享指针。当你需要从多个地方引用同一数据时，请使用它：
 
 ```rust,editable
 use std::rc::Rc;
@@ -19,9 +19,8 @@ fn main() {
 }
 ```
 
-- See [`Arc`][2] and [`Mutex`][3] if you are in a multi-threaded context.
-- You can _downgrade_ a shared pointer into a [`Weak`][4] pointer to create
-  cycles that will get dropped.
+- 如果你在多线程环境中，请参阅 [`Arc`][2] 和 [`Mutex`][3]。
+- 你可以把共享指针 _降级为_ [`Weak`][4] 指针以创建循环引用，这将会被正确地释放。
 
 [1]: https://doc.rust-lang.org/std/rc/struct.Rc.html
 [2]: ../concurrency/shared_state/arc.md
@@ -30,16 +29,11 @@ fn main() {
 
 <details>
 
-- `Rc`'s count ensures that its contained value is valid for as long as there
-  are references.
-- `Rc` in Rust is like `std::shared_ptr` in C++.
-- `Rc::clone` is cheap: it creates a pointer to the same allocation and
-  increases the reference count. Does not make a deep clone and can generally be
-  ignored when looking for performance issues in code.
-- `make_mut` actually clones the inner value if necessary ("clone-on-write") and
-  returns a mutable reference.
-- Use `Rc::strong_count` to check the reference count.
-- `Rc::downgrade` gives you a _weakly reference-counted_ object to create cycles
-  that will be dropped properly (likely in combination with `RefCell`).
+- `Rc` 的计数确保了只要有引用存在，其包含的值就是有效的。
+- Rust 中的 `Rc` 类似于 C++ 中的 `std::shared_ptr`。
+- `Rc::clone` 成本低廉：它创建一个指向同一内存分配的指针并增加引用计数。它不会进行深度克隆，在寻找代码性能问题时通常可以忽略。
+- `make_mut` 在必要时实际上会克隆内部值（"写时克隆"）并返回一个可变引用。
+- 使用 `Rc::strong_count` 来检查引用计数。
+- `Rc::downgrade` 提供了一个 _弱引用计数_ 的对象，以创建能够被正确释放的循环引用（可能与 `RefCell` 结合使用）。
 
 </details>
